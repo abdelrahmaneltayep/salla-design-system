@@ -2,9 +2,9 @@
 
 > One node of the Stepper: number or check in a circle with a connector.
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| atom | Navigation | 1 - Configurable | existing | _not in Storybook_ |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| atom | Navigation | 1 - Configurable | existing | figma | _not in Storybook_ |
 
 ## Props
 
@@ -29,6 +29,10 @@ Build as **one component** whose variations are props. Keep the prop list flat a
 | Figma frame | Section today | Variants | Variant properties (cleaned) |
 |---|---|---|---|
 | `_Step base` | Steps | 8 | Type: Active, Default, Last, Success; Language: Arabic, English |
+
+## Source in the Twilight Storybook today
+
+_Not in the Twilight Storybook (dashboard-ui-components.pages.dev)._
 
 ---
 _Generated from `catalog/components.json` (id `step-indicator`). Edit the catalog, not this file._

@@ -38,7 +38,7 @@
         ],
         "node": "14526:107536"
       },
-      "storybook": "Button",
+      "storybook": "<s-button>",
       "anatomy": [
         "container",
         "icon-start (slot)",
@@ -93,7 +93,18 @@
         "sys.typography.label-md"
       ],
       "rtl": "iconStart/iconEnd are logical (inline-start / inline-end) and swap automatically under dir=rtl; do not mirror non-directional glyphs.",
-      "notes": "Figma variant values carry a leading `--` (--primary); drop it in code. The 'link' appearance is a Button in Figma but reads as a Link to users; expose it as `Link` (see link.md) built on the same base. `feature` is a non-semantic upsell accent and must stay out of the semantic status palette."
+      "notes": "Figma variant values carry a leading `--` (--primary); drop it in code. The 'link' appearance is a Button in Figma but reads as a Link to users; expose it as `Link` (see link.md) built on the same base. `feature` is a non-semantic upsell accent and must stay out of the semantic status palette. Twilight themes add white, transparent and mahally; `outlined`, `wide`, `shadow`, `textAlignment`, `href` are props.",
+      "twilight": [
+        {
+          "entry": "button",
+          "tag": "s-button",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "icon-button",
@@ -101,7 +112,7 @@
       "level": "atom",
       "category": "Actions",
       "structure": 3,
-      "status": "proposed",
+      "status": "existing",
       "summary": "Icon-only button. Today this is Button with Layout=--circular and no label; promote it to a named global component so the accessible name is a required prop.",
       "figma": {
         "frames": [
@@ -109,7 +120,7 @@
         ],
         "variantFilter": "Layout=--circular"
       },
-      "storybook": null,
+      "storybook": "<s-button> (layout=circular, label is an <s-icon>)",
       "anatomy": [
         "container (circular)",
         "icon"
@@ -141,7 +152,18 @@
         "sys.shape.full"
       ],
       "base": "BaseButton",
-      "notes": "Replaces the ad-hoc icon buttons inside Table (_Table/Refresh Button, _Table/Pin, Table/Cell/Actions icons)."
+      "notes": "Replaces the ad-hoc icon buttons inside Table (_Table/Refresh Button, _Table/Pin, Table/Cell/Actions icons).",
+      "twilight": [
+        {
+          "entry": "button",
+          "tag": "s-button",
+          "note": "layout=circular, label is an <s-icon>"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "link",
@@ -149,7 +171,7 @@
       "level": "atom",
       "category": "Actions",
       "structure": 3,
-      "status": "proposed",
+      "status": "existing",
       "summary": "Inline text action. Built on BaseButton with the `link` and `link-auxiliary` appearances so it shares focus, disabled and loading logic with Button.",
       "figma": {
         "frames": [
@@ -157,7 +179,7 @@
         ],
         "variantFilter": "Appearance=--link | --link-auxiliary"
       },
-      "storybook": null,
+      "storybook": "<s-button> (href + theme=transparent)",
       "anatomy": [
         "label",
         "optional icon"
@@ -187,7 +209,18 @@
         "sys.color.text.brand",
         "sys.typography.label-md"
       ],
-      "base": "BaseButton"
+      "base": "BaseButton",
+      "twilight": [
+        {
+          "entry": "button",
+          "tag": "s-button",
+          "note": "href + theme=transparent"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "icon",
@@ -204,7 +237,7 @@
         ],
         "library": "Icons DS_V.1"
       },
-      "storybook": "Icons (sicon-* font classes)",
+      "storybook": "<s-icon>",
       "anatomy": [
         "svg 1em box"
       ],
@@ -228,7 +261,18 @@
         "currentColor"
       ],
       "rtl": "Only directional glyphs (arrows, chevrons, undo/redo) set mirrorInRtl. Search, trash, settings never mirror.",
-      "notes": "Naming today is `{name}-{outline|filled}` in the Merchant DS while the icon library uses Style/Type variants and the Storybook uses `sicon-*` font classes. Unify on `{name}` + `style` prop; see docs/02-styles/icons.md."
+      "notes": "Naming today is `{name}-{outline|filled}` in the Merchant DS while the icon library uses Style/Type variants and the Storybook uses `sicon-*` font classes. Unify on `{name}` + `style` prop; see docs/02-styles/icons.md.",
+      "twilight": [
+        {
+          "entry": "icon",
+          "tag": "s-icon",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "checkbox",
@@ -244,7 +288,7 @@
         ],
         "node": "12411:21809"
       },
-      "storybook": "Checkbox",
+      "storybook": "<s-checkbox> (single value, no label)",
       "anatomy": [
         "box",
         "check / dash glyph"
@@ -273,7 +317,18 @@
         "sys.shape.extra-small (4px)",
         "sys.color.outline"
       ],
-      "base": "self (used by CheckboxField)"
+      "base": "self (used by CheckboxField)",
+      "twilight": [
+        {
+          "entry": "checkbox",
+          "tag": "s-checkbox",
+          "note": "single value, no label"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "radio",
@@ -288,7 +343,7 @@
           "radio"
         ]
       },
-      "storybook": "Radio",
+      "storybook": "<s-radio>",
       "anatomy": [
         "ring",
         "dot"
@@ -310,6 +365,17 @@
         "sys.color.primary",
         "sys.shape.full",
         "sys.color.outline"
+      ],
+      "twilight": [
+        {
+          "entry": "radio",
+          "tag": "s-radio",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -326,7 +392,7 @@
         ],
         "node": "12411:21835"
       },
-      "storybook": "Toggle",
+      "storybook": "<s-toggle>",
       "anatomy": [
         "track",
         "thumb",
@@ -354,7 +420,18 @@
         "sys.shape.full"
       ],
       "rtl": "Thumb travels inline-start -> inline-end; on/off direction mirrors in RTL.",
-      "notes": "Figma exports the whole toggle as one SVG per variant; rebuild it from primitives so the track and thumb take tokens. Keep the name Toggle in Storybook for continuity, alias Switch in docs."
+      "notes": "Figma exports the whole toggle as one SVG per variant; rebuild it from primitives so the track and thumb take tokens. Keep the name Toggle in Storybook for continuity, alias Switch in docs.",
+      "twilight": [
+        {
+          "entry": "toggle",
+          "tag": "s-toggle",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "loading-indicator",
@@ -369,7 +446,7 @@
           "_LoadingIndicator"
         ]
       },
-      "storybook": "Loader",
+      "storybook": "<s-loader>",
       "anatomy": [
         "animated shape"
       ],
@@ -396,7 +473,18 @@
         "comp.loader.*",
         "sys.color.primary"
       ],
-      "notes": "Nine sizes is more than the rest of the system uses (three to six). Recommend collapsing to xs/sm/md/lg/xl and mapping the rest as aliases."
+      "notes": "Nine sizes is more than the rest of the system uses (three to six). Recommend collapsing to xs/sm/md/lg/xl and mapping the rest as aliases.",
+      "twilight": [
+        {
+          "entry": "loader",
+          "tag": "s-loader",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "status-indicator",
@@ -411,7 +499,7 @@
           "_Base Status Indicator"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-tag> (layout=status renders the dot)",
       "anatomy": [
         "dot"
       ],
@@ -436,6 +524,17 @@
       "tokens": [
         "sys.color.status.*.dark (success #008c56, danger #ca4146)",
         "sys.shape.full"
+      ],
+      "twilight": [
+        {
+          "entry": "tag",
+          "tag": "s-tag",
+          "note": "layout=status renders the dot"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -453,7 +552,7 @@
           "_BanksPlaceholderImages"
         ]
       },
-      "storybook": "Avatar",
+      "storybook": "<s-avatar>",
       "anatomy": [
         "container",
         "image | initials | icon"
@@ -484,7 +583,18 @@
         "sys.shape.full | sys.shape.small",
         "sys.color.primary-container"
       ],
-      "notes": "Placeholder image sets (_AvatarplaholderImages, _BanksPlaceholderImages) are assets, not components; move them to assets/."
+      "notes": "Placeholder image sets (_AvatarplaholderImages, _BanksPlaceholderImages) are assets, not components; move them to assets/.",
+      "twilight": [
+        {
+          "entry": "avatar",
+          "tag": "s-avatar",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "chip",
@@ -500,7 +610,7 @@
           "Table/Cell/Chip"
         ]
       },
-      "storybook": "Tags Input (chips inside)",
+      "storybook": "<s-tag>",
       "anatomy": [
         "container",
         "label",
@@ -530,6 +640,17 @@
         "sys.shape.full",
         "sys.color.outline",
         "sys.typography.label-sm"
+      ],
+      "twilight": [
+        {
+          "entry": "tag",
+          "tag": "s-tag",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -557,7 +678,11 @@
       "tokens": [
         "ref.size.icon.*"
       ],
-      "notes": "Ship as a sprite or lazy-loaded SVGs; do not bundle 265 inline SVGs in the base package."
+      "notes": "Ship as a sprite or lazy-loaded SVGs; do not bundle 265 inline SVGs in the base package.",
+      "twilight": [],
+      "sources": [
+        "figma"
+      ]
     },
     {
       "id": "social-icon",
@@ -590,7 +715,11 @@
       "tokens": [
         "ref.size.icon.*"
       ],
-      "notes": "Brand colours are fixed by the brands and are exempt from the token palette."
+      "notes": "Brand colours are fixed by the brands and are exempt from the token palette.",
+      "twilight": [],
+      "sources": [
+        "figma"
+      ]
     },
     {
       "id": "illustration",
@@ -616,7 +745,11 @@
       },
       "states": [],
       "tokens": [],
-      "notes": "See docs/02-styles/illustrations.md for the full list and usage rules."
+      "notes": "See docs/02-styles/illustrations.md for the full list and usage rules.",
+      "twilight": [],
+      "sources": [
+        "figma"
+      ]
     },
     {
       "id": "label",
@@ -642,6 +775,10 @@
       "tokens": [
         "sys.typography.label-md",
         "sys.color.text.primary"
+      ],
+      "twilight": [],
+      "sources": [
+        "figma"
       ]
     },
     {
@@ -657,7 +794,7 @@
           "_inputTip"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-input> (desc prop)",
       "props": {
         "type": [
           "default",
@@ -673,6 +810,17 @@
         "sys.typography.body-xs",
         "sys.color.text.secondary",
         "sys.color.status.danger.primary"
+      ],
+      "twilight": [
+        {
+          "entry": "input",
+          "tag": "s-input",
+          "note": "desc prop"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -702,6 +850,10 @@
       "tokens": [
         "sys.typography.body-xs",
         "sys.color.status.*"
+      ],
+      "twilight": [],
+      "sources": [
+        "figma"
       ]
     },
     {
@@ -717,7 +869,7 @@
           "_counter-buttons"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-qty> (increase / decrease buttons)",
       "props": {
         "action": [
           "increment",
@@ -734,6 +886,17 @@
       "tokens": [
         "sys.color.outline",
         "sys.shape.small"
+      ],
+      "twilight": [
+        {
+          "entry": "qty",
+          "tag": "s-qty",
+          "note": "increase / decrease buttons"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -749,7 +912,7 @@
           "_Translation"
         ]
       },
-      "storybook": "LingualField (inner toggle)",
+      "storybook": "<s-lingual-field> (language dropdown at the end slot)",
       "props": {
         "language": [
           "ar",
@@ -765,6 +928,17 @@
         "sys.color.outline",
         "sys.shape.small",
         "sys.typography.body-xs"
+      ],
+      "twilight": [
+        {
+          "entry": "lingualfield",
+          "tag": "s-lingual-field",
+          "note": "language dropdown at the end slot"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -792,6 +966,10 @@
       "tokens": [
         "sys.color.primary",
         "sys.color.outline"
+      ],
+      "twilight": [],
+      "sources": [
+        "figma"
       ]
     },
     {
@@ -822,6 +1000,10 @@
         "sys.color.primary",
         "sys.color.success-primary",
         "sys.shape.full"
+      ],
+      "twilight": [],
+      "sources": [
+        "figma"
       ]
     },
     {
@@ -850,6 +1032,10 @@
       "states": [],
       "tokens": [
         "sys.color.outline"
+      ],
+      "twilight": [],
+      "sources": [
+        "figma"
       ]
     },
     {
@@ -885,7 +1071,9 @@
       "states": [],
       "tokens": [
         "sys.typography.*"
-      ]
+      ],
+      "twilight": [],
+      "sources": []
     },
     {
       "id": "base-field",
@@ -905,7 +1093,7 @@
         ],
         "node": "InputWrapper 4d4e5f6d"
       },
-      "storybook": "Input (base)",
+      "storybook": "<s-input>",
       "anatomy": [
         "FieldLabel",
         "container",
@@ -951,7 +1139,18 @@
         "sys.color.text.secondary (placeholder #666)",
         "sys.shape.small"
       ],
-      "notes": "Eight interaction states is more than a screen reader or CSS needs. Collapse to: enabled, hover, focus, filled, read-only, disabled, plus an orthogonal error flag."
+      "notes": "Eight interaction states is more than a screen reader or CSS needs. Collapse to: enabled, hover, focus, filled, read-only, disabled, plus an orthogonal error flag.",
+      "twilight": [
+        {
+          "entry": "input",
+          "tag": "s-input",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "text-field",
@@ -969,7 +1168,7 @@
           "_InputCounter"
         ]
       },
-      "storybook": "Input / LingualField",
+      "storybook": "<s-input>, <s-lingual-field> (type=input, bilingual)",
       "props": {
         "label": "string",
         "placeholder": "string",
@@ -985,7 +1184,23 @@
       "states": "inherits BaseField",
       "tokens": "inherits BaseField",
       "base": "BaseField",
-      "rtl": "Text direction follows the field language, not the page; the translation toggle sits inline-end in both directions."
+      "rtl": "Text direction follows the field language, not the page; the translation toggle sits inline-end in both directions.",
+      "twilight": [
+        {
+          "entry": "input",
+          "tag": "s-input",
+          "note": ""
+        },
+        {
+          "entry": "lingualfield",
+          "tag": "s-lingual-field",
+          "note": "type=input, bilingual"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "textarea-field",
@@ -1001,7 +1216,7 @@
           "_Rich-Text-Panel"
         ]
       },
-      "storybook": "Textarea",
+      "storybook": "<s-textarea>, <s-lingual-field> (type=textarea)",
       "props": {
         "rows": "number",
         "richText": "boolean",
@@ -1010,7 +1225,23 @@
       },
       "states": "inherits BaseField",
       "tokens": "inherits BaseField",
-      "base": "BaseField"
+      "base": "BaseField",
+      "twilight": [
+        {
+          "entry": "textarea",
+          "tag": "s-textarea",
+          "note": ""
+        },
+        {
+          "entry": "lingualfield",
+          "tag": "s-lingual-field",
+          "note": "type=textarea"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "password-field",
@@ -1027,7 +1258,7 @@
           "_passwordValidation"
         ]
       },
-      "storybook": "Password",
+      "storybook": "<s-input> (type=password)",
       "props": {
         "hidden": "boolean",
         "requirements": "array of {label, met}",
@@ -1035,7 +1266,18 @@
       },
       "states": "inherits BaseField",
       "tokens": "inherits BaseField",
-      "base": "BaseField"
+      "base": "BaseField",
+      "twilight": [
+        {
+          "entry": "input",
+          "tag": "s-input",
+          "note": "type=password"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "email-field",
@@ -1050,11 +1292,22 @@
           "_emailInput"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-input> (type=email)",
       "props": {
         "validate": "boolean"
       },
-      "base": "BaseField"
+      "base": "BaseField",
+      "twilight": [
+        {
+          "entry": "input",
+          "tag": "s-input",
+          "note": "type=email"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "amount-field",
@@ -1069,7 +1322,7 @@
           "_amountInput"
         ]
       },
-      "storybook": "Number / Price",
+      "storybook": "<s-input> (type=number, min/max/step)",
       "props": {
         "currency": "string (default SAR)",
         "min": "number",
@@ -1078,7 +1331,18 @@
         "decimals": "number"
       },
       "base": "BaseField",
-      "rtl": "Digits stay Latin (0-9) per live dashboard convention; the currency glyph sits inline-end."
+      "rtl": "Digits stay Latin (0-9) per live dashboard convention; the currency glyph sits inline-end.",
+      "twilight": [
+        {
+          "entry": "input",
+          "tag": "s-input",
+          "note": "type=number, min/max/step"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "phone-field",
@@ -1093,13 +1357,24 @@
           "_PhoneInputV1"
         ]
       },
-      "storybook": "Phone",
+      "storybook": "<s-tel-input>",
       "props": {
         "defaultCountry": "ISO code",
         "countries": "array"
       },
       "base": "BaseField",
-      "notes": "Figma frame is suffixed V1; the new name drops versions from component names (version lives in the changelog)."
+      "notes": "Figma frame is suffixed V1; the new name drops versions from component names (version lives in the changelog).",
+      "twilight": [
+        {
+          "entry": "telephone-input",
+          "tag": "s-tel-input",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "search-field",
@@ -1114,7 +1389,7 @@
           "searchInput"
         ]
       },
-      "storybook": "Search",
+      "storybook": "<s-input> (type=autocomplete), <s-select> (searchable / autocomplete)",
       "props": {
         "suggestions": "array",
         "loading": "boolean",
@@ -1129,7 +1404,23 @@
         "recommendation",
         "no-result"
       ],
-      "base": "BaseField"
+      "base": "BaseField",
+      "twilight": [
+        {
+          "entry": "input",
+          "tag": "s-input",
+          "note": "type=autocomplete"
+        },
+        {
+          "entry": "select",
+          "tag": "s-select",
+          "note": "searchable / autocomplete"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "otp-field",
@@ -1144,13 +1435,24 @@
           "_SingleDigit"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-otp>",
       "props": {
         "length": "number (default 4-6)",
         "autoSubmit": "boolean"
       },
       "base": "BaseField",
-      "rtl": "Code boxes always read left-to-right, even on RTL pages."
+      "rtl": "Code boxes always read left-to-right, even on RTL pages.",
+      "twilight": [
+        {
+          "entry": "otp",
+          "tag": "s-otp",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "quantity-field",
@@ -1167,7 +1469,7 @@
           "_counter-buttons"
         ]
       },
-      "storybook": "Qty",
+      "storybook": "<s-qty>",
       "props": {
         "value": "number",
         "min": "number",
@@ -1179,7 +1481,18 @@
         "deleteAtMin": "boolean",
         "inlineSave": "boolean"
       },
-      "base": "BaseField"
+      "base": "BaseField",
+      "twilight": [
+        {
+          "entry": "qty",
+          "tag": "s-qty",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "select-field",
@@ -1195,7 +1508,7 @@
           "basic-dropdown-single"
         ]
       },
-      "storybook": "Select",
+      "storybook": "<s-select>",
       "props": {
         "options": "array",
         "searchable": "boolean",
@@ -1205,6 +1518,17 @@
       "base": "BaseField",
       "composes": [
         "dropdown-list"
+      ],
+      "twilight": [
+        {
+          "entry": "select",
+          "tag": "s-select",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -1221,7 +1545,7 @@
           "basic-dropdown-multiple"
         ]
       },
-      "storybook": "Tags Input / Multi Select",
+      "storybook": "<s-select> (multiselect, tags, selectAll)",
       "props": {
         "options": "array",
         "searchable": "boolean",
@@ -1232,6 +1556,17 @@
       "composes": [
         "dropdown-list",
         "chip"
+      ],
+      "twilight": [
+        {
+          "entry": "select",
+          "tag": "s-select",
+          "note": "multiselect, tags, selectAll"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -1247,7 +1582,7 @@
           "upload input"
         ]
       },
-      "storybook": "File Upload",
+      "storybook": "<s-uploader>",
       "props": {
         "variant": [
           "inline",
@@ -1267,7 +1602,18 @@
         "uploading",
         "error"
       ],
-      "base": "BaseField"
+      "base": "BaseField",
+      "twilight": [
+        {
+          "entry": "uploader",
+          "tag": "s-uploader",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "color-picker-field",
@@ -1281,12 +1627,23 @@
         "frames": [],
         "componentSet": "colorPicker 1d931b4a"
       },
-      "storybook": "Color Picker",
+      "storybook": "<s-color-picker>",
       "props": {
         "value": "hex",
         "presets": "array"
       },
-      "base": "BaseField"
+      "base": "BaseField",
+      "twilight": [
+        {
+          "entry": "colorpicker",
+          "tag": "s-color-picker",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "checkbox-field",
@@ -1301,7 +1658,7 @@
           "checkboxfield"
         ]
       },
-      "storybook": "Checkbox",
+      "storybook": "<s-checkbox> (label + desc)",
       "props": {
         "label": "string",
         "description": "string",
@@ -1313,6 +1670,17 @@
       "composes": [
         "checkbox",
         "tooltip"
+      ],
+      "twilight": [
+        {
+          "entry": "checkbox",
+          "tag": "s-checkbox",
+          "note": "label + desc"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -1328,13 +1696,24 @@
           "radiofield"
         ]
       },
-      "storybook": "Radio",
+      "storybook": "<s-radio> (label + desc)",
       "props": {
         "label": "string",
         "value": "string",
         "disabled": "boolean"
       },
-      "base": "Radio"
+      "base": "Radio",
+      "twilight": [
+        {
+          "entry": "radio",
+          "tag": "s-radio",
+          "note": "label + desc"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "radio-image",
@@ -1349,7 +1728,7 @@
           "radioImage"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-radio> (layout=image)",
       "props": {
         "image": "src",
         "label": "string",
@@ -1362,6 +1741,17 @@
       ],
       "composes": [
         "radio"
+      ],
+      "twilight": [
+        {
+          "entry": "radio",
+          "tag": "s-radio",
+          "note": "layout=image"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -1377,7 +1767,7 @@
           "radioColor"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-radio> (layout=color)",
       "props": {
         "color": "hex",
         "label": "string",
@@ -1390,6 +1780,17 @@
       ],
       "composes": [
         "radio"
+      ],
+      "twilight": [
+        {
+          "entry": "radio",
+          "tag": "s-radio",
+          "note": "layout=color"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -1405,7 +1806,7 @@
           "toggleField"
         ]
       },
-      "storybook": "Toggle",
+      "storybook": "<s-toggle> (label + desc, layout start|end)",
       "props": {
         "label": "string",
         "description": "string",
@@ -1417,7 +1818,18 @@
         "loading": "boolean",
         "disabled": "boolean"
       },
-      "base": "Switch"
+      "base": "Switch",
+      "twilight": [
+        {
+          "entry": "toggle",
+          "tag": "s-toggle",
+          "note": "label + desc, layout start|end"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "status",
@@ -1433,7 +1845,7 @@
         ],
         "node": "15342:59936"
       },
-      "storybook": "Badge / Status",
+      "storybook": "<s-tag> (layout=status)",
       "props": {
         "type": [
           "success",
@@ -1457,7 +1869,18 @@
         "sys.typography.label-sm"
       ],
       "base": "StatusIndicator",
-      "notes": "Table/Status carries nine order-status presets (waiting payment, in progress, shipped, delivered ...). Model those as a data mapping (order status -> Status type), not as extra variants."
+      "notes": "Table/Status carries nine order-status presets (waiting payment, in progress, shipped, delivered ...). Model those as a data mapping (order status -> Status type), not as extra variants. Twilight renders this as <s-tag layout=\"status\">; `Status` stays the design-system name.",
+      "twilight": [
+        {
+          "entry": "tag",
+          "tag": "s-tag",
+          "note": "layout=status"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "loading",
@@ -1472,12 +1895,23 @@
           "Loading"
         ]
       },
-      "storybook": "Loader",
+      "storybook": "<s-loader>",
       "props": {
         "label": "string",
         "size": "LoadingIndicator size"
       },
-      "base": "LoadingIndicator"
+      "base": "LoadingIndicator",
+      "twilight": [
+        {
+          "entry": "loader",
+          "tag": "s-loader",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "avatar-with-text",
@@ -1493,7 +1927,7 @@
           "header Avatar"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-avatar> (label + desc)",
       "props": {
         "avatar": "Avatar props",
         "title": "slot",
@@ -1503,6 +1937,17 @@
       "composes": [
         "avatar",
         "text"
+      ],
+      "twilight": [
+        {
+          "entry": "avatar",
+          "tag": "s-avatar",
+          "note": "label + desc"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -1530,6 +1975,10 @@
       },
       "composes": [
         "avatar"
+      ],
+      "twilight": [],
+      "sources": [
+        "figma"
       ]
     },
     {
@@ -1546,7 +1995,7 @@
           "_breadcrumbItem"
         ]
       },
-      "storybook": "Breadcrumb",
+      "storybook": "<s-breadcrumbs>",
       "props": {
         "items": "array of {label, href, icon}",
         "maxItems": "number",
@@ -1562,6 +2011,17 @@
       "composes": [
         "breadcrumb-item",
         "divider"
+      ],
+      "twilight": [
+        {
+          "entry": "breadcrumbs",
+          "tag": "s-breadcrumbs",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -1577,7 +2037,7 @@
           "_breadcrumbItem"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-breadcrumbs> (items[])",
       "props": {
         "type": [
           "icon",
@@ -1586,7 +2046,18 @@
         ],
         "current": "boolean",
         "disabled": "boolean"
-      }
+      },
+      "twilight": [
+        {
+          "entry": "breadcrumbs",
+          "tag": "s-breadcrumbs",
+          "note": "items[]"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "tab",
@@ -1604,7 +2075,7 @@
           "_Table/Tabs Item"
         ]
       },
-      "storybook": "Tabs (item)",
+      "storybook": "<s-tabs-group> (<s-tab-head>)",
       "props": {
         "kind": [
           "primary",
@@ -1620,6 +2091,17 @@
         "hover",
         "active",
         "focus-visible"
+      ],
+      "twilight": [
+        {
+          "entry": "tabs",
+          "tag": "s-tabs-group",
+          "note": "<s-tab-head>"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -1651,6 +2133,10 @@
         "default",
         "hover",
         "active"
+      ],
+      "twilight": [],
+      "sources": [
+        "figma"
       ]
     },
     {
@@ -1666,7 +2152,7 @@
           "_moreItems"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-dropdown> (items[]), <s-list-item>",
       "props": {
         "leading": [
           "icon",
@@ -1682,6 +2168,22 @@
         "hover",
         "pressed",
         "disabled"
+      ],
+      "twilight": [
+        {
+          "entry": "dropdown",
+          "tag": "s-dropdown",
+          "note": "items[]"
+        },
+        {
+          "entry": "item",
+          "tag": "s-list-item",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -1698,7 +2200,7 @@
           "_listTitle"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-list-item>, <s-select> (items[] with thumbnails / groups)",
       "props": {
         "leading": "slot (Flag | Avatar | Checkbox)",
         "title": "string",
@@ -1715,7 +2217,23 @@
         "selected",
         "disabled"
       ],
-      "notes": "The PDF names this pattern listItemLayout: a slot-based layout with fixed slots. ListSubheader (_listTitle) is the category / search header variant."
+      "notes": "The PDF names this pattern listItemLayout: a slot-based layout with fixed slots. ListSubheader (_listTitle) is the category / search header variant.",
+      "twilight": [
+        {
+          "entry": "item",
+          "tag": "s-list-item",
+          "note": ""
+        },
+        {
+          "entry": "select",
+          "tag": "s-select",
+          "note": "items[] with thumbnails / groups"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "table-cell",
@@ -1750,7 +2268,7 @@
           "_Table/Product Image"
         ]
       },
-      "storybook": "Table (cells)",
+      "storybook": "<s-table> (headers[] + items[]; custom slots for typed cells)",
       "props": {
         "type": "one cell component per type: TextCell, NameCell, ImageCell, AmountCell, PercentageCell, StatusCell, TagsCell, MarketCell, DateCell, ActionsCell, CheckboxCell, ChipCell, HeaderCell",
         "status": [
@@ -1768,7 +2286,18 @@
         "focus",
         "edit"
       ],
-      "notes": "Standalone per type (structure 2) so each cell has a tiny API; they share a CellLayout base for padding and alignment. Rename Varient -> VariantCell, Data -> DateCell / TextCell / SelectCell."
+      "notes": "Standalone per type (structure 2) so each cell has a tiny API; they share a CellLayout base for padding and alignment. Rename Varient -> VariantCell, Data -> DateCell / TextCell / SelectCell.",
+      "twilight": [
+        {
+          "entry": "table",
+          "tag": "s-table",
+          "note": "headers[] + items[]; custom slots for typed cells"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "date-time-cell",
@@ -1786,7 +2315,7 @@
           "Time"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-calendar> (inline)",
       "props": {
         "kind": [
           "day",
@@ -1799,7 +2328,18 @@
           "selected",
           "disabled"
         ]
-      }
+      },
+      "twilight": [
+        {
+          "entry": "calendar",
+          "tag": "s-calendar",
+          "note": "inline"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "header-avatar",
@@ -1814,7 +2354,7 @@
           "header Avatar"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-avatar>",
       "props": {
         "storeName": "string",
         "avatar": "Avatar props"
@@ -1827,6 +2367,17 @@
       "composes": [
         "avatar-with-text",
         "icon"
+      ],
+      "twilight": [
+        {
+          "entry": "avatar",
+          "tag": "s-avatar",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -1848,7 +2399,11 @@
         "leading": "slot (Breadcrumb | back)",
         "meta": "slot (Status)",
         "actions": "slot (Buttons)"
-      }
+      },
+      "twilight": [],
+      "sources": [
+        "figma"
+      ]
     },
     {
       "id": "learn-more",
@@ -1871,7 +2426,11 @@
           "default",
           "small"
         ]
-      }
+      },
+      "twilight": [],
+      "sources": [
+        "figma"
+      ]
     },
     {
       "id": "global-search",
@@ -1886,7 +2445,7 @@
           "searchbar"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-input> (type=autocomplete)",
       "props": {
         "variant": [
           "btn-only",
@@ -1896,6 +2455,17 @@
       "composes": [
         "search-field",
         "icon-button"
+      ],
+      "twilight": [
+        {
+          "entry": "input",
+          "tag": "s-input",
+          "note": "type=autocomplete"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -1918,6 +2488,10 @@
       },
       "composes": [
         "chip"
+      ],
+      "twilight": [],
+      "sources": [
+        "figma"
       ]
     },
     {
@@ -1933,7 +2507,7 @@
           "_Table/Panel Header"
         ]
       },
-      "storybook": "Panel (header)",
+      "storybook": "<s-panel> (<s-panel-head>, actions slot)",
       "props": {
         "title": "string",
         "size": [
@@ -1941,7 +2515,18 @@
           "small"
         ],
         "actions": "slot"
-      }
+      },
+      "twilight": [
+        {
+          "entry": "panel",
+          "tag": "s-panel",
+          "note": "<s-panel-head>, actions slot"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "inline-alert",
@@ -1957,7 +2542,7 @@
         ],
         "variantFilter": "Type=Inline"
       },
-      "storybook": "AlertBox (inline)",
+      "storybook": "<s-alert-box> (layout=flat)",
       "props": {
         "variant": [
           "info",
@@ -1967,7 +2552,18 @@
         ],
         "text": "string"
       },
-      "base": "BaseAlert"
+      "base": "BaseAlert",
+      "twilight": [
+        {
+          "entry": "alertbox",
+          "tag": "s-alert-box",
+          "note": "layout=flat"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "alert",
@@ -1984,7 +2580,7 @@
         ],
         "node": "18843:88067 (info, default, title on)"
       },
-      "storybook": "AlertBox",
+      "storybook": "<s-alert-box>",
       "anatomy": [
         "icon-start",
         "title",
@@ -2022,7 +2618,18 @@
         "sys.typography.title-md / body-sm"
       ],
       "rtl": "Accent border is border-inline-start; icon-start / close swap sides automatically.",
-      "notes": "Figma prop 'Trasnparet' -> transparent."
+      "notes": "Figma prop 'Trasnparet' -> transparent.",
+      "twilight": [
+        {
+          "entry": "alertbox",
+          "tag": "s-alert-box",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "alert-banner",
@@ -2037,7 +2644,7 @@
           "Alertbox_Banner"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-alert-box> (horizontal, centerAlign)",
       "props": {
         "layout": [
           "1",
@@ -2046,7 +2653,18 @@
         "title": "string",
         "action": "slot",
         "dismissible": "boolean"
-      }
+      },
+      "twilight": [
+        {
+          "entry": "alertbox",
+          "tag": "s-alert-box",
+          "note": "horizontal, centerAlign"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "alert-upgrade",
@@ -2061,7 +2679,7 @@
           "Alertbox_Upgrade"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-alert-box> (theme=feature)",
       "props": {
         "device": [
           "desktop",
@@ -2072,6 +2690,17 @@
       },
       "tokens": [
         "sys.color.feature.*"
+      ],
+      "twilight": [
+        {
+          "entry": "alertbox",
+          "tag": "s-alert-box",
+          "note": "theme=feature"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -2089,7 +2718,7 @@
           "_listTitle"
         ]
       },
-      "storybook": "Dropdown / Select (menu)",
+      "storybook": "<s-dropdown>, <s-select> (overlay list)",
       "props": {
         "variant": [
           "one-layer",
@@ -2117,6 +2746,22 @@
         "checkbox",
         "flag",
         "avatar"
+      ],
+      "twilight": [
+        {
+          "entry": "dropdown",
+          "tag": "s-dropdown",
+          "note": ""
+        },
+        {
+          "entry": "select",
+          "tag": "s-select",
+          "note": "overlay list"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -2135,7 +2780,7 @@
           "Time"
         ]
       },
-      "storybook": "Date Picker",
+      "storybook": "<s-calendar>",
       "props": {
         "mode": [
           "date",
@@ -2155,6 +2800,17 @@
         "date-time-cell",
         "icon-button",
         "select-field"
+      ],
+      "twilight": [
+        {
+          "entry": "calendar",
+          "tag": "s-calendar",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -2171,7 +2827,7 @@
           "_moreItems"
         ]
       },
-      "storybook": "Dropdown Menu",
+      "storybook": "<s-dropdown>",
       "props": {
         "trigger": "slot (IconButton)",
         "items": "array of MenuItem | Divider",
@@ -2181,7 +2837,18 @@
         ]
       },
       "headless": "useMenu",
-      "rtl": "Placement uses logical start/end; Figma's Dir=Left/Right becomes placement=end/start under RTL."
+      "rtl": "Placement uses logical start/end; Figma's Dir=Left/Right becomes placement=end/start under RTL.",
+      "twilight": [
+        {
+          "entry": "dropdown",
+          "tag": "s-dropdown",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "side-menu",
@@ -2197,7 +2864,7 @@
           "sidemenu tab"
         ]
       },
-      "storybook": "Sidebar",
+      "storybook": null,
       "props": {
         "sections": "array",
         "collapsed": "boolean",
@@ -2207,6 +2874,10 @@
         "side-menu-item",
         "divider",
         "icon"
+      ],
+      "twilight": [],
+      "sources": [
+        "figma"
       ]
     },
     {
@@ -2224,7 +2895,7 @@
           "Primary Tabs List - Dashboard only"
         ]
       },
-      "storybook": "Header",
+      "storybook": null,
       "props": {
         "device": [
           "desktop",
@@ -2243,6 +2914,10 @@
         "global-search",
         "icon-button",
         "header-avatar"
+      ],
+      "twilight": [],
+      "sources": [
+        "figma"
       ]
     },
     {
@@ -2267,6 +2942,10 @@
       "composes": [
         "tab",
         "button"
+      ],
+      "twilight": [],
+      "sources": [
+        "figma"
       ]
     },
     {
@@ -2284,7 +2963,7 @@
           "_Table/Tabs Item"
         ]
       },
-      "storybook": "Tabs",
+      "storybook": "<s-tabs-group>",
       "props": {
         "kind": [
           "primary",
@@ -2297,6 +2976,17 @@
       "headless": "useTabs",
       "composes": [
         "tab"
+      ],
+      "twilight": [
+        {
+          "entry": "tabs",
+          "tag": "s-tabs-group",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -2324,7 +3014,7 @@
           "previewContainer"
         ]
       },
-      "storybook": "Table",
+      "storybook": "<s-table>",
       "props": {
         "columns": "array of {key, cell: TableCell type, sortable, sticky}",
         "rows": "array",
@@ -2368,7 +3058,18 @@
         "filter-results",
         "empty-state"
       ],
-      "notes": "Rename Figma's Status=[delevery, deliverd, in prograss, retrevied, wating payment, wating review] presets (typos) to a data mapping in docs/03-components/molecules/status.md."
+      "notes": "Rename Figma's Status=[delevery, deliverd, in prograss, retrevied, wating payment, wating review] presets (typos) to a data mapping in docs/03-components/molecules/status.md.",
+      "twilight": [
+        {
+          "entry": "table",
+          "tag": "s-table",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "table-row-mobile",
@@ -2386,7 +3087,7 @@
           "Table/mobile Customer"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-table> (layout=responsive)",
       "props": {
         "kind": [
           "default",
@@ -2401,6 +3102,17 @@
         "hover",
         "focus",
         "selected"
+      ],
+      "twilight": [
+        {
+          "entry": "table",
+          "tag": "s-table",
+          "note": "layout=responsive"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
       ]
     },
     {
@@ -2422,7 +3134,11 @@
         "header": "slot",
         "body": "slot",
         "footer": "slot (ActionBar)"
-      }
+      },
+      "twilight": [],
+      "sources": [
+        "figma"
+      ]
     },
     {
       "id": "edit-sheet",
@@ -2446,7 +3162,11 @@
         ],
         "body": "slot",
         "footer": "slot"
-      }
+      },
+      "twilight": [],
+      "sources": [
+        "figma"
+      ]
     },
     {
       "id": "stepper",
@@ -2462,7 +3182,7 @@
           "_Step base"
         ]
       },
-      "storybook": "Steps",
+      "storybook": null,
       "props": {
         "steps": "array of {label}",
         "current": "number",
@@ -2474,7 +3194,12 @@
       "headless": "useStepper",
       "composes": [
         "step-indicator"
-      ]
+      ],
+      "twilight": [],
+      "sources": [
+        "figma"
+      ],
+      "notes": "Not in the Twilight Storybook: Steps must be built."
     },
     {
       "id": "action-bar",
@@ -2490,7 +3215,7 @@
         ],
         "componentSet": "Action Bar/Confirm buttons 02e6c000, buttonsContainer 1eba2b9a"
       },
-      "storybook": "ButtonsGroup",
+      "storybook": "<s-buttons-group>",
       "props": {
         "type": [
           "float",
@@ -2500,7 +3225,18 @@
         "secondary": "slot (Button)",
         "start": "slot (destructive)"
       },
-      "rtl": "Primary action sits inline-end in both directions."
+      "rtl": "Primary action sits inline-end in both directions.",
+      "twilight": [
+        {
+          "entry": "buttonsgroup",
+          "tag": "s-buttons-group",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "bottom-sheet",
@@ -2514,14 +3250,30 @@
         "frames": [],
         "componentSet": "Bottom sheet e90621fb"
       },
-      "storybook": null,
+      "storybook": "<s-dropdown> (mobile sheet (sheetTitle)), <s-select> (mobile sheet (sheetTitle))",
       "props": {
         "open": "boolean",
         "header": "slot",
         "body": "slot",
         "footer": "slot",
         "snapPoints": "array"
-      }
+      },
+      "twilight": [
+        {
+          "entry": "dropdown",
+          "tag": "s-dropdown",
+          "note": "mobile sheet (sheetTitle)"
+        },
+        {
+          "entry": "select",
+          "tag": "s-select",
+          "note": "mobile sheet (sheetTitle)"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "dialog",
@@ -2529,12 +3281,12 @@
       "level": "organism",
       "category": "Containment",
       "structure": 4,
-      "status": "proposed",
+      "status": "existing",
       "summary": "Centered modal (Storybook: Modal). Overlay, positioning, focus trap and close button; content via slots.",
       "figma": {
         "frames": []
       },
-      "storybook": "Modal",
+      "storybook": "<s-modal>",
       "props": {
         "open": "boolean",
         "size": [
@@ -2548,7 +3300,17 @@
         "dismissible": "boolean"
       },
       "headless": "useDialog (focus trap, escape, scroll lock)",
-      "notes": "Present in Storybook, missing from the Figma library. Design it in Figma from this spec."
+      "notes": "Twilight ships <s-modal> with <s-modal-head|body|footer> slots (sizes sm/md/lg/xlg, theme default/light). Missing from the Figma library: design it from the Storybook.",
+      "twilight": [
+        {
+          "entry": "modal",
+          "tag": "s-modal",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "storybook"
+      ]
     },
     {
       "id": "panel",
@@ -2556,7 +3318,7 @@
       "level": "organism",
       "category": "Containment",
       "structure": 4,
-      "status": "proposed",
+      "status": "existing",
       "summary": "Card container with PanelHeader, body and footer slots (Storybook: Panel). Material: card.",
       "figma": {
         "frames": [
@@ -2564,7 +3326,7 @@
           "previewContainer"
         ]
       },
-      "storybook": "Panel",
+      "storybook": "<s-panel>",
       "props": {
         "header": "slot (PanelHeader)",
         "body": "slot",
@@ -2580,7 +3342,18 @@
         "sys.shape.small (8px, as NavigationDrawer and LearnMore use)",
         "sys.elevation.0"
       ],
-      "notes": "Present in Storybook and production, missing as a top-level frame in Figma."
+      "notes": "Twilight ships <s-panel> with <s-panel-head> (title + actions slots) and <s-panel-body>, collapsable, compact/relaxed layouts, noPadding for tables. Missing as a top-level Figma frame.",
+      "twilight": [
+        {
+          "entry": "panel",
+          "tag": "s-panel",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "tooltip",
@@ -2597,7 +3370,7 @@
         "node": "1933:1790",
         "variantFilter": "--disabled=--disabled-info-tooltip"
       },
-      "storybook": "Tooltip",
+      "storybook": "<s-tooltip>",
       "props": {
         "content": "string",
         "placement": [
@@ -2616,7 +3389,18 @@
         "sys.elevation.3 (Shadows/lg)",
         "sys.shape.extra-small"
       ],
-      "notes": "Figma guidance on the disabled-info variants: when a control is disabled because of something the merchant can change, keep the label in normal colour and put a link in the tooltip (e.g. \"Verify your email to enable notifications. Verify now\")."
+      "notes": "Figma guidance on the disabled-info variants: when a control is disabled because of something the merchant can change, keep the label in normal colour and put a link in the tooltip (e.g. \"Verify your email to enable notifications. Verify now\"). Twilight <s-tooltip> adds themes (default/secondary/white/feature/danger), 12 placements, hover/click toggle, title + action slots.",
+      "twilight": [
+        {
+          "entry": "tooltip",
+          "tag": "s-tooltip",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "toast",
@@ -2639,7 +3423,10 @@
         ],
         "action": "slot",
         "duration": "ms"
-      }
+      },
+      "twilight": [],
+      "sources": [],
+      "notes": "Missing from both Figma and Storybook; the dashboard uses react-toastify (see --toastify-z-index in the Twilight root variables). Specify it as a component."
     },
     {
       "id": "empty-state",
@@ -2655,7 +3442,7 @@
         ],
         "related": "Table Status=No Results, Drop Down List Variant=No Results"
       },
-      "storybook": null,
+      "storybook": "<s-placeholder>",
       "props": {
         "illustration": "Illustration name",
         "title": "string",
@@ -2665,7 +3452,19 @@
       "composes": [
         "illustration",
         "button"
-      ]
+      ],
+      "twilight": [
+        {
+          "entry": "placeholder",
+          "tag": "s-placeholder",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ],
+      "notes": "Twilight ships this as <s-placeholder> (icon, label, desc, actions slot, sizes sm/md/lg) and DataTable uses it for emptyPlaceholder*. Rename in code to EmptyState or keep Placeholder as alias."
     },
     {
       "id": "pagination",
@@ -2680,7 +3479,7 @@
           "Table/Footer"
         ]
       },
-      "storybook": "Pagination",
+      "storybook": "<s-table> (pagination, itemsPerPage, hasNext/PrevPage)",
       "props": {
         "page": "number",
         "pageSize": "number",
@@ -2690,7 +3489,18 @@
           "mobile"
         ]
       },
-      "rtl": "Previous / next chevrons mirror in RTL."
+      "rtl": "Previous / next chevrons mirror in RTL.",
+      "twilight": [
+        {
+          "entry": "table",
+          "tag": "s-table",
+          "note": "pagination, itemsPerPage, hasNext/PrevPage"
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "map",
@@ -2705,7 +3515,7 @@
           "Maps"
         ]
       },
-      "storybook": null,
+      "storybook": "<s-maps>",
       "props": {
         "center": "latlng",
         "markers": "array",
@@ -2713,7 +3523,18 @@
           "ar",
           "en"
         ]
-      }
+      },
+      "twilight": [
+        {
+          "entry": "maps",
+          "tag": "s-maps",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     },
     {
       "id": "list-page",
@@ -2740,6 +3561,10 @@
         "page-title",
         "table",
         "panel"
+      ],
+      "twilight": [],
+      "sources": [
+        "figma"
       ]
     },
     {
@@ -2758,7 +3583,9 @@
         "list": "slot",
         "detail": "slot",
         "breakpoint": "md"
-      }
+      },
+      "twilight": [],
+      "sources": []
     },
     {
       "id": "form-page",
@@ -2775,7 +3602,9 @@
       "props": {
         "sections": "slot (Panels)",
         "actions": "slot (ActionBar)"
-      }
+      },
+      "twilight": [],
+      "sources": []
     },
     {
       "id": "wizard-page",
@@ -2793,7 +3622,9 @@
         "stepper": "slot",
         "content": "slot",
         "actions": "slot"
-      }
+      },
+      "twilight": [],
+      "sources": []
     },
     {
       "id": "orders-list",
@@ -2806,7 +3637,10 @@
       "figma": {
         "frames": []
       },
-      "template": "list-page"
+      "template": "list-page",
+      "twilight": [],
+      "storybook": null,
+      "sources": []
     },
     {
       "id": "products-list",
@@ -2821,7 +3655,12 @@
           "Products Management"
         ]
       },
-      "template": "list-page"
+      "template": "list-page",
+      "twilight": [],
+      "storybook": null,
+      "sources": [
+        "figma"
+      ]
     },
     {
       "id": "order-details",
@@ -2834,7 +3673,534 @@
       "figma": {
         "frames": []
       },
-      "template": "list-detail"
+      "template": "list-detail",
+      "twilight": [],
+      "storybook": null,
+      "sources": []
+    },
+    {
+      "id": "accordion",
+      "name": "Accordion",
+      "level": "organism",
+      "category": "Containment",
+      "structure": 4,
+      "status": "existing",
+      "summary": "Collapsible content container (progressive disclosure) with head and body slots, grouped auto-collapse, tight / relaxed layouts and light / transparent / feature themes.",
+      "figma": {
+        "frames": []
+      },
+      "storybook": "<s-accordion>",
+      "anatomy": [
+        "head (slot)",
+        "expand icon",
+        "body (slot, optional maxHeight scroll)"
+      ],
+      "props": {
+        "theme": [
+          "default",
+          "light",
+          "transparent",
+          "feature"
+        ],
+        "layout": [
+          "default",
+          "tight",
+          "relaxed"
+        ],
+        "outlined": "boolean",
+        "isExpanded": "boolean",
+        "autoCollapse": "boolean (group)",
+        "loading": "boolean",
+        "disabled": "boolean",
+        "readonly": "boolean",
+        "maxHeight": "css length"
+      },
+      "states": [
+        "collapsed",
+        "expanded",
+        "loading",
+        "disabled",
+        "read-only"
+      ],
+      "tokens": [
+        "sys.color.surface",
+        "sys.color.outline",
+        "sys.shape.small",
+        "sys.typography.title-md"
+      ],
+      "headless": "useDisclosure (expanded state, aria-expanded, group coordination)",
+      "notes": "Storybook only: no Figma frame exists. Design one from this spec (Material: expansion panel).",
+      "composes": [
+        "icon"
+      ],
+      "twilight": [
+        {
+          "entry": "accordion",
+          "tag": "s-accordion",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "storybook"
+      ]
+    },
+    {
+      "id": "lingual-field",
+      "name": "LingualField",
+      "level": "molecule",
+      "category": "Text inputs",
+      "structure": 3,
+      "status": "existing",
+      "summary": "Bilingual wrapper that renders an Input, Textarea or rich-text Editor per merchant language with a language dropdown, per-language values and optional AI suggestion.",
+      "figma": {
+        "frames": [
+          "_Translation",
+          "_TextInput"
+        ]
+      },
+      "storybook": "<s-lingual-field>",
+      "anatomy": [
+        "field (Input | Textarea | Editor)",
+        "language dropdown (end slot)",
+        "counter / description",
+        "AI suggestion actions"
+      ],
+      "props": {
+        "type": [
+          "input",
+          "textarea",
+          "richText"
+        ],
+        "value": "{lang: string}",
+        "languages": "config object",
+        "language": "current lang",
+        "size": [
+          "md",
+          "lg"
+        ],
+        "max": "number",
+        "showCount": "boolean",
+        "hasPreview": "boolean",
+        "aiSuggestion": "config"
+      },
+      "states": "inherits BaseField",
+      "tokens": "inherits BaseField",
+      "base": "BaseField",
+      "composes": [
+        "text-field",
+        "textarea-field",
+        "rich-text-editor",
+        "translation-toggle"
+      ],
+      "rtl": "Each language's field sets its own dir; the language dropdown stays inline-end.",
+      "notes": "In Figma this is TextField with the translation toggle; in Twilight it is its own component that composes the three field types. Keep the name LingualField for continuity.",
+      "twilight": [
+        {
+          "entry": "lingualfield",
+          "tag": "s-lingual-field",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
+    },
+    {
+      "id": "rich-text-editor",
+      "name": "RichTextEditor",
+      "level": "organism",
+      "category": "Text inputs",
+      "structure": 3,
+      "status": "existing",
+      "summary": "Quill-based rich text editor with configurable toolbar, html / text / json output, character limits, preview, product embeds, image picker and AI suggestion.",
+      "figma": {
+        "frames": [
+          "_Rich-Text-Panel",
+          "_TextArea"
+        ],
+        "variantFilter": "Rich text?=Yes"
+      },
+      "storybook": "<s-editor>",
+      "anatomy": [
+        "toolbar (slot end for language)",
+        "content area (start slot icon)",
+        "counter / description",
+        "AI actions overlay"
+      ],
+      "props": {
+        "toolbar": "array config",
+        "fullToolbar": "boolean",
+        "hideToolbar": "boolean",
+        "format": [
+          "html",
+          "text",
+          "json"
+        ],
+        "min / max": "number",
+        "showCount": "boolean",
+        "hasPreview": "boolean",
+        "multilingual": "boolean",
+        "productEmbed": "config",
+        "aiSuggestion": "config"
+      },
+      "states": [
+        "enabled",
+        "focus",
+        "disabled",
+        "error",
+        "loading"
+      ],
+      "tokens": [
+        "comp.text-field.*",
+        "sys.color.outline",
+        "sys.shape.small"
+      ],
+      "base": "BaseField",
+      "notes": "Figma models this as TextareaField with Rich text?=Yes plus the _Rich-Text-Panel toolbar; Twilight ships it as a standalone Editor. Treat it as the third global on BaseField.",
+      "twilight": [
+        {
+          "entry": "editor",
+          "tag": "s-editor",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
+    },
+    {
+      "id": "icon-picker",
+      "name": "IconPicker",
+      "level": "molecule",
+      "category": "Selection",
+      "structure": 3,
+      "status": "existing",
+      "summary": "Trigger button opening a searchable, paginated icon grid (Hugeicons or Salla icons) inside a dropdown.",
+      "figma": {
+        "frames": []
+      },
+      "storybook": "<s-icon-picker>",
+      "anatomy": [
+        "trigger (current icon)",
+        "search input",
+        "icon grid",
+        "error message"
+      ],
+      "props": {
+        "source": [
+          "hugeicons",
+          "sicon"
+        ],
+        "value": "icon token",
+        "searchable": "boolean",
+        "iconCellSize": "css length",
+        "wide": "boolean",
+        "feature": "boolean (gate)",
+        "hasError": "boolean",
+        "required": "boolean"
+      },
+      "states": [
+        "closed",
+        "open",
+        "disabled",
+        "error",
+        "feature-locked"
+      ],
+      "tokens": [
+        "sys.shape.small",
+        "sys.color.outline",
+        "sys.elevation.3"
+      ],
+      "base": "BaseField",
+      "composes": [
+        "dropdown-list",
+        "icon",
+        "search-field"
+      ],
+      "notes": "Storybook only: no Figma frame.",
+      "twilight": [
+        {
+          "entry": "iconpicker",
+          "tag": "s-icon-picker",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "storybook"
+      ]
+    },
+    {
+      "id": "progress-bar",
+      "name": "ProgressBar",
+      "level": "atom",
+      "category": "Communication",
+      "structure": 1,
+      "status": "existing",
+      "summary": "Linear determinate progress with label, description, percentage and an optional secondary percentage.",
+      "figma": {
+        "frames": []
+      },
+      "storybook": "<s-progress-bar>",
+      "anatomy": [
+        "label",
+        "track",
+        "fill (+ secondary fill)",
+        "percentage"
+      ],
+      "props": {
+        "percentage": "0-100",
+        "secondaryPercentage": "0-100",
+        "theme": [
+          "default",
+          "secondary"
+        ],
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "showPercentage": "boolean",
+        "shortLabel": "boolean"
+      },
+      "states": [],
+      "tokens": [
+        "sys.color.primary",
+        "sys.color.primary-container",
+        "sys.color.surface-disabled",
+        "sys.shape.full"
+      ],
+      "notes": "Storybook only: no Figma frame. Pairs with ProgressCircle (_Percentage) which exists only in Figma; both are Material 'progress indicators'.",
+      "twilight": [
+        {
+          "entry": "progress-bar",
+          "tag": "s-progress-bar",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "storybook"
+      ]
+    },
+    {
+      "id": "range-slider",
+      "name": "RangeSlider",
+      "level": "molecule",
+      "category": "Selection",
+      "structure": 3,
+      "status": "existing",
+      "summary": "Slider with a paired numeric input for choosing a value within min / max.",
+      "figma": {
+        "frames": []
+      },
+      "storybook": "<s-range-slider>",
+      "anatomy": [
+        "track",
+        "fill",
+        "thumb",
+        "numeric input"
+      ],
+      "props": {
+        "value": "number",
+        "min": "number",
+        "max": "number",
+        "step": "number",
+        "theme": [
+          "default",
+          "secondary"
+        ],
+        "hasError": "boolean",
+        "disabled": "boolean"
+      },
+      "states": [
+        "enabled",
+        "dragging",
+        "focus",
+        "disabled",
+        "error"
+      ],
+      "tokens": [
+        "sys.color.primary",
+        "sys.color.surface-disabled",
+        "sys.shape.full"
+      ],
+      "base": "BaseField",
+      "rtl": "Track direction mirrors; min sits inline-start.",
+      "notes": "Storybook only: no Figma frame. Material: slider.",
+      "twilight": [
+        {
+          "entry": "range-slider",
+          "tag": "s-range-slider",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "storybook"
+      ]
+    },
+    {
+      "id": "rate",
+      "name": "Rate",
+      "level": "molecule",
+      "category": "Selection",
+      "structure": 1,
+      "status": "existing",
+      "summary": "Star (half-step) or emoji rating, read-only or interactive, with themed fills.",
+      "figma": {
+        "frames": []
+      },
+      "storybook": "<s-rate>",
+      "anatomy": [
+        "icons ×maxStars",
+        "value label"
+      ],
+      "props": {
+        "value": "number",
+        "maxStars": "number",
+        "iconStyle": [
+          "star",
+          "emoji"
+        ],
+        "theme": [
+          "default",
+          "secondary",
+          "danger",
+          "warning",
+          "info"
+        ],
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "readOnly": "boolean",
+        "hideValue": "boolean"
+      },
+      "states": [
+        "read-only",
+        "interactive",
+        "hover",
+        "focus"
+      ],
+      "tokens": [
+        "sys.color.warning-primary (stars)",
+        "sys.color.status.*"
+      ],
+      "notes": "Storybook only: no Figma frame.",
+      "twilight": [
+        {
+          "entry": "rate",
+          "tag": "s-rate",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "storybook"
+      ]
+    },
+    {
+      "id": "skeleton",
+      "name": "Skeleton",
+      "level": "atom",
+      "category": "Communication",
+      "structure": 2,
+      "status": "existing",
+      "summary": "Loading placeholders shaped like the content they replace: inline, list entry, article, table, settings, header and full page layouts.",
+      "figma": {
+        "frames": []
+      },
+      "storybook": "<s-skeleton>",
+      "anatomy": [
+        "shimmer blocks"
+      ],
+      "props": {
+        "layout": [
+          "inline",
+          "list-entry",
+          "article",
+          "rich-content",
+          "cart",
+          "checkout",
+          "table",
+          "settings",
+          "header",
+          "home-page",
+          "resource-page",
+          "sections-page",
+          "iframe-page"
+        ]
+      },
+      "states": [],
+      "tokens": [
+        "sys.color.surface-neutral",
+        "sys.color.surface-disabled",
+        "sys.shape.extra-small",
+        "motion shimmer 1.5s"
+      ],
+      "notes": "Storybook only: no Figma frame. Each layout is a standalone preset (structure 2); page-level presets belong with templates.",
+      "twilight": [
+        {
+          "entry": "skeleton",
+          "tag": "s-skeleton",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "storybook"
+      ]
+    },
+    {
+      "id": "tags-field",
+      "name": "TagsField",
+      "level": "molecule",
+      "category": "Text inputs",
+      "structure": 3,
+      "status": "existing",
+      "summary": "Free-form tag entry: type a value, press Add, manage the resulting Chips; max limit and validation.",
+      "figma": {
+        "frames": [
+          "_dropdown-multiple"
+        ],
+        "variantFilter": "Add new value=On"
+      },
+      "storybook": "<s-tags>",
+      "anatomy": [
+        "input",
+        "add Button",
+        "Chip list"
+      ],
+      "props": {
+        "value": "string[]",
+        "max": "number",
+        "buttonLabel": "string",
+        "tagTheme": "Tag theme",
+        "tagSize": [
+          "sm",
+          "md"
+        ],
+        "hasError": "boolean",
+        "wide": "boolean"
+      },
+      "states": "inherits BaseField",
+      "tokens": "inherits BaseField",
+      "base": "BaseField",
+      "composes": [
+        "chip",
+        "button"
+      ],
+      "notes": "Distinct from MultiSelectField: no option list, values are typed. Twilight tag `s-tags`.",
+      "twilight": [
+        {
+          "entry": "tags-input",
+          "tag": "s-tags",
+          "note": ""
+        }
+      ],
+      "sources": [
+        "figma",
+        "storybook"
+      ]
     }
   ]
 }

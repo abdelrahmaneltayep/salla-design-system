@@ -2,9 +2,9 @@
 
 > Side sheet opened from the DataTable bulk bar to edit selected rows.
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| organism | Containment | 4 - Slot / Composition | existing | _not in Storybook_ |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| organism | Containment | 4 - Slot / Composition | existing | figma | _not in Storybook_ |
 
 ## Props
 
@@ -24,6 +24,10 @@ Build as a **container with named slots**. The component fixes structure, spacin
 | Figma frame | Section today | Variants | Variant properties (cleaned) |
 |---|---|---|---|
 | `Table/Bulk Edit Sheet` | Table | 2 | Open: Off, On |
+
+## Source in the Twilight Storybook today
+
+_Not in the Twilight Storybook (dashboard-ui-components.pages.dev)._
 
 ---
 _Generated from `catalog/components.json` (id `bulk-edit-sheet`). Edit the catalog, not this file._

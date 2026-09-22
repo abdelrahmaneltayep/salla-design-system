@@ -2,9 +2,9 @@
 
 > One entry of the side navigation (first / middle / last for grouping radius).
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| molecule | Navigation | 1 - Configurable | existing | _not in Storybook_ |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| molecule | Navigation | 1 - Configurable | existing | figma | _not in Storybook_ |
 
 ## Props
 
@@ -31,6 +31,10 @@ Build as **one component** whose variations are props. Keep the prop list flat a
 | Figma frame | Section today | Variants | Variant properties (cleaned) |
 |---|---|---|---|
 | `sidemenu tab` | Side menu | 9 | status: active, default, hover; variant: first, last, middle |
+
+## Source in the Twilight Storybook today
+
+_Not in the Twilight Storybook (dashboard-ui-components.pages.dev)._
 
 ---
 _Generated from `catalog/components.json` (id `side-menu-item`). Edit the catalog, not this file._

@@ -2,9 +2,9 @@
 
 > TopAppBar + SecondaryNavBar + PageTitle + DataTable in a Panel. Figma's 'Products Management' frame is this template.
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| template | Containment | 4 - Slot / Composition | existing | _not in Storybook_ |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| template | Containment | 4 - Slot / Composition | existing | figma | _not in Storybook_ |
 
 ## Props
 
@@ -25,6 +25,10 @@ Composes: [TopAppBar](../organisms/header.md), [SecondaryNavBar](../organisms/he
 | Figma frame | Section today | Variants | Variant properties (cleaned) |
 |---|---|---|---|
 | `Products Management` | (top level) | - | - |
+
+## Source in the Twilight Storybook today
+
+_Not in the Twilight Storybook (dashboard-ui-components.pages.dev)._
 
 ---
 _Generated from `catalog/components.json` (id `list-page`). Edit the catalog, not this file._

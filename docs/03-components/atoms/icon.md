@@ -2,9 +2,9 @@
 
 > A single glyph from the Salla icon set. 4,049 names in Stroke (outline) and Solid (filled) styles; Rounded is the default type.
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| atom | Communication | 2 - Standalone | existing | `Icons (sicon-* font classes)` |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| atom | Communication | 2 - Standalone | existing | figma, storybook | `<s-icon>` |
 
 ## Anatomy
 
@@ -44,6 +44,31 @@ Naming today is `{name}-{outline|filled}` in the Merchant DS while the icon libr
 |---|---|---|---|
 | `Icons/Filled` | (top level) | - | - |
 | `Icons/Outline` | (top level) | - | - |
+
+## Source in the Twilight Storybook today
+
+### `<s-icon>`
+
+[components-icon](https://dashboard-ui-components.pages.dev/?path=/docs/components-icon) · 1 stories · Use Icon component to display `Hugeicons` or `Sallaicons-light` within a shadowDOM component, such as table, button, uploader, etc when needed.
+
+**Props**
+
+| Prop | Type | Default | Options | Description |
+|---|---|---|---|---|
+| `icon` | string | `sicon-light-salla` |  | Icon class name representing the icon to be displayed, you can use `Hugeicons` or `Sallaicons-light` like `hgi-stroke hgi-tick-02`, `s-light-tick-02` or `sicon-light-salla |
+| `size` | string | `1rem` |  | icon size, you can use rem or px, we prefer rem, default is 1rem |
+
+**Stories**
+
+[Default](https://dashboard-ui-components.pages.dev/?path=/story/components-icon--default)
+
+**Rendered markup (default story)**
+
+```html
+<s-icon icon="sicon-light-salla" size="1rem" class="hydrated">
+</s-icon>
+```
+
 
 ---
 _Generated from `catalog/components.json` (id `icon`). Edit the catalog, not this file._

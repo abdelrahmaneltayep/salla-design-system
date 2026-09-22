@@ -2,9 +2,9 @@
 
 > Typography primitive exposing the Material type roles (display, headline, title, body, label) that map onto the Figma Bold/Medium/Regular $text-* styles.
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| atom | Communication | 1 - Configurable | proposed | _not in Storybook_ |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| atom | Communication | 1 - Configurable | proposed | none yet | _not in Storybook_ |
 
 ## Props
 
@@ -27,6 +27,10 @@ Build as **one component** whose variations are props. Keep the prop list flat a
 - Figma styles: `Bold/$text-*, Medium/$text-*, Regular/$text-*`
 
 _No matching frame in the current Figma library._
+
+## Source in the Twilight Storybook today
+
+_Not in the Twilight Storybook (dashboard-ui-components.pages.dev)._
 
 ---
 _Generated from `catalog/components.json` (id `text`). Edit the catalog, not this file._

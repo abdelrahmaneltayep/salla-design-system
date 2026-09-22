@@ -1,6 +1,6 @@
 # Motion
 
-Material's motion system reduced to what the dashboard needs. **No motion tokens exist in Figma today**; these are proposed.
+Material's motion system reduced to what the dashboard needs. **No motion tokens exist in Figma today.** The Twilight code ships a single `--transition-duration: 250ms`; the tokens below split that into three durations so small state changes feel quicker than surface transitions.
 
 ## Tokens
 

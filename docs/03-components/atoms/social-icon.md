@@ -2,9 +2,9 @@
 
 > Brand logos (Facebook, Google, Google Ads, Meta, Snapchat, TikTok, YouTube, Instagram, X).
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| atom | Data display | 2 - Standalone | existing | _not in Storybook_ |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| atom | Data display | 2 - Standalone | existing | figma | _not in Storybook_ |
 
 ## Props
 
@@ -29,6 +29,10 @@ Brand colours are fixed by the brands and are exempt from the token palette.
 | Figma frame | Section today | Variants | Variant properties (cleaned) |
 |---|---|---|---|
 | `Social media icons` | (top level) | - | - |
+
+## Source in the Twilight Storybook today
+
+_Not in the Twilight Storybook (dashboard-ui-components.pages.dev)._
 
 ---
 _Generated from `catalog/components.json` (id `social-icon`). Edit the catalog, not this file._

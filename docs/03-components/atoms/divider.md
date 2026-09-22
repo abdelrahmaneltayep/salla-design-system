@@ -2,9 +2,9 @@
 
 > Horizontal or vertical rule. Exists implicitly as the Separator variants inside Breadcrumb and MoreMenu.
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| atom | Containment | 1 - Configurable | proposed | _not in Storybook_ |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| atom | Containment | 1 - Configurable | proposed | figma | _not in Storybook_ |
 
 ## Props
 
@@ -29,6 +29,10 @@ Build as **one component** whose variations are props. Keep the prop list flat a
 |---|---|---|---|
 | `_breadcrumbItem` | Bread crumb | 20 | Language: Arabic, English; Status: active, default, disabled, hover, onclick; Type: Icon, More, Separator, Text |
 | `_moreItems` | More Menu | 4 | Type: Icon, Image, Sperator; danger: Off, On |
+
+## Source in the Twilight Storybook today
+
+_Not in the Twilight Storybook (dashboard-ui-components.pages.dev)._
 
 ---
 _Generated from `catalog/components.json` (id `divider`). Edit the catalog, not this file._

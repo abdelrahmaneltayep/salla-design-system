@@ -1,0 +1,847 @@
+{
+ "$description": "Design tokens as shipped in the Twilight Storybook (dashboard-ui-components.pages.dev), captured 2026-09-22. Colours are HSL channels on :root; hex values are the computed equivalents.",
+ "palette": {
+  "primary": {
+   "group": "Primary",
+   "cssVar": "--primary",
+   "hsl": "hsl(189 100% 17%)",
+   "hex": "#004A57",
+   "tailwind": "bg-primary"
+  },
+  "primary-force": {
+   "group": "Primary",
+   "cssVar": "--primary-force",
+   "hsl": "hsl(189 100% 17%)",
+   "hex": "#004A57",
+   "tailwind": "bg-primary-force"
+  },
+  "primary-100": {
+   "group": "Primary",
+   "cssVar": "--primary-100",
+   "hsl": "hsl(187 40% 96%)",
+   "hex": "#F1F8F9",
+   "tailwind": "bg-primary-100"
+  },
+  "primary-200": {
+   "group": "Primary",
+   "cssVar": "--primary-200",
+   "hsl": "hsl(188 39% 70%)",
+   "hex": "#95C8D0",
+   "tailwind": "bg-primary-200"
+  },
+  "primary-300": {
+   "group": "Primary",
+   "cssVar": "--primary-300",
+   "hsl": "hsl(188 38% 54%)",
+   "hex": "#5DAAB6",
+   "tailwind": "bg-primary-300"
+  },
+  "primary-400": {
+   "group": "Primary",
+   "cssVar": "--primary-400",
+   "hsl": "hsl(189 50% 41%)",
+   "hex": "#348D9D",
+   "tailwind": "bg-primary-400"
+  },
+  "primary-500": {
+   "group": "Primary",
+   "cssVar": "--primary-500",
+   "hsl": "hsl(189 100% 18%)",
+   "hex": "#004E5C",
+   "tailwind": "bg-primary-500"
+  },
+  "primary-600": {
+   "group": "Primary",
+   "cssVar": "--primary-600",
+   "hsl": "hsl(189 100% 15%)",
+   "hex": "#00414D",
+   "tailwind": "bg-primary-600"
+  },
+  "primary-700": {
+   "group": "Primary",
+   "cssVar": "--primary-700",
+   "hsl": "hsl(191 76% 16%)",
+   "hex": "#0A3C48",
+   "tailwind": "bg-primary-700"
+  },
+  "secondary": {
+   "group": "Secondary",
+   "cssVar": "--secondary",
+   "hsl": "hsl(163 100% 82%)",
+   "hex": "#A3FFE5",
+   "tailwind": "bg-secondary"
+  },
+  "secondary-100": {
+   "group": "Secondary",
+   "cssVar": "--secondary-100",
+   "hsl": "hsl(163 100% 97%)",
+   "hex": "#F0FFFB",
+   "tailwind": "bg-secondary-100"
+  },
+  "secondary-200": {
+   "group": "Secondary",
+   "cssVar": "--secondary-200",
+   "hsl": "hsl(166 100% 95%)",
+   "hex": "#E5FFF9",
+   "tailwind": "bg-secondary-200"
+  },
+  "secondary-300": {
+   "group": "Secondary",
+   "cssVar": "--secondary-300",
+   "hsl": "hsl(165 100% 93%)",
+   "hex": "#DBFFF6",
+   "tailwind": "bg-secondary-300"
+  },
+  "secondary-400": {
+   "group": "Secondary",
+   "cssVar": "--secondary-400",
+   "hsl": "hsl(164 96% 72%)",
+   "hex": "#73FCD8",
+   "tailwind": "bg-secondary-400"
+  },
+  "secondary-500": {
+   "group": "Secondary",
+   "cssVar": "--secondary-500",
+   "hsl": "hsl(164 89% 63%)",
+   "hex": "#4DF5C8",
+   "tailwind": "bg-secondary-500"
+  },
+  "secondary-600": {
+   "group": "Secondary",
+   "cssVar": "--secondary-600",
+   "hsl": "hsl(164 83% 55%)",
+   "hex": "#2DEBB9",
+   "tailwind": "bg-secondary-600"
+  },
+  "secondary-700": {
+   "group": "Secondary",
+   "cssVar": "--secondary-700",
+   "hsl": "hsl(163 78% 52%)",
+   "hex": "#25E4AE",
+   "tailwind": "bg-secondary-700"
+  },
+  "success": {
+   "group": "Success",
+   "cssVar": "--success",
+   "hsl": "hsl(157 100% 34%)",
+   "hex": "#00AD6B",
+   "tailwind": "bg-success"
+  },
+  "success-100": {
+   "group": "Success",
+   "cssVar": "--success-100",
+   "hsl": "hsl(155 60% 96%)",
+   "hex": "#EFFBF6",
+   "tailwind": "bg-success-100"
+  },
+  "success-200": {
+   "group": "Success",
+   "cssVar": "--success-200",
+   "hsl": "hsl(157 63% 75%)",
+   "hex": "#97E7C9",
+   "tailwind": "bg-success-200"
+  },
+  "success-300": {
+   "group": "Success",
+   "cssVar": "--success-300",
+   "hsl": "hsl(157 59% 69%)",
+   "hex": "#81DFBB",
+   "tailwind": "bg-success-300"
+  },
+  "success-400": {
+   "group": "Success",
+   "cssVar": "--success-400",
+   "hsl": "hsl(157 56% 57%)",
+   "hex": "#54CFA0",
+   "tailwind": "bg-success-400"
+  },
+  "success-500": {
+   "group": "Success",
+   "cssVar": "--success-500",
+   "hsl": "hsl(157 63% 46%)",
+   "hex": "#2BBF87",
+   "tailwind": "bg-success-500"
+  },
+  "success-600": {
+   "group": "Success",
+   "cssVar": "--success-600",
+   "hsl": "hsl(157 100% 27%)",
+   "hex": "#008A55",
+   "tailwind": "bg-success-600"
+  },
+  "success-700": {
+   "group": "Success",
+   "cssVar": "--success-700",
+   "hsl": "hsl(157 100% 21%)",
+   "hex": "#006B42",
+   "tailwind": "bg-success-700"
+  },
+  "success-800": {
+   "group": "Success",
+   "cssVar": "--success-800",
+   "hsl": "hsl(157 100% 16%)",
+   "hex": "#005232",
+   "tailwind": "bg-success-800"
+  },
+  "info": {
+   "group": "Info",
+   "cssVar": "--info",
+   "hsl": "hsl(214 87% 64%)",
+   "hex": "#5399F3",
+   "tailwind": "bg-info"
+  },
+  "info-100": {
+   "group": "Info",
+   "cssVar": "--info-100",
+   "hsl": "hsl(217 90% 96%)",
+   "hex": "#ECF3FE",
+   "tailwind": "bg-info-100"
+  },
+  "info-200": {
+   "group": "Info",
+   "cssVar": "--info-200",
+   "hsl": "hsl(214 86% 89%)",
+   "hex": "#CBE0FB",
+   "tailwind": "bg-info-200"
+  },
+  "info-300": {
+   "group": "Info",
+   "cssVar": "--info-300",
+   "hsl": "hsl(214 87% 85%)",
+   "hex": "#B7D4FA",
+   "tailwind": "bg-info-300"
+  },
+  "info-400": {
+   "group": "Info",
+   "cssVar": "--info-400",
+   "hsl": "hsl(215 87% 78%)",
+   "hex": "#96BFF8",
+   "tailwind": "bg-info-400"
+  },
+  "info-500": {
+   "group": "Info",
+   "cssVar": "--info-500",
+   "hsl": "hsl(214 87% 71%)",
+   "hex": "#75ACF5",
+   "tailwind": "bg-info-500"
+  },
+  "info-600": {
+   "group": "Info",
+   "cssVar": "--info-600",
+   "hsl": "hsl(215 55% 52%)",
+   "hex": "#4179C8",
+   "tailwind": "bg-info-600"
+  },
+  "info-700": {
+   "group": "Info",
+   "cssVar": "--info-700",
+   "hsl": "hsl(214 52% 40%)",
+   "hex": "#315F9B",
+   "tailwind": "bg-info-700"
+  },
+  "info-800": {
+   "group": "Info",
+   "cssVar": "--info-800",
+   "hsl": "hsl(215 57% 29%)",
+   "hex": "#204374",
+   "tailwind": "bg-info-800"
+  },
+  "warning": {
+   "group": "Warning",
+   "cssVar": "--warning",
+   "hsl": "hsl(34 100% 63%)",
+   "hex": "#FFAD42",
+   "tailwind": "bg-warning"
+  },
+  "warning-100": {
+   "group": "Warning",
+   "cssVar": "--warning-100",
+   "hsl": "hsl(33 100% 96%)",
+   "hex": "#FFF6EB",
+   "tailwind": "bg-warning-100"
+  },
+  "warning-200": {
+   "group": "Warning",
+   "cssVar": "--warning-200",
+   "hsl": "hsl(34 100% 89%)",
+   "hex": "#FFE7C7",
+   "tailwind": "bg-warning-200"
+  },
+  "warning-300": {
+   "group": "Warning",
+   "cssVar": "--warning-300",
+   "hsl": "hsl(34 100% 85%)",
+   "hex": "#FFDEB3",
+   "tailwind": "bg-warning-300"
+  },
+  "warning-400": {
+   "group": "Warning",
+   "cssVar": "--warning-400",
+   "hsl": "hsl(34 100% 78%)",
+   "hex": "#FFCE8F",
+   "tailwind": "bg-warning-400"
+  },
+  "warning-500": {
+   "group": "Warning",
+   "cssVar": "--warning-500",
+   "hsl": "hsl(34 100% 71%)",
+   "hex": "#FFBF6B",
+   "tailwind": "bg-warning-500"
+  },
+  "warning-600": {
+   "group": "Warning",
+   "cssVar": "--warning-600",
+   "hsl": "hsl(34 63% 52%)",
+   "hex": "#D28F37",
+   "tailwind": "bg-warning-600"
+  },
+  "warning-700": {
+   "group": "Warning",
+   "cssVar": "--warning-700",
+   "hsl": "hsl(34 60% 40%)",
+   "hex": "#A36E29",
+   "tailwind": "bg-warning-700"
+  },
+  "warning-800": {
+   "group": "Warning",
+   "cssVar": "--warning-800",
+   "hsl": "hsl(34 62% 35%)",
+   "hex": "#916122",
+   "tailwind": "bg-warning-800"
+  },
+  "danger": {
+   "group": "Danger",
+   "cssVar": "--danger",
+   "hsl": "hsl(358 89% 64%)",
+   "hex": "#F55157",
+   "tailwind": "bg-danger"
+  },
+  "danger-100": {
+   "group": "Danger",
+   "cssVar": "--danger-100",
+   "hsl": "hsl(0 90% 96%)",
+   "hex": "#FEECEC",
+   "tailwind": "bg-danger-100"
+  },
+  "danger-200": {
+   "group": "Danger",
+   "cssVar": "--danger-200",
+   "hsl": "hsl(358 89% 89%)",
+   "hex": "#FCCACC",
+   "tailwind": "bg-danger-200"
+  },
+  "danger-300": {
+   "group": "Danger",
+   "cssVar": "--danger-300",
+   "hsl": "hsl(357 89% 85%)",
+   "hex": "#FBB7BA",
+   "tailwind": "bg-danger-300"
+  },
+  "danger-400": {
+   "group": "Danger",
+   "cssVar": "--danger-400",
+   "hsl": "hsl(358 89% 78%)",
+   "hex": "#F99598",
+   "tailwind": "bg-danger-400"
+  },
+  "danger-500": {
+   "group": "Danger",
+   "cssVar": "--danger-500",
+   "hsl": "hsl(358 89% 71%)",
+   "hex": "#F77378",
+   "tailwind": "bg-danger-500"
+  },
+  "danger-600": {
+   "group": "Danger",
+   "cssVar": "--danger-600",
+   "hsl": "hsl(358 56% 52%)",
+   "hex": "#C94045",
+   "tailwind": "bg-danger-600"
+  },
+  "danger-700": {
+   "group": "Danger",
+   "cssVar": "--danger-700",
+   "hsl": "hsl(358 53% 41%)",
+   "hex": "#A03135",
+   "tailwind": "bg-danger-700"
+  },
+  "danger-800": {
+   "group": "Danger",
+   "cssVar": "--danger-800",
+   "hsl": "hsl(1 61% 30%)",
+   "hex": "#7B1F1E",
+   "tailwind": "bg-danger-800"
+  },
+  "gray": {
+   "group": "Gray",
+   "cssVar": "--gray",
+   "hsl": "hsl(0 0% 73%)",
+   "hex": "#BABABA",
+   "tailwind": "bg-gray"
+  },
+  "gray-100": {
+   "group": "Gray",
+   "cssVar": "--gray-100",
+   "hsl": "hsl(0 0% 99%)",
+   "hex": "#FCFCFC",
+   "tailwind": "bg-gray-100"
+  },
+  "gray-200": {
+   "group": "Gray",
+   "cssVar": "--gray-200",
+   "hsl": "hsl(0 0% 97%)",
+   "hex": "#F7F7F7",
+   "tailwind": "bg-gray-200"
+  },
+  "gray-250": {
+   "group": "Gray",
+   "cssVar": "--gray-250",
+   "hsl": "hsl(0 0% 96%)",
+   "hex": "#F5F5F5",
+   "tailwind": "bg-gray-250"
+  },
+  "gray-300": {
+   "group": "Gray",
+   "cssVar": "--gray-300",
+   "hsl": "hsl(0 0% 96%)",
+   "hex": "#F5F5F5",
+   "tailwind": "bg-gray-300"
+  },
+  "gray-400": {
+   "group": "Gray",
+   "cssVar": "--gray-400",
+   "hsl": "hsl(0 0% 93%)",
+   "hex": "#EDEDED",
+   "tailwind": "bg-gray-400"
+  },
+  "gray-500": {
+   "group": "Gray",
+   "cssVar": "--gray-500",
+   "hsl": "hsl(0 0% 87%)",
+   "hex": "#DEDEDE",
+   "tailwind": "bg-gray-500"
+  },
+  "dark": {
+   "group": "Dark",
+   "cssVar": "--dark",
+   "hsl": "hsl(0 0% 20%)",
+   "hex": "#333333",
+   "tailwind": "bg-dark"
+  },
+  "dark-100": {
+   "group": "Dark",
+   "cssVar": "--dark-100",
+   "hsl": "hsl(0 0% 45%)",
+   "hex": "#737373",
+   "tailwind": "bg-dark-100"
+  },
+  "dark-200": {
+   "group": "Dark",
+   "cssVar": "--dark-200",
+   "hsl": "hsl(0 0% 40%)",
+   "hex": "#666666",
+   "tailwind": "bg-dark-200"
+  },
+  "dark-300": {
+   "group": "Dark",
+   "cssVar": "--dark-300",
+   "hsl": "hsl(0 0% 33%)",
+   "hex": "#545454",
+   "tailwind": "bg-dark-300"
+  },
+  "dark-400": {
+   "group": "Dark",
+   "cssVar": "--dark-400",
+   "hsl": "hsl(0 0% 27%)",
+   "hex": "#454545",
+   "tailwind": "bg-dark-400"
+  },
+  "white": {
+   "group": "White",
+   "cssVar": "--white",
+   "hsl": "hsl(0 0% 100%)",
+   "hex": "#FFFFFF",
+   "tailwind": "bg-white"
+  },
+  "white-100": {
+   "group": "White",
+   "cssVar": "--white-100",
+   "hsl": "hsl(0 0% 100%)",
+   "hex": "#FFFFFF",
+   "tailwind": "bg-white-100"
+  },
+  "white-200": {
+   "group": "White",
+   "cssVar": "--white-200",
+   "hsl": "hsl(0 0% 100%)",
+   "hex": "#FFFFFF",
+   "tailwind": "bg-white-200"
+  },
+  "white-300": {
+   "group": "White",
+   "cssVar": "--white-300",
+   "hsl": "hsl(0 0% 100%)",
+   "hex": "#FFFFFF",
+   "tailwind": "bg-white-300"
+  },
+  "black": {
+   "group": "Black",
+   "cssVar": "--black",
+   "hsl": "hsl(0 0% 0%)",
+   "hex": "#000000",
+   "tailwind": "bg-black"
+  },
+  "black-force": {
+   "group": "Black",
+   "cssVar": "--black-force",
+   "hsl": "hsl(0 0% 0%)",
+   "hex": "#000000",
+   "tailwind": "bg-black-force"
+  },
+  "mahally": {
+   "group": "Mahally",
+   "cssVar": "--mahally",
+   "hsl": "hsl(11 100% 58%)",
+   "hex": "#FF5029",
+   "tailwind": "bg-mahally"
+  },
+  "mahally-100": {
+   "group": "Mahally",
+   "cssVar": "--mahally-100",
+   "hsl": "hsl(11 100% 98%)",
+   "hex": "#FFF7F5",
+   "tailwind": "bg-mahally-100"
+  },
+  "mahally-200": {
+   "group": "Mahally",
+   "cssVar": "--mahally-200",
+   "hsl": "hsl(11 100% 93%)",
+   "hex": "#FFE2DB",
+   "tailwind": "bg-mahally-200"
+  },
+  "mahally-300": {
+   "group": "Mahally",
+   "cssVar": "--mahally-300",
+   "hsl": "hsl(11 100% 86%)",
+   "hex": "#FFC5B8",
+   "tailwind": "bg-mahally-300"
+  },
+  "mahally-400": {
+   "group": "Mahally",
+   "cssVar": "--mahally-400",
+   "hsl": "hsl(11 100% 75%)",
+   "hex": "#FF9780",
+   "tailwind": "bg-mahally-400"
+  },
+  "mahally-500": {
+   "group": "Mahally",
+   "cssVar": "--mahally-500",
+   "hsl": "hsl(11 100% 66%)",
+   "hex": "#FF7152",
+   "tailwind": "bg-mahally-500"
+  },
+  "mahally-600": {
+   "group": "Mahally",
+   "cssVar": "--mahally-600",
+   "hsl": "hsl(11 73% 46%)",
+   "hex": "#CB3F20",
+   "tailwind": "bg-mahally-600"
+  },
+  "mahally-700": {
+   "group": "Mahally",
+   "cssVar": "--mahally-700",
+   "hsl": "hsl(11 73% 35%)",
+   "hex": "#9A3018",
+   "tailwind": "bg-mahally-700"
+  },
+  "gold": {
+   "group": "Gold",
+   "cssVar": "--gold",
+   "hsl": "hsl(47 100% 79%)",
+   "hex": "#FFE894",
+   "tailwind": "bg-gold"
+  },
+  "gold-100": {
+   "group": "Gold",
+   "cssVar": "--gold-100",
+   "hsl": "hsl(49 100% 96%)",
+   "hex": "#FFFBEB",
+   "tailwind": "bg-gold-100"
+  },
+  "gold-200": {
+   "group": "Gold",
+   "cssVar": "--gold-200",
+   "hsl": "hsl(46 100% 90%)",
+   "hex": "#FFF3CC",
+   "tailwind": "bg-gold-200"
+  },
+  "gold-300": {
+   "group": "Gold",
+   "cssVar": "--gold-300",
+   "hsl": "hsl(47 59% 56%)",
+   "hex": "#D1B44D",
+   "tailwind": "bg-gold-300"
+  },
+  "gold-400": {
+   "group": "Gold",
+   "cssVar": "--gold-400",
+   "hsl": "hsl(47 100% 17%)",
+   "hex": "#574400",
+   "tailwind": "bg-gold-400"
+  },
+  "orange": {
+   "group": "Orange",
+   "cssVar": "--orange",
+   "hsl": "hsl(21 100% 76%)",
+   "hex": "#FFAF85",
+   "tailwind": "bg-orange"
+  },
+  "orange-100": {
+   "group": "Orange",
+   "cssVar": "--orange-100",
+   "hsl": "hsl(21 81% 96%)",
+   "hex": "#FDF2ED",
+   "tailwind": "bg-orange-100"
+  },
+  "orange-200": {
+   "group": "Orange",
+   "cssVar": "--orange-200",
+   "hsl": "hsl(22 100% 88%)",
+   "hex": "#FFD8C2",
+   "tailwind": "bg-orange-200"
+  },
+  "orange-300": {
+   "group": "Orange",
+   "cssVar": "--orange-300",
+   "hsl": "hsl(21 85% 60%)",
+   "hex": "#F07F42",
+   "tailwind": "bg-orange-300"
+  },
+  "orange-400": {
+   "group": "Orange",
+   "cssVar": "--orange-400",
+   "hsl": "hsl(21 100% 27%)",
+   "hex": "#8A3000",
+   "tailwind": "bg-orange-400"
+  },
+  "blue": {
+   "group": "Blue",
+   "cssVar": "--blue",
+   "hsl": "hsl(188 100% 79%)",
+   "hex": "#94F1FF",
+   "tailwind": "bg-blue"
+  },
+  "blue-100": {
+   "group": "Blue",
+   "cssVar": "--blue-100",
+   "hsl": "hsl(193 64% 96%)",
+   "hex": "#EEF8FB",
+   "tailwind": "bg-blue-100"
+  },
+  "blue-200": {
+   "group": "Blue",
+   "cssVar": "--blue-200",
+   "hsl": "hsl(195 100% 87%)",
+   "hex": "#BDEEFF",
+   "tailwind": "bg-blue-200"
+  },
+  "blue-300": {
+   "group": "Blue",
+   "cssVar": "--blue-300",
+   "hsl": "hsl(188 100% 41%)",
+   "hex": "#00B5D1",
+   "tailwind": "bg-blue-300"
+  },
+  "blue-400": {
+   "group": "Blue",
+   "cssVar": "--blue-400",
+   "hsl": "hsl(188 100% 21%)",
+   "hex": "#005D6B",
+   "tailwind": "bg-blue-400"
+  },
+  "pink": {
+   "group": "Pink",
+   "cssVar": "--pink",
+   "hsl": "hsl(348 100% 78%)",
+   "hex": "#FF8FA5",
+   "tailwind": "bg-pink"
+  },
+  "pink-100": {
+   "group": "Pink",
+   "cssVar": "--pink-100",
+   "hsl": "hsl(345 100% 96%)",
+   "hex": "#FFEBF0",
+   "tailwind": "bg-pink-100"
+  },
+  "pink-200": {
+   "group": "Pink",
+   "cssVar": "--pink-200",
+   "hsl": "hsl(348 100% 88%)",
+   "hex": "#FFC2CE",
+   "tailwind": "bg-pink-200"
+  },
+  "pink-300": {
+   "group": "Pink",
+   "cssVar": "--pink-300",
+   "hsl": "hsl(348 81% 63%)",
+   "hex": "#ED5473",
+   "tailwind": "bg-pink-300"
+  },
+  "pink-400": {
+   "group": "Pink",
+   "cssVar": "--pink-400",
+   "hsl": "hsl(348 79% 32%)",
+   "hex": "#92112B",
+   "tailwind": "bg-pink-400"
+  }
+ },
+ "roundness": {
+  "rounded": "0.25rem",
+  "rounded-sm": "0.125rem",
+  "rounded-md": "0.375rem",
+  "rounded-lg": "0.5rem",
+  "rounded-xl": "0.75rem",
+  "rounded-2xl": "1rem",
+  "rounded-3xl": "1.5rem",
+  "rounded-4xl": "2rem"
+ },
+ "shadows": {
+  "shadow": "0px 2px 4px -1px rgba(18, 18, 23, 0.06)",
+  "shadow-xs": "0px 1px 2px 0px rgba(18, 18, 23, 0.05)",
+  "shadow-sm": "0 2px 4px 0 rgba(0, 0, 0, 0.08)",
+  "shadow-md": "0 4px 6px 0 rgba(0, 0, 0, 0.12)",
+  "shadow-lg": "0px 4px 6px -2px rgba(18, 18, 23, 0.05)",
+  "shadow-xl": "0px 10px 10px -5px rgba(18, 18, 23, 0.04)",
+  "shadow-2xl": "0px 25px 50px -12px rgba(18, 18, 23, 0.25)",
+  "shadow-smooth": "0 6px 8px 0 rgba(0, 0, 0, 0.02)",
+  "shadow-top": "0px -4px 16px -4px rgba(0,0,0,0.15)",
+  "shadow-bottom": "0px 4px 16px -4px rgba(0,0,0,0.15)"
+ },
+ "cssVariables": {
+  "--action-bar-height": "79px",
+  "--base-font-size": "var(--font-base)",
+  "--black": "0 0% 0%",
+  "--black-force": "0 0% 0%",
+  "--blue": "188 100% 79%",
+  "--blue-100": "193 64% 96%",
+  "--blue-200": "195 100% 87%",
+  "--blue-300": "188 100% 41%",
+  "--blue-400": "188 100% 21%",
+  "--breakpoint-2xl": "1400px",
+  "--breakpoint-lg": "1024px",
+  "--breakpoint-md": "768px",
+  "--breakpoint-sm": "639px",
+  "--breakpoint-xl": "1279px",
+  "--chart-bars": "#348d9c",
+  "--chart-bars-empty": "#92c3cb",
+  "--chart-bars-hover": "#ffaf44",
+  "--danger": "358 89% 64%",
+  "--danger-100": "0 90% 96%",
+  "--danger-200": "358 89% 89%",
+  "--danger-300": "357 89% 85%",
+  "--danger-400": "358 89% 78%",
+  "--danger-500": "358 89% 71%",
+  "--danger-600": "358 56% 52%",
+  "--danger-700": "358 53% 41%",
+  "--danger-800": "1 61% 30%",
+  "--dark": "0 0% 20%",
+  "--dark-100": "0 0% 45%",
+  "--dark-200": "0 0% 40%",
+  "--dark-300": "0 0% 33%",
+  "--dark-400": "0 0% 27%",
+  "--font-base": "14px",
+  "--font-main": "\"PingARLT\"",
+  "--gold": "47 100% 79%",
+  "--gold-100": "49 100% 96%",
+  "--gold-200": "46 100% 90%",
+  "--gold-300": "47 59% 56%",
+  "--gold-400": "47 100% 17%",
+  "--gray": "0 0% 73%",
+  "--gray-100": "0 0% 99%",
+  "--gray-200": "0 0% 97%",
+  "--gray-250": "0 0% 96%",
+  "--gray-300": "0 0% 96%",
+  "--gray-400": "0 0% 93%",
+  "--gray-500": "0 0% 87%",
+  "--info": "214 87% 64%",
+  "--info-100": "217 90% 96%",
+  "--info-200": "214 86% 89%",
+  "--info-300": "214 87% 85%",
+  "--info-400": "215 87% 78%",
+  "--info-500": "214 87% 71%",
+  "--info-600": "215 55% 52%",
+  "--info-700": "214 52% 40%",
+  "--info-800": "215 57% 29%",
+  "--lg-height": "3rem",
+  "--mahally": "11 100% 58%",
+  "--mahally-100": "11 100% 98%",
+  "--mahally-200": "11 100% 93%",
+  "--mahally-300": "11 100% 86%",
+  "--mahally-400": "11 100% 75%",
+  "--mahally-500": "11 100% 66%",
+  "--mahally-600": "11 73% 46%",
+  "--mahally-700": "11 73% 35%",
+  "--md-height": "2.5rem",
+  "--moshammer": "188 100% 79%",
+  "--moshammer-100": "193 64% 96%",
+  "--moshammer-200": "195 100% 87%",
+  "--moshammer-300": "188 100% 41%",
+  "--moshammer-400": "188 100% 21%",
+  "--moshammer-gradient": "linear-gradient(     90deg,     #ffe894,     #ffaf85 25%,     #e4bd90 50%,     #2cf2c7 75%,     #94f1ff   )",
+  "--nav-height": "4.5rem",
+  "--orange": "21 100% 76%",
+  "--orange-100": "21 81% 96%",
+  "--orange-200": "22 100% 88%",
+  "--orange-300": "21 85% 60%",
+  "--orange-400": "21 100% 27%",
+  "--pink": "348 100% 78%",
+  "--pink-100": "345 100% 96%",
+  "--pink-200": "348 100% 88%",
+  "--pink-300": "348 81% 63%",
+  "--pink-400": "348 79% 32%",
+  "--primary": "189 100% 17%",
+  "--primary-100": "187 40% 96%",
+  "--primary-200": "188 39% 70%",
+  "--primary-300": "188 38% 54%",
+  "--primary-400": "189 50% 41%",
+  "--primary-500": "189 100% 18%",
+  "--primary-600": "189 100% 15%",
+  "--primary-700": "191 76% 16%",
+  "--primary-force": "189 100% 17%",
+  "--secondary": "163 100% 82%",
+  "--secondary-100": "163 100% 97%",
+  "--secondary-200": "166 100% 95%",
+  "--secondary-300": "165 100% 93%",
+  "--secondary-400": "164 96% 72%",
+  "--secondary-500": "164 89% 63%",
+  "--secondary-600": "164 83% 55%",
+  "--secondary-700": "163 78% 52%",
+  "--sm-height": "2rem",
+  "--success": "157 100% 34%",
+  "--success-100": "155 60% 96%",
+  "--success-200": "157 63% 75%",
+  "--success-300": "157 59% 69%",
+  "--success-400": "157 56% 57%",
+  "--success-500": "157 63% 46%",
+  "--success-600": "157 100% 27%",
+  "--success-700": "157 100% 21%",
+  "--success-800": "157 100% 16%",
+  "--toastify-z-index": "2147483647",
+  "--transition-duration": "250ms",
+  "--tw-bg-opacity": "1",
+  "--tw-text-opacity": "1",
+  "--warning": "34 100% 63%",
+  "--warning-100": "33 100% 96%",
+  "--warning-200": "34 100% 89%",
+  "--warning-300": "34 100% 85%",
+  "--warning-400": "34 100% 78%",
+  "--warning-500": "34 100% 71%",
+  "--warning-600": "34 63% 52%",
+  "--warning-700": "34 60% 40%",
+  "--warning-800": "34 62% 35%",
+  "--white": "0 0% 100%",
+  "--white-100": "0 0% 100%",
+  "--white-200": "0 0% 100%",
+  "--white-300": "0 0% 100%"
+ }
+}

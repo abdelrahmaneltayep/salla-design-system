@@ -71,6 +71,53 @@ How components use the shades:
 | Feature | `sys.color.feature.*` | gradient `#ffd8c2 → #ffaf83`, text `#883000` | `color/support-non-semantic/orange/200|300`, `background/supporting-colors/orange/darker` | `Button variant=feature`, `ListItem feature` |
 | Upgrade | `sys.color.upgrade.*` | lighter `#fffbea`, primary `#ffe895`, dark `#d1b44c`, darker `#554300` | `background/supporting-colors/gold/*`, `border/upgrade/dark`, `text/upgrade/darker` | `UpgradeCard`, crown CTA |
 
+## Code palette (Twilight) vs Figma
+
+The Storybook stores colours as rounded HSL channels on `:root` (`--primary: 189 100% 17%`), so the computed hex drifts from the Figma hex by 1-3 units per channel on most roles. Invisible on screen, but it makes design-to-code QA report false diffs. Comparison of every role that exists in both (`catalog/storybook-tokens.json` vs `catalog/figma-tokens-harvest.json`):
+
+| Twilight token | Code hex | Figma variable | Figma hex | Δ (max channel) |
+|---|---|---|---|---|
+| `primary` | `#004A57` | `text/primary/primary` | `#004956` | 1 |
+| `primary-200` | `#95C8D0` | `text/primary/disabled` | `#95C8D0` | same |
+| `secondary` | `#A3FFE5` | `background/secondary/seconadry` | `#A4FFE5` | 1 |
+| `secondary-200` | `#E5FFF9` | `background/secondary/lighter` | `#E6FFF9` | 1 |
+| `secondary-300` | `#DBFFF6` | `border/seconadry-hover` | `#DBFFF6` | same |
+| `success` | `#00AD6B` | `background/status/success/primary` | `#00AF6C` | 2 |
+| `success-100` | `#EFFBF6` | `success/success-lighter` | `#EFFBF6` | same |
+| `success-200` | `#97E7C9` | `border/status/success-light` | `#97E7C8` | 1 |
+| `success-600` | `#008A55` | `success/success-dark` | `#008C56` | 2 |
+| `success-800` | `#005232` | `success/success-darker` | `#005232` | same |
+| `danger` | `#F55157` | `danger/danger` | `#F55157` | same |
+| `danger-100` | `#FEECEC` | `danger/danger-lighter` | `#FEECEC` | same |
+| `danger-300` | `#FBB7BA` | `border/status/danger-light` | `#FBB9BC` | 2 |
+| `danger-600` | `#C94045` | `danger/danger-dark` | `#CA4146` | 1 |
+| `danger-800` | `#7B1F1E` | `danger/danger-darker` | `#7A1F1E` | 1 |
+| `warning` | `#FFAD42` | `background/status/warning/primary` | `#FFAF44` | 2 |
+| `warning-100` | `#FFF6EB` | `warning/warning-lighter` | `#FFF9EB` | 3 |
+| `warning-200` | `#FFE7C7` | `border/status/warning-light` | `#FFE7C7` | same |
+| `warning-600` | `#D28F37` | `warning/warning-dark` | `#D18F36` | 1 |
+| `warning-800` | `#916122` | `warning/warning-darker` | `#8F5F22` | 2 |
+| `info` | `#5399F3` | `background/status/info/primary` | `#5196F3` | 3 |
+| `info-100` | `#ECF3FE` | `info/info-lighter` | `#ECF3FE` | same |
+| `info-200` | `#CBE0FB` | `border/status/info-light` | `#CBE0FB` | same |
+| `info-600` | `#4179C8` | `info/info-dark` | `#417AC8` | 1 |
+| `info-800` | `#204374` | `info/info-darker` | `#204374` | same |
+| `gray` | `#BABABA` | `text/gray/disabled` | `#BBBBBB` | 1 |
+| `gray-400` | `#EDEDED` | `border/default` | `#EEEEEE` | 1 |
+| `gray-500` | `#DEDEDE` | `border/hover` | `#DDDDDD` | 1 |
+| `dark` / `dark-100` / `dark-200` | `#333333` / `#737373` / `#666666` | `text/gray/dark` / `lighter` / `light` | same | same |
+| `gold` | `#FFE894` | `background/supporting-colors/gold/primary` | `#FFE895` | 1 |
+| `gold-100` | `#FFFBEB` | `background/supporting-colors/gold/lighter` | `#FFFBEA` | 1 |
+| `gold-300` | `#D1B44D` | `background/supporting-colors/gold/dark` | `#D1B44C` | 1 |
+| `gold-400` | `#574400` | `text/upgrade/darker` | `#554300` | 2 |
+| `orange` | `#FFAF85` | `color/support-non-semantic/orange/300` | `#FFAF83` | 2 |
+| `orange-200` | `#FFD8C2` | `color/support-non-semantic/orange/200` | `#FFD8C2` | same |
+| `orange-400` | `#8A3000` | `background/supporting-colors/orange/darker` | `#883000` | 2 |
+
+14 of 38 shared roles match exactly; 24 drift by 1-3 units. **Decision:** the Figma hex is the source of truth (`ref.palette.*`); regenerate the Twilight HSL channels from it so the two are byte-identical.
+
+Code also ships ramps the design library does not have: `primary-100 … 700`, `secondary-100 … 700`, 8-step status ramps, and the product-line accents `mahally` (`#FF5029` ramp), `blue` (`#94F1FF` ramp), `pink` (`#FF8FA5` ramp) and the `moshammer` AI gradient (`#ffe894 → #ffaf85 → #e4bd90 → #2cf2c7 → #94f1ff`). Keep those as application-level variables outside the system palette until a design decision adds them.
+
 ## Reference palette
 
 `ref.palette.{teal, gray, green, red, amber, blue, orange, gold}.{step}` in `tokens/tokens.json`. Steps are named by lightness (50 lightest → 900 darkest); every step listed was observed in Figma.

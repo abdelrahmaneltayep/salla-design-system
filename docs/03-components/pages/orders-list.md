@@ -2,9 +2,9 @@
 
 > s.salla.sa/orders. ListPage template with the order-status Status mapping and MobileRow kind=order.
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| page | Data display | 4 - Slot / Composition | reference | _not in Storybook_ |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| page | Data display | 4 - Slot / Composition | reference | none yet | _not in Storybook_ |
 
 ## Props
 
@@ -19,6 +19,10 @@ Template: [ListPage](../templates/list-page.md).
 ## Source in Figma today
 
 _No matching frame in the current Figma library._
+
+## Source in the Twilight Storybook today
+
+_Not in the Twilight Storybook (dashboard-ui-components.pages.dev)._
 
 ---
 _Generated from `catalog/components.json` (id `orders-list`). Edit the catalog, not this file._

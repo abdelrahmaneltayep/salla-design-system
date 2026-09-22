@@ -11,7 +11,9 @@ Source: the `Icons DS_V.1` Figma library (exported 2026-07-07). Inventory: `asse
 | Type | Rounded (default), Sharp (3) | |
 | Categories | Add Remove Delete · Alert Notification · Arrows · Artificial Intelligence · Award Reward · Bookmark Favourite · Brand logo · Building Landmark Places · Business and finance · Chat Bubbles · Check Validation · Cloth Accessories · Date and Time · Download Upload · Edit Formatting · Files Folders · Filter Sorting · Food Drink · Game Sports · Geometric Shapes · Global Map · Gym Fitness · Hand Gestures · Image Camera Video · Layout Borders · Link Unlink · Login Logout · More Menu · Mouse Cursors · Science Technology · Smiley Emojis · Wifi Signal · … | 60 category frames |
 
-The Merchant DS consumes the set through two frames, `Icons/Outline` and `Icons/Filled`, and names instances `{name}-outline` / `{name}-filled` (`add-01-outline`, `arrow-down-01-outline`, `cancel-01-outline`, `information-circle-outline`, `file-01-outline`, `star-outline` were seen in component code). The Storybook still exposes the older `sicon-*` icon font.
+The Merchant DS consumes the set through two frames, `Icons/Outline` and `Icons/Filled`, and names instances `{name}-outline` / `{name}-filled` (`add-01-outline`, `arrow-down-01-outline`, `cancel-01-outline`, `information-circle-outline`, `file-01-outline`, `star-outline` were seen in component code).
+
+The library is **Hugeicons**. The Twilight code confirms it: `<s-icon>` accepts Hugeicons classes `hgi-stroke hgi-{name}` (outline) and `hgi-solid hgi-{name}` (filled), plus the older Salla font as `sicon-light-{name}` / `s-light-{name}`; `IconPicker` switches between the two sources. So the three naming schemes today are `{name}-outline` (Figma), `hgi-stroke hgi-{name}` (code) and `sicon-*` (legacy font).
 
 ## Shipped subset
 
@@ -47,7 +49,9 @@ Colour is `currentColor`; icons never carry their own colour tokens.
 | Today | New |
 |---|---|
 | `add-01-outline` (Figma instance) | `name="add-01" style="outline"` |
-| `sicon-add` (Storybook font class) | alias table → `add-01`; retire the font after migration |
+| `hgi-stroke hgi-add-01` (Twilight `<s-icon icon>`) | `name="add-01" style="outline"` |
+| `hgi-solid hgi-add-01` | `name="add-01" style="filled"` |
+| `sicon-light-salla`, `s-light-tick-02` (legacy Salla font) | alias table → Hugeicons name; retire the font after migration |
 | `Style=Stroke, Type=Rounded` (library variant) | `style="outline"` |
 | `Style=Solid, Type=Rounded` | `style="filled"` |
 

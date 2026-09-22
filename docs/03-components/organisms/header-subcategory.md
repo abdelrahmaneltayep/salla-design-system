@@ -2,9 +2,9 @@
 
 > Second-level bar under the TopAppBar carrying secondary Tabs and a help / CTA area.
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| organism | Navigation | 4 - Slot / Composition | existing | _not in Storybook_ |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| organism | Navigation | 4 - Slot / Composition | existing | figma | _not in Storybook_ |
 
 ## Props
 
@@ -25,6 +25,10 @@ Composes: [Tab](../molecules/tab.md), [Button](../atoms/button.md).
 |---|---|---|---|
 | `Header Subcategory` | Header | 2 | device: desktop, mobile |
 | `Header Secondary Tabs` | Header | 12 | Language: Arabic, English; state: active, default, hover; Contained: Off, On |
+
+## Source in the Twilight Storybook today
+
+_Not in the Twilight Storybook (dashboard-ui-components.pages.dev)._
 
 ---
 _Generated from `catalog/components.json` (id `header-subcategory`). Edit the catalog, not this file._

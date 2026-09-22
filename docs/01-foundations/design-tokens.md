@@ -42,6 +42,29 @@ Every value in `tokens.json` names the Figma variable it was read from in its `$
 | Text styles `Bold|Medium|Regular / $text-*` | `sys.typography.*` | see `docs/02-styles/typography.md` |
 | (none) | `sys.elevation.*`, `ref.duration.*`, `ref.easing.*` | to be added as effect styles / variables |
 
+## Twilight (code) mapping
+
+The Storybook components read colours as bare HSL channels on `:root` (`--primary: 189 100% 17%`, used as `hsl(var(--primary))` or the Tailwind class `bg-primary`). The full list of 125 root variables is in `catalog/storybook-tokens.json`. Mapping of the roles that matter:
+
+| Twilight variable / class | System token | Note |
+|---|---|---|
+| `--primary`, `bg-primary` | `sys.color.primary` | code `#004A57`, Figma `#004956` (see color.md drift table) |
+| `--primary-200` | `sys.color.primary-disabled` | |
+| `--secondary`, `bg-secondary` | `sys.color.primary-container` | code `#A3FFE5`, Figma `#a4ffe5` |
+| `--secondary-200` / `-300` | `sys.color.primary-container-subtle` / `-hover` | |
+| `--success`, `--danger`, `--warning`, `--info` (+ `-100 … -800`) | `sys.color.status.*` | code ramps have 8 steps; the system keeps the 5 Figma shades and maps `-100` lighter, `-200` light, base primary, `-600` dark, `-800` darker |
+| `--gray-400`, `--gray-500`, `--gray` | `sys.color.outline`, `outline-hover`, `text.disabled` | |
+| `--dark`, `--dark-200`, `--dark-100` | `sys.color.text.primary`, `text.secondary`, `text.tertiary` | |
+| `--gold*`, `--orange*` | `sys.color.upgrade.*`, `sys.color.feature.*` | |
+| `--mahally*`, `--blue*`, `--pink*`, `--moshammer*` | not in the system | product-line accents (Mahally marketplace, Moshammer AI gradient); keep as app-level variables |
+| `--font-main`, `--font-base` | `ref.font.family.base`, `ref.font.size.sm` | |
+| `--sm-height` / `--md-height` / `--lg-height` | `ref.size.control.sm / md / lg` | |
+| `--nav-height`, `--action-bar-height` | `comp.top-app-bar.*`, ActionBar | |
+| `--breakpoint-*` | layout.md | |
+| `--transition-duration` | `ref.duration.medium` | |
+| `rounded-*` | `ref.radius.*` | identical scale, shifted names (shape.md) |
+| `shadow-*` | `sys.elevation.*` | different values (elevation.md) |
+
 ## Naming
 
 See [naming-conventions.md](../00-overview/naming-conventions.md#tokens).

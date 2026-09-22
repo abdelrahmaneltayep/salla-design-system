@@ -2,9 +2,9 @@
 
 > Spinner, dots or line progress in nine sizes from 8px to 88px.
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| atom | Communication | 1 - Configurable | existing | `Loader` |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| atom | Communication | 1 - Configurable | existing | figma, storybook | `<s-loader>` |
 
 ## Anatomy
 
@@ -35,6 +35,31 @@ Nine sizes is more than the rest of the system uses (three to six). Recommend co
 | Figma frame | Section today | Variants | Variant properties (cleaned) |
 |---|---|---|---|
 | `_LoadingIndicator` | Loader | 27 | Size: lg- 56px, md- 48px, sm- 32px, xl- 64px, xs- 24px, xxl- 88px, xxs- 20px, xxxs- 16px, xxxxs-8px; Type: Dots, Line, Spinner |
+
+## Source in the Twilight Storybook today
+
+### `<s-loader>`
+
+[components-loader](https://dashboard-ui-components.pages.dev/?path=/docs/components-loader) · 1 stories · Loader component to show loading state.
+
+**Props**
+
+| Prop | Type | Default | Options | Description |
+|---|---|---|---|---|
+| `size` | string | `md` | `xs`, `sm`, `md`, `lg`, `xlg` | Loader size |
+| `theme` | string | `default` | `default`, `default-force`, `light`, `dark` | Loader theme |
+
+**Stories**
+
+[Default](https://dashboard-ui-components.pages.dev/?path=/story/components-loader--default)
+
+**Rendered markup (default story)**
+
+```html
+<s-loader theme="default" size="md" role="status" class="s-loader s-loader--default md hydrated">
+</s-loader>
+```
+
 
 ---
 _Generated from `catalog/components.json` (id `loading-indicator`). Edit the catalog, not this file._

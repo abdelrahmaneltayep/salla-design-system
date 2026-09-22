@@ -10,14 +10,17 @@ How screens are structured and how they adapt. Material's *Adaptive design* and 
 
 ## Breakpoints (window size classes)
 
-Material 3 window size classes, with Salla's Tailwind names:
+The breakpoints are the ones the Twilight code ships as root variables (`--breakpoint-*`), mapped onto Material 3 window size classes:
 
-| Class | Width | Tailwind | Layout behaviour |
+| Twilight variable | Width | Material class | Layout behaviour |
 |---|---|---|---|
-| Compact | < 600 | `sm` and below | Single column. `TopAppBar` mobile, `NavigationDrawer` modal, `DataTable` renders `MobileRow`, `ActionBar` floats bottom, `BottomSheet` replaces `Dialog` |
-| Medium | 600 – 839 | `md` | Single column with wider gutters. Drawer modal. Tables scroll horizontally |
-| Expanded | 840 – 1199 | `lg` | Drawer standard (persistent). `ListDetailPage` shows two panes |
-| Large / Extra-large | ≥ 1200 | `xl`, `2xl` | Full desktop; content capped at 1536 |
+| `--breakpoint-sm` | 639px | Compact (below `sm`) | Single column. `TopAppBar` mobile, `NavigationDrawer` modal, `DataTable` `layout=responsive` (card rows), `Dropdown` / `Select` open as a mobile sheet (`sheetTitle`), `ActionBar` floats bottom |
+| `--breakpoint-md` | 768px | Medium | Single column with wider gutters. Drawer modal. Tables scroll horizontally (`layout=scroll`) |
+| `--breakpoint-lg` | 1024px | Expanded | Drawer standard (persistent). `ListDetailPage` shows two panes |
+| `--breakpoint-xl` | 1279px | Large | Full desktop |
+| `--breakpoint-2xl` | 1400px | Extra-large | Content capped at 1536px |
+
+Other layout constants shipped in code: `--nav-height` 4.5rem (72px TopAppBar), `--action-bar-height` 79px, control heights `--sm-height` 2rem / `--md-height` 2.5rem / `--lg-height` 3rem (the 32 / 40 / 48 scale in `ref.size.control`).
 
 Components with genuinely different layouts per class declare a `device` prop in the catalog (`TopAppBar`, `PageTitle`, `DataTable`, `Breadcrumb`, `Stepper`, `Pagination`). Everything else adapts with CSS.
 

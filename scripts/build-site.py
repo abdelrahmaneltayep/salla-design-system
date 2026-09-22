@@ -249,6 +249,7 @@ TEMPLATE = r"""<!doctype html>
       <div class="crumbs" id="crumbs"></div>
       <button class="tb" id="dirBtn" title="Flip the live examples between LTR and RTL">Examples: LTR</button>
       <a class="tb" href="https://www.figma.com/design/zuGhoKg2BaBIYUreKuSBGY/Merchant---Storybook-DS?node-id=3678-29170" target="_blank" rel="noopener">Figma ↗</a>
+      <a class="tb" href="https://dashboard-ui-components.pages.dev/" target="_blank" rel="noopener">Storybook ↗</a>
     </div>
     <main class="content" id="content"></main>
   </div>
@@ -350,7 +351,9 @@ function exampleBlock(exId) {
 
 function componentHeader(c) {
   const st = DATA.catalog.structureTypes[String(c.structure)].split(" (")[0];
-  return `<div class="classify"><span class="pill level">${c.level}</span><span class="pill">${c.category}</span><span class="pill">Structure ${c.structure} · ${st}</span><span class="pill">${c.status}</span>${c.storybook ? `<span class="pill">Storybook: ${c.storybook}</span>` : ""}</div>`;
+  const tw = (c.twilight || []).map(t => `<span class="pill">&lt;${t.tag}&gt;</span>`).join("");
+  const src = (c.sources || []).length ? (c.sources || []).map(s => `<span class="pill">${s === "storybook" ? "in Twilight" : "in Figma"}</span>`).join("") : `<span class="pill">not built yet</span>`;
+  return `<div class="classify"><span class="pill level">${c.level}</span><span class="pill">${c.category}</span><span class="pill">Structure ${c.structure} · ${st}</span><span class="pill">${c.status}</span>${src}${tw}</div>`;
 }
 
 function componentsIndex() {
@@ -365,6 +368,7 @@ function componentsIndex() {
       <select id="fc" aria-label="Category"><option value="">All categories</option>${cat.categories.map(l => `<option>${l}</option>`).join("")}</select>
       <select id="fs" aria-label="Structure"><option value="">All structures</option>${Object.entries(cat.structureTypes).map(([k, v]) => `<option value="${k}">${k} · ${v.split(" (")[0]}</option>`).join("")}</select>
       <select id="ft" aria-label="Status"><option value="">Any status</option><option>existing</option><option>proposed</option><option>reference</option></select>
+      <select id="fo" aria-label="Source"><option value="">Any source</option><option value="both">Figma + Twilight</option><option value="figma">Figma only</option><option value="storybook">Twilight only</option><option value="none">Neither yet</option></select>
     </div>
     <div class="cards" id="cards"></div>
     <h2>Structure types</h2>
@@ -373,10 +377,11 @@ function componentsIndex() {
 
 function drawCards() {
   const q = (document.getElementById("fq").value || "").toLowerCase();
-  const fl = document.getElementById("fl").value, fc = document.getElementById("fc").value, fs = document.getElementById("fs").value, ft = document.getElementById("ft").value;
-  const list = DATA.catalog.components.filter(c => (!q || (c.name + " " + c.id + " " + c.summary).toLowerCase().includes(q)) && (!fl || c.level === fl) && (!fc || c.category === fc) && (!fs || String(c.structure) === fs) && (!ft || c.status === ft));
+  const fl = document.getElementById("fl").value, fc = document.getElementById("fc").value, fs = document.getElementById("fs").value, ft = document.getElementById("ft").value, fo = document.getElementById("fo").value;
+  const srcOk = c => { const s = c.sources || []; if (!fo) return true; if (fo === "both") return s.length === 2; if (fo === "none") return s.length === 0; return s.length === 1 && s[0] === fo; };
+  const list = DATA.catalog.components.filter(c => (!q || (c.name + " " + c.id + " " + c.summary + " " + (c.storybook || "")).toLowerCase().includes(q)) && (!fl || c.level === fl) && (!fc || c.category === fc) && (!fs || String(c.structure) === fs) && (!ft || c.status === ft) && srcOk(c));
   const el = document.getElementById("cards");
-  el.innerHTML = list.length ? list.map(c => `<a class="card" href="#/03-components/${LEVEL_DIR[c.level]}/${c.id}"><b>${c.name}</b><span>${c.summary.split(". ")[0]}.</span><div class="meta"><i>${c.level}</i><i>${c.category}</i><i>structure ${c.structure}</i>${DATA.examples[c.id] ? "<i>live</i>" : ""}</div></a>`).join("") : `<div class="empty">No components match.</div>`;
+  el.innerHTML = list.length ? list.map(c => `<a class="card" href="#/03-components/${LEVEL_DIR[c.level]}/${c.id}"><b>${c.name}</b><span>${c.summary.split(". ")[0]}.</span><div class="meta"><i>${c.level}</i><i>${c.category}</i><i>structure ${c.structure}</i>${(c.sources || []).map(s => `<i>${s === "storybook" ? "twilight" : s}</i>`).join("")}${DATA.examples[c.id] ? "<i>live</i>" : ""}</div></a>`).join("") : `<div class="empty">No components match.</div>`;
 }
 
 function render() {
@@ -393,7 +398,7 @@ function render() {
 
   if (id === "03-components/README") {
     content.innerHTML = componentsIndex();
-    ["fq", "fl", "fc", "fs", "ft"].forEach(i => document.getElementById(i).addEventListener("input", drawCards));
+    ["fq", "fl", "fc", "fs", "ft", "fo"].forEach(i => document.getElementById(i).addEventListener("input", drawCards));
     drawCards();
   } else if (md !== undefined) {
     let html = renderMarkdown(id, md);

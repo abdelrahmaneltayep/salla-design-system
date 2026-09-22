@@ -2,9 +2,9 @@
 
 > Country flag glyphs, one per ISO 3166 code (265 in Figma).
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| atom | Data display | 2 - Standalone | existing | _not in Storybook_ |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| atom | Data display | 2 - Standalone | existing | figma | _not in Storybook_ |
 
 ## Props
 
@@ -30,6 +30,10 @@ Ship as a sprite or lazy-loaded SVGs; do not bundle 265 inline SVGs in the base 
 | Figma frame | Section today | Variants | Variant properties (cleaned) |
 |---|---|---|---|
 | `Flag` | (top level) | - | - |
+
+## Source in the Twilight Storybook today
+
+_Not in the Twilight Storybook (dashboard-ui-components.pages.dev)._
 
 ---
 _Generated from `catalog/components.json` (id `flag`). Edit the catalog, not this file._

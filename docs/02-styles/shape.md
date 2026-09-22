@@ -17,6 +17,10 @@ Corner radii as a Material shape scale. Salla's default corner is **8px**; the s
 
 `ref.radius.{none 0, sm 2, md 4, lg 6, xl 8, 2xl 12, 3xl 16, 4xl 24, 5xl 32, full}` mirrors Figma `Radius/Sizes/{None, sm, md, lg, xl, 2xl, 3xl, 4xl, 5xl, Full}`. `md`, `xl`, `3xl` and `full` were verified; the rest follow the scale.
 
+## What the Twilight code ships today
+
+The Storybook roundness scale matches the reference scale exactly: `rounded-sm` 2px, `rounded` 4px, `rounded-md` 6px, `rounded-lg` 8px, `rounded-xl` 12px, `rounded-2xl` 16px, `rounded-3xl` 24px, `rounded-4xl` 32px. Note the off-by-one naming against Figma: Tailwind `rounded-lg` (8px) is Figma `radius/xl` (8px) and `sys.shape.small`. The Tailwind preset in this repo exposes the Material names (`rounded-small`) so the mismatch disappears in product code.
+
 ## Issues found in Figma
 
 - The old variable **`radius/sm` resolves to 8px** (seen on the header avatar chip and the page-size select) while `radius/xl` is also 8px. `radius/sm` must be re-pointed to 2px or the instances moved to `radius/xl`.

@@ -42,3 +42,8 @@ Molecules are small groups of atoms working as a unit: a labelled field, a statu
 | [FilterResults](filter-results.md) | Communication | 1 | existing |
 | [PanelHeader](panel-header.md) | Containment | 4 | existing |
 | [InlineAlert](inline-alert.md) | Communication | 3 | existing |
+| [LingualField](lingual-field.md) | Text inputs | 3 | existing |
+| [IconPicker](icon-picker.md) | Selection | 3 | existing |
+| [RangeSlider](range-slider.md) | Selection | 3 | existing |
+| [Rate](rate.md) | Selection | 1 | existing |
+| [TagsField](tags-field.md) | Text inputs | 3 | existing |

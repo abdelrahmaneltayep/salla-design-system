@@ -2,9 +2,9 @@
 
 > Dark-teal top bar: logo, primary tabs, global search, notifications, account menu. Desktop and mobile.
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| organism | Navigation | 4 - Slot / Composition | existing | `Header` |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| organism | Navigation | 4 - Slot / Composition | existing | figma | _not in Storybook_ |
 
 ## Props
 
@@ -33,6 +33,10 @@ Composes: [Tab](../molecules/tab.md), [GlobalSearch](../molecules/global-search.
 | `Header` | Header | 2 | device: desktop, mobile |
 | `Primary Tabs List - Dashboard only` | Header | 2 | Language: Arabic, English |
 | `Header Primary Tabs` | (top level) | - | - |
+
+## Source in the Twilight Storybook today
+
+_Not in the Twilight Storybook (dashboard-ui-components.pages.dev)._
 
 ---
 _Generated from `catalog/components.json` (id `header`). Edit the catalog, not this file._

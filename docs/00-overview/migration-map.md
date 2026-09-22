@@ -108,42 +108,52 @@ Where every current Figma section, frame and Storybook story goes in the new str
 | `Icons/Filled`, `Icons/Outline` | `Icon` | atom |
 | `Products Management` | `ListPage` | template |
 
-## Storybook story titles (old → new)
+## Twilight components → catalog (old → new)
 
-| Story today | New title |
-|---|---|
-| Button | `Atoms / Actions / Button` |
-| Input, LingualField | `Molecules / Text inputs / TextField` |
-| Textarea | `Molecules / Text inputs / TextareaField` |
-| Password | `Molecules / Text inputs / PasswordField` |
-| Search | `Molecules / Text inputs / SearchField` |
-| Select | `Molecules / Text inputs / SelectField` |
-| Tags Input | `Molecules / Text inputs / MultiSelectField` |
-| Qty | `Molecules / Text inputs / QuantityField` |
-| Phone | `Molecules / Text inputs / PhoneField` |
-| Number / Price | `Molecules / Text inputs / AmountField` |
-| File Upload | `Molecules / Text inputs / UploadField` |
-| Color Picker | `Molecules / Text inputs / ColorPickerField` |
-| Checkbox | `Atoms / Selection / Checkbox` and `Molecules / Selection / CheckboxField` |
-| Radio | `Atoms / Selection / Radio` and `Molecules / Selection / RadioField` |
-| Toggle | `Atoms / Selection / Switch` and `Molecules / Selection / SwitchField` |
-| Loader | `Atoms / Communication / LoadingIndicator` and `Molecules / Communication / Loading` |
-| Badge / Status | `Molecules / Communication / Status` |
-| Avatar | `Atoms / Data display / Avatar` |
-| AlertBox | `Organisms / Communication / Alert` and `Molecules / Communication / InlineAlert` |
-| Breadcrumb | `Molecules / Navigation / Breadcrumb` |
-| Tabs | `Organisms / Navigation / Tabs` |
-| Dropdown / Dropdown Menu | `Organisms / Containment / DropdownList`, `Organisms / Containment / MoreMenu` |
-| Table | `Organisms / Data display / DataTable` |
-| Pagination | `Organisms / Navigation / Pagination` |
-| Header | `Organisms / Navigation / TopAppBar` |
-| Sidebar | `Organisms / Navigation / NavigationDrawer` |
-| Panel | `Organisms / Containment / Panel` |
-| Modal | `Organisms / Containment / Dialog` |
-| Tooltip | `Organisms / Communication / Tooltip` |
-| ButtonsGroup | `Organisms / Actions / ActionBar` |
-| Steps | `Organisms / Navigation / Stepper` |
-| Date Picker | `Organisms / Selection / DateTimePicker` |
+Every Twilight web component and where it lands. The full props / events / stories per tag are on each component page under *Source in the Twilight Storybook today*.
+
+| Twilight tag | Storybook entry | New component(s) | Level |
+|---|---|---|---|
+| `<s-accordion>` | Accordion | Accordion | organism |
+| `<s-alert-box>` | AlertBox | Alert (default), InlineAlert (layout=flat), AlertBanner (horizontal), UpgradeCard (theme=feature) | organism / molecule |
+| `<s-avatar>` | Avatar | Avatar, AvatarWithText (label + desc), AccountMenuTrigger | atom / molecule |
+| `<s-breadcrumbs>` | Breadcrumbs | Breadcrumb, BreadcrumbItem | molecule |
+| `<s-button>` | Button | Button, IconButton (layout=circular), Link (href) | atom |
+| `<s-buttons-group>` | ButtonsGroup | ActionBar | organism |
+| `<s-calendar>` | Calendar | DateTimePicker, CalendarCell | organism / molecule |
+| `<s-checkbox>` | Checkbox | Checkbox, CheckboxField | atom / molecule |
+| `<s-color-picker>` | ColorPicker | ColorPickerField | molecule |
+| `<s-dropdown>` | Dropdown | MoreMenu, DropdownList, MenuItem, BottomSheet (mobile sheet) | organism / molecule |
+| `<s-editor>` | Editor | RichTextEditor | organism |
+| `<s-icon>` | Icon | Icon | atom |
+| `<s-icon-picker>` | IconPicker | IconPicker | molecule |
+| `<s-input>` | Input | TextField, PasswordField, EmailField, AmountField, SearchField, GlobalSearch, HelperText (desc), BaseField | molecule |
+| `<s-list-item>` | Item | ListItem, MenuItem | molecule |
+| `<s-lingual-field>` | LingualField | LingualField, TranslationToggle | molecule / atom |
+| `<s-loader>` | Loader | LoadingIndicator, Loading | atom / molecule |
+| `<s-maps>` | Maps | Map | organism |
+| `<s-modal>` | Modal | Dialog | organism |
+| `<s-otp>` | OTP | OtpField | molecule |
+| `<s-panel>` | Panel | Panel, PanelHeader | organism / molecule |
+| `<s-placeholder>` | Placeholder | EmptyState | organism |
+| `<s-progress-bar>` | Progress Bar | ProgressBar | atom |
+| `<s-qty>` | Qty | QuantityField, StepperButton | molecule / atom |
+| `<s-radio>` | Radio | Radio, RadioField, RadioImage (layout=image), RadioColor (layout=color) | atom / molecule |
+| `<s-range-slider>` | Range Slider | RangeSlider | molecule |
+| `<s-rate>` | Rate | Rate | molecule |
+| `<s-select>` | Select | SelectField, MultiSelectField, DropdownList, SearchField (autocomplete) | molecule / organism |
+| `<s-skeleton>` | Skeleton | Skeleton | atom |
+| `<s-table>` | Table | DataTable, TableCell, MobileRow (layout=responsive), Pagination | organism / molecule |
+| `<s-tabs-group>` | Tabs | Tabs, Tab (`<s-tab-head>`) | organism / molecule |
+| `<s-tag>` | Tag | Chip, Status (layout=status), StatusIndicator | atom / molecule |
+| `<s-tags>` | Tags Input | TagsField | molecule |
+| `<s-tel-input>` | Telephone Input | PhoneField | molecule |
+| `<s-textarea>` | Textarea | TextareaField | molecule |
+| `<s-toggle>` | Toggle | Switch, SwitchField | atom / molecule |
+| `<s-tooltip>` | Tooltip | Tooltip | organism |
+| `<s-uploader>` | Uploader | UploadField | molecule |
+
+Storybook title convention after migration: `{Level}s / {Category} / {Name}` (e.g. `Molecules / Text inputs / TextField`), one story per global component rather than one story per Twilight tag.
 
 ## Token renames (old Figma variable → new)
 

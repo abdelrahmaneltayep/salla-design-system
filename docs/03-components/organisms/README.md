@@ -21,10 +21,12 @@ Organisms are complex sections built from molecules and atoms: the data table, t
 | [Stepper](stepper.md) | Navigation | 5 | existing |
 | [ActionBar](action-bar.md) | Actions | 4 | existing |
 | [BottomSheet](bottom-sheet.md) | Containment | 4 | existing |
-| [Dialog](dialog.md) | Containment | 4 | proposed |
-| [Panel](panel.md) | Containment | 4 | proposed |
+| [Dialog](dialog.md) | Containment | 4 | existing |
+| [Panel](panel.md) | Containment | 4 | existing |
 | [Tooltip](tooltip.md) | Communication | 5 | existing |
 | [Toast](toast.md) | Communication | 1 | proposed |
 | [EmptyState](empty-state.md) | Communication | 4 | existing |
 | [Pagination](pagination.md) | Navigation | 1 | existing |
 | [Map](map.md) | Data display | 2 | existing |
+| [Accordion](accordion.md) | Containment | 4 | existing |
+| [RichTextEditor](rich-text-editor.md) | Text inputs | 3 | existing |

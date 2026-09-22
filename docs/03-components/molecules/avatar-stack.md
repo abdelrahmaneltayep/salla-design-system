@@ -2,9 +2,9 @@
 
 > Overlapping or spaced row of Avatars with +N overflow.
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| molecule | Data display | 1 - Configurable | existing | _not in Storybook_ |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| molecule | Data display | 1 - Configurable | existing | figma | _not in Storybook_ |
 
 ## Props
 
@@ -26,6 +26,10 @@ Composes: [Avatar](../atoms/avatar.md).
 | Figma frame | Section today | Variants | Variant properties (cleaned) |
 |---|---|---|---|
 | `AvatarStack` | Avatar | 8 | overlapping: false, true; size: compact, default; Language: Arabic, English |
+
+## Source in the Twilight Storybook today
+
+_Not in the Twilight Storybook (dashboard-ui-components.pages.dev)._
 
 ---
 _Generated from `catalog/components.json` (id `avatar-stack`). Edit the catalog, not this file._

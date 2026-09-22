@@ -2,9 +2,9 @@
 
 > Applied-filters summary bar above a table with a clear action.
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| molecule | Communication | 1 - Configurable | existing | _not in Storybook_ |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| molecule | Communication | 1 - Configurable | existing | figma | _not in Storybook_ |
 
 ## Props
 
@@ -24,6 +24,10 @@ Composes: [Chip](../atoms/chip.md).
 | Figma frame | Section today | Variants | Variant properties (cleaned) |
 |---|---|---|---|
 | `_Table/Filter Results` | Table | 2 | Type: Close, Default |
+
+## Source in the Twilight Storybook today
+
+_Not in the Twilight Storybook (dashboard-ui-components.pages.dev)._
 
 ---
 _Generated from `catalog/components.json` (id `filter-results`). Edit the catalog, not this file._

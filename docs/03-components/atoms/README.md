@@ -5,8 +5,8 @@ Atoms are the smallest usable UI units: a button, an icon, a checkbox. They do o
 | Component | Material category | Structure | Status |
 |---|---|---|---|
 | [Button](button.md) | Actions | 1 | existing |
-| [IconButton](icon-button.md) | Actions | 3 | proposed |
-| [Link](link.md) | Actions | 3 | proposed |
+| [IconButton](icon-button.md) | Actions | 3 | existing |
+| [Link](link.md) | Actions | 3 | existing |
 | [Icon](icon.md) | Communication | 2 | existing |
 | [Checkbox](checkbox.md) | Selection | 3 | existing |
 | [Radio](radio.md) | Selection | 3 | existing |
@@ -27,3 +27,5 @@ Atoms are the smallest usable UI units: a button, an icon, a checkbox. They do o
 | [StepIndicator](step-indicator.md) | Navigation | 1 | existing |
 | [Divider](divider.md) | Containment | 1 | proposed |
 | [Text](text.md) | Communication | 1 | proposed |
+| [ProgressBar](progress-bar.md) | Communication | 1 | existing |
+| [Skeleton](skeleton.md) | Communication | 2 | existing |

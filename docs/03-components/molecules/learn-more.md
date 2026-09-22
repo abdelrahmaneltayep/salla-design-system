@@ -2,9 +2,9 @@
 
 > Help card linking to documentation, default and small sizes, desktop and mobile.
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| molecule | Communication | 1 - Configurable | existing | _not in Storybook_ |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| molecule | Communication | 1 - Configurable | existing | figma | _not in Storybook_ |
 
 ## Props
 
@@ -23,6 +23,10 @@ Build as **one component** whose variations are props. Keep the prop list flat a
 | Figma frame | Section today | Variants | Variant properties (cleaned) |
 |---|---|---|---|
 | `Learn More` | (top level) | - | - |
+
+## Source in the Twilight Storybook today
+
+_Not in the Twilight Storybook (dashboard-ui-components.pages.dev)._
 
 ---
 _Generated from `catalog/components.json` (id `learn-more`). Edit the catalog, not this file._

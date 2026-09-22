@@ -2,9 +2,9 @@
 
 > Path navigation with icon, text, more (…) and separator items; collapses past 5 items and on mobile.
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| molecule | Navigation | 4 - Slot / Composition | existing | `Breadcrumb` |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| molecule | Navigation | 4 - Slot / Composition | existing | figma, storybook | `<s-breadcrumbs>` |
 
 ## Props
 
@@ -34,6 +34,39 @@ Composes: [BreadcrumbItem](../molecules/breadcrumb-item.md), [Divider](../atoms/
 |---|---|---|---|
 | `_breadcrumbItem` | Bread crumb | 20 | Language: Arabic, English; Status: active, default, disabled, hover, onclick; Type: Icon, More, Separator, Text |
 | `Breadcrumb` | Bread crumb | 12 | Language: Arabic, English; count: 2, 3, >5; device: Desktop, Mobile |
+
+## Source in the Twilight Storybook today
+
+### `<s-breadcrumbs>`
+
+[components-breadcrumbs](https://dashboard-ui-components.pages.dev/?path=/docs/components-breadcrumbs) · 5 stories · A breadcrumb is a navigation component that allows users to track their location within a website or application.
+
+**Props**
+
+| Prop | Type | Default | Options | Description |
+|---|---|---|---|---|
+| `isOnClick` | boolean | `false` |  | Specifies if the breadcrumbs are clickable, if true, the breadcrumbClick event will be emitted |
+| `items` | string | `[]` |  | Breadcrumbs items |
+| `loading` | boolean | `false` |  | Specifies if the breadcrumbs are in a loading state |
+| `maxVisibleItems` | number | `5` |  | Maximum number of visible items, the rest will be hidden in a dropdown |
+
+**Events**
+
+| Event | Description |
+|---|---|
+| `breadcrumbClick` | Emitted when a breadcrumb is clicked. Provides the clicked breadcrumb value. |
+
+**Stories**
+
+[Default](https://dashboard-ui-components.pages.dev/?path=/story/components-breadcrumbs--default), [Array Format](https://dashboard-ui-components.pages.dev/?path=/story/components-breadcrumbs--array-format), [Max Visible Items](https://dashboard-ui-components.pages.dev/?path=/story/components-breadcrumbs--max-visible-items), [Loading](https://dashboard-ui-components.pages.dev/?path=/story/components-breadcrumbs--loading), [With Click Handler](https://dashboard-ui-components.pages.dev/?path=/story/components-breadcrumbs--with-click-handler)
+
+**Rendered markup (default story)**
+
+```html
+<s-breadcrumbs items="[{&quot;id&quot;:0,&quot;label&quot;:&quot;Home&quot;,&quot;route&quot;:&quot;/&quot;},{&quot;id&quot;:1,&quot;label&quot;:&quot;Category&quot;,&quot;route&quot;:&quot;/category&quot;},{&quot;id&quot;:2,&quot;label&quot;:&quot;Subcategory&quot;,&quot;route&quot;:&quot;/subcategory&quot;}]" max-visible-items="5" class="s-breadcrumbs ltr hydrated">
+</s-breadcrumbs>
+```
+
 
 ---
 _Generated from `catalog/components.json` (id `breadcrumb`). Edit the catalog, not this file._

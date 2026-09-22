@@ -67,10 +67,14 @@ salla-design-system/
 │   ├── components.json                 The source of truth: every component, its level, category,
 │   │                                   structure type, props, states, Figma frame and Storybook story
 │   ├── figma-inventory.json            Raw extract of the Figma library (sections → frames → variant props)
-│   └── figma-tokens-harvest.json       Variable name → value pairs read from 20 Figma frames (token evidence)
+│   ├── figma-tokens-harvest.json       Variable name → value pairs read from 20 Figma frames (token evidence)
+│   ├── storybook-twilight.md           Full capture of the Twilight Storybook (tokens + 38 components)
+│   ├── storybook-inventory.json        Parsed: tag, props, events, slots, stories per Twilight component
+│   └── storybook-tokens.json           Parsed: code palette (HSL/hex), roundness, shadows, root variables
 ├── assets/icons/icon-inventory.json    4,049 icon names + styles from Icons DS_V.1.fig
 ├── scripts/
-│   ├── build-catalog.py                Regenerates docs/03-components from the catalog
+│   ├── parse-storybook.py              storybook-twilight.md → storybook-inventory.json + storybook-tokens.json
+│   ├── build-catalog.py                Regenerates docs/03-components from the catalog (+ Twilight sections)
 │   └── build-site.py                   Bundles docs + catalog + examples into site/index.html
 ├── site/index.html                     The documentation site (generated, single file)
 └── preview/index.html                  Live examples of 20 components built only from tokens.css
@@ -104,7 +108,7 @@ module.exports = { presets: [require('./tokens/tailwind/preset')], content: ['./
 |---|---|---|
 | Figma `Merchant - Storybook DS` (file `zuGhoKg2BaBIYUreKuSBGY`, branch `dnmyqzYKK9dUJjVHuIWMDS`, page *Main Components (Full)*) | Component anatomy, variants, states, token names and values | `catalog/figma-inventory.json`, `tokens/tokens.json` |
 | Figma `Icons DS_V.1` | Icon set: 4,049 names, Stroke/Solid/Bulk/Twotone/Duotone × Rounded/Sharp | `assets/icons/icon-inventory.json`, `docs/02-styles/icons.md` |
-| Storybook `dashboard-ui-components.pages.dev` (Twilight web components) | Shipped component names and stories | `catalog/components.json` → `storybook` field |
+| Storybook `dashboard-ui-components.pages.dev` (Twilight web components, 38 components / 405 stories, captured 2026-09-22) | Shipped tags, props, events, slots, stories, code tokens | `catalog/storybook-twilight.md` (capture), `catalog/storybook-inventory.json`, `catalog/storybook-tokens.json`, `catalog/components.json` → `twilight` field |
 | *Component Structure Types* (internal PDF, 2025-07-06) | The five build patterns | `docs/00-overview/component-structure-types.md` |
 | Material Design 3 (m3.material.io) | Foundations / Styles / Components structure, token tiers, category taxonomy | `docs/00-overview/methodology.md` |
 

@@ -22,6 +22,10 @@ Weights ✓: Regular 400, Medium 500, Bold 700. No light or black.
 
 The Figma line-height variables are named `typography/line-height (Descreptive)/4|5|6|7|8`, i.e. Tailwind's `leading-4 … leading-8`. Rename to `line-height/4 … 8` (typo fix) and keep the numeric names.
 
+## What the Twilight code ships today
+
+The Storybook sets `--font-main: "PingARLT"` and `--font-base: 14px` (so `body-md` at 14px is the document default), and exposes Tailwind classes `text-3xs`, `text-2xs`, `text-xs` … `text-9xl` from `@salla.sa/ui-merchant-styles`. The two extra small steps (`3xs`, `2xs`) have no Figma counterpart; treat them as 10px and 11px utility sizes for dense table chrome only, never for body text.
+
 ## Type roles (Material)
 
 | Role | Token | Figma style | Size / line | Weight | Observed on |

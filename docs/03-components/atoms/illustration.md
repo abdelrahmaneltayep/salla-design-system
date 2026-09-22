@@ -2,9 +2,9 @@
 
 > Spot illustrations for empty states and onboarding, with web and mobile variants.
 
-| Atomic level | Material category | Structure type | Status | Storybook story |
-|---|---|---|---|---|
-| atom | Communication | 2 - Standalone | existing | _not in Storybook_ |
+| Atomic level | Material category | Structure type | Status | Sources | Twilight |
+|---|---|---|---|---|---|
+| atom | Communication | 2 - Standalone | existing | figma | _not in Storybook_ |
 
 ## Props
 
@@ -27,6 +27,10 @@ See docs/02-styles/illustrations.md for the full list and usage rules.
 |---|---|---|---|
 | `Illustrations Collection` | (top level) | - | - |
 | `Illustration` | (top level) | - | - |
+
+## Source in the Twilight Storybook today
+
+_Not in the Twilight Storybook (dashboard-ui-components.pages.dev)._
 
 ---
 _Generated from `catalog/components.json` (id `illustration`). Edit the catalog, not this file._

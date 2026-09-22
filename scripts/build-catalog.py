@@ -123,6 +123,52 @@ def render_figma(comp, inv):
     return (head + "\n\n" if head else "") + md_table(["Figma frame", "Section today", "Variants", "Variant properties (cleaned)"], rows)
 
 
+def render_twilight(comp, sb):
+    tw = comp.get("twilight") or []
+    if not tw:
+        return "_Not in the Twilight Storybook (dashboard-ui-components.pages.dev)._"
+    out = []
+    for t in tw:
+        e = sb.get(t["entry"])
+        if not e:
+            continue
+        out.append(f"### `<{e['tag']}>`" + (f" — {t['note']}" if t.get("note") else ""))
+        out.append("")
+        out.append(f"[{e['entry']}]({e['url']}) · {len(e['stories'])} stories · {e['description']}")
+        if e.get("related"):
+            out.append("")
+            out.append("Related elements: " + ", ".join(f"`<{r}>`" for r in e["related"]))
+        if e["props"]:
+            out.append("")
+            out.append("**Props**")
+            out.append("")
+            out.append(md_table(["Prop", "Type", "Default", "Options", "Description"], [(f"`{p['name']}`", p["type"] or p["control"], f"`{p['default']}`" if p["default"] else "", ", ".join(f"`{o}`" for o in p["options"]), p["description"]) for p in e["props"]]))
+        if e["slots"]:
+            out.append("")
+            out.append("**Slots**")
+            out.append("")
+            out.append(md_table(["Slot", "Description"], [(f"`{s['name']}`", s["description"]) for s in e["slots"]]))
+        if e["events"]:
+            out.append("")
+            out.append("**Events**")
+            out.append("")
+            out.append(md_table(["Event", "Description"], [(f"`{ev['name']}`", ev["description"]) for ev in e["events"]]))
+        if e["stories"]:
+            out.append("")
+            out.append("**Stories**")
+            out.append("")
+            out.append(", ".join(f"[{s['name']}](https://dashboard-ui-components.pages.dev/?path=/story/{s['id']})" for s in e["stories"]))
+        if e["markup"]:
+            out.append("")
+            out.append("**Rendered markup (default story)**")
+            out.append("")
+            out.append("```html")
+            out.append(e["markup"])
+            out.append("```")
+        out.append("")
+    return "\n".join(out)
+
+
 def render_component(comp, inv, by_id):
     s = comp["structure"]
     lines = []
@@ -131,8 +177,8 @@ def render_component(comp, inv, by_id):
     lines.append(f"> {comp['summary']}")
     lines.append("")
     lines.append(md_table(
-        ["Atomic level", "Material category", "Structure type", "Status", "Storybook story"],
-        [(comp["level"], comp["category"], f"{s} - {STRUCTURE_NAMES[str(s)]}", comp.get("status", "existing"), f"`{comp['storybook']}`" if comp.get("storybook") else "_not in Storybook_")],
+        ["Atomic level", "Material category", "Structure type", "Status", "Sources", "Twilight"],
+        [(comp["level"], comp["category"], f"{s} - {STRUCTURE_NAMES[str(s)]}", comp.get("status", "existing"), ", ".join(comp.get("sources", [])) or "none yet", f"`{comp['storybook']}`" if comp.get("storybook") else "_not in Storybook_")],
     ))
     lines.append("")
     if comp.get("anatomy"):
@@ -193,6 +239,10 @@ def render_component(comp, inv, by_id):
     lines.append("")
     lines.append(render_figma(comp, inv))
     lines.append("")
+    lines.append("## Source in the Twilight Storybook today")
+    lines.append("")
+    lines.append(render_twilight(comp, SB))
+    lines.append("")
     lines.append("---")
     lines.append(f"_Generated from `catalog/components.json` (id `{comp['id']}`). Edit the catalog, not this file._")
     lines.append("")
@@ -206,7 +256,10 @@ def render_index(cat, by_level, by_cat):
     total = len(cat["components"])
     existing = sum(1 for c in cat["components"] if c.get("status") == "existing")
     proposed = sum(1 for c in cat["components"] if c.get("status") == "proposed")
-    lines.append(md_table(["Total", "Existing in Figma / Storybook", "Proposed (gap)", "Page references"], [(total, existing, proposed, total - existing - proposed)]))
+    both = sum(1 for c in cat["components"] if set(c.get("sources", [])) == {"figma", "storybook"})
+    figma_only = sum(1 for c in cat["components"] if c.get("sources") == ["figma"])
+    sb_only = sum(1 for c in cat["components"] if c.get("sources") == ["storybook"])
+    lines.append(md_table(["Total", "Existing", "Proposed (gap)", "Page references", "In Figma and Storybook", "Figma only", "Storybook only"], [(total, existing, proposed, total - existing - proposed, both, figma_only, sb_only)]))
     lines.append("")
     lines.append("## By atomic level")
     lines.append("")
@@ -216,8 +269,8 @@ def render_index(cat, by_level, by_cat):
         lines.append("")
         lines.append(LEVEL_BLURB[level])
         lines.append("")
-        rows = [(f"[{c['name']}]({LEVEL_DIR[level]}/{c['id']}.md)", c["category"], c["structure"], c.get("status", "existing"), c["summary"].split(".")[0] + ".") for c in comps]
-        lines.append(md_table(["Component", "Material category", "Structure", "Status", "What it is"], rows))
+        rows = [(f"[{c['name']}]({LEVEL_DIR[level]}/{c['id']}.md)", c["category"], c["structure"], c.get("status", "existing"), ", ".join(c.get("sources", [])) or "-", c["summary"].split(".")[0] + ".") for c in comps]
+        lines.append(md_table(["Component", "Material category", "Structure", "Status", "Sources", "What it is"], rows))
         lines.append("")
     lines.append("## By Material category")
     lines.append("")
@@ -248,7 +301,8 @@ def render_level_readme(level, comps):
 def main():
     cat = load(CATALOG)
     inv = load(INVENTORY)
-    global STRUCTURE_NAMES
+    global STRUCTURE_NAMES, SB
+    SB = load(os.path.join(ROOT, "catalog", "storybook-inventory.json"))["components"]
     STRUCTURE_NAMES = {k: v.split(" (")[0] for k, v in cat["structureTypes"].items()}
     by_id = {c["id"]: c for c in cat["components"]}
     by_level, by_cat = {}, {}
@@ -282,14 +336,23 @@ def main():
         claimed.update(c.get("figma", {}).get("frames", []))
     all_frames = {fn for frames in inv["sections"].values() for fn in frames} | {n for _, n in inv.get("loose", [])}
     unclaimed = sorted(all_frames - claimed)
+    claimed_sb = {t["entry"] for c in cat["components"] for t in (c.get("twilight") or [])}
+    unclaimed_sb = sorted(set(SB) - claimed_sb)
     print(f"wrote {written} component pages + index")
+    rc = 0
     if unclaimed:
         print(f"WARNING {len(unclaimed)} Figma frames not claimed by any component:")
         for u in unclaimed:
             print("  -", u)
-        return 1
-    print("all Figma frames are claimed by a component")
-    return 0
+        rc = 1
+    else:
+        print("all Figma frames are claimed by a component")
+    if unclaimed_sb:
+        print(f"WARNING {len(unclaimed_sb)} Storybook entries not claimed by any component: {unclaimed_sb}")
+        rc = 1
+    else:
+        print("all Twilight Storybook entries are claimed by a component")
+    return rc
 
 
 if __name__ == "__main__":
