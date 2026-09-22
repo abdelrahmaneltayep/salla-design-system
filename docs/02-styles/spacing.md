@@ -1,45 +1,60 @@
 # Spacing
 
-A single 4px scale. Today Figma carries two spacing variable sets that contradict each other; both migrate here.
+The scale is the Figma **`Spacing/Sizes`** collection (`04-Token`), adopted verbatim. Values were read from Figma on 2026-09-22; the older `spacing/*` variables that some frames still use are mapped below.
 
 ## The scale
 
-| Ref | Value | System alias | Typical use (verified in Figma) |
-|---|---|---|---|
-| `ref.space.0` | 0 | – | |
-| `ref.space.1` | 2px | `sys.space.3xs` | Checkbox inner padding ✓, TranslationToggle gap ✓ |
-| `ref.space.2` | 4px | `sys.space.2xs` | Button icon–label gap ✓, Status dot–label gap ✓, Alert title–body gap ✓ |
-| `ref.space.3` | 8px | `sys.space.xs` | Button / field vertical padding ✓, field icon gap ✓, Status horizontal padding ✓ |
-| `ref.space.4` | 12px | `sys.space.sm` | Button / field horizontal padding ✓, label–field gap ✓ |
-| `ref.space.5` | 16px | `sys.space.md` | Alert vertical padding ✓, card padding on compact |
-| `ref.space.6` | 20px | `sys.space.lg` | |
-| `ref.space.7` | 24px | `sys.space.xl` | Alert horizontal padding ✓, Panel padding, page gutter |
-| `ref.space.8` | 32px | `sys.space.2xl` | section gaps |
-| `ref.space.9` | 40px | `sys.space.3xl` | |
-| `ref.space.10` | 48px | `sys.space.4xl` | |
-| `ref.space.11` | 64px | – | page-level rhythm |
-| `ref.space.12` | 80px | – | |
+| Token | Value | Figma `Spacing/Sizes` | Older `spacing/*` alias | Observed use |
+|---|---|---|---|---|
+| `ref.space.none` | 0 | `none` ✓ | – | |
+| `ref.space.3xs` | 2px | `3xs` ✓ | `spacing/6xs` ✓ | Checkbox inner padding, TranslationToggle gap, Alert icon offset |
+| `ref.space.2xs` | 4px | `2xs` ✓ | `spacing/5xs` ✓ | Button icon–label gap, Status dot–label gap, Alert title–body gap, Button sm vertical padding |
+| `ref.space.xs` | 6px | `xs` ✓ | `spacing/4xs` ✓ | Table/Status vertical padding, Loader padding |
+| `ref.space.sm` | 8px | `sm` ✓ | `spacing/3xs` ✓ | Button / field vertical padding, field gap, Status horizontal padding, Tab vertical padding, Alert gap |
+| `ref.space.md` | 10px | `md` ✓ | `spacing/2xs` ✓ | UpgradeCard CTA vertical padding, page-size select, primary Tabs gap |
+| `ref.space.lg` | 12px | `lg` ✓ | `spacing/xs` ✓ | Button / field horizontal padding, MenuItem padding, label–field gap, Tooltip padding |
+| `ref.space.xl` | 14px | `xl` ✓ | – | mobile gutters (PageTitle, Table/Footer) |
+| `ref.space.2xl` | 16px | `2xl` ✓ | `spacing/base` ✓ | card padding, TopAppBar vertical padding, Alert vertical padding, NavigationItem padding, primary Tab horizontal padding |
+| `ref.space.3xl` | 20px | `3xl` ✓ | – | TopAppBar gap |
+| `ref.space.4xl` | 24px | `4xl` ✓ | `spacing/2xl` ✓ | Alert horizontal padding, Pagination gap, SecondaryNavBar gap |
+| `ref.space.5xl` | 26px | `5xl` ✓ | – | Table/Footer desktop horizontal padding (off-grid, see below) |
+| `ref.space.6xl` | 32px | `6xl` | – | not observed |
+| `ref.space.7xl` | 40px | `7xl` | – | not observed |
+| `ref.space.8xl` | 48px | `8xl` | – | not observed |
+| `ref.space.9xl` | 56px | `9xl` ✓ | `spacing/7xl` ✓ | **desktop page gutter** (TopAppBar, SecondaryNavBar, PageTitle, Breadcrumb) |
 
-## Migration from the two Figma scales
+## Semantic aliases
 
-| Figma variable | Value | → New token |
+Components use role names so intent reads in the CSS:
+
+| Alias | → | Use |
 |---|---|---|
-| `spacing/6xs` | 2 | `sys.space.3xs` |
-| `spacing/5xs` | 4 | `sys.space.2xs` |
-| `spacing/3xs` | 8 | `sys.space.xs` |
-| `spacing/xs` | 12 | `sys.space.sm` |
-| `spacing/base` | 16 | `sys.space.md` |
-| `spacing/2xl` | 24 | `sys.space.xl` |
-| `Spacing/Sizes/3xs` | 2 | `sys.space.3xs` |
-| `Spacing/Sizes/sm` | 8 | `sys.space.xs` |
-| `Spacing/Sizes/lg` | 12 | `sys.space.sm` |
-| `Spacing/Sizes/{2xs,xs,md,xl,2xl,3xl,4xl,5xl,6xl,8xl,9xl}` | not read | map by value once exported |
+| `sys.space.hairline` | `3xs` 2px | inner padding of tiny controls |
+| `sys.space.tight` | `2xs` 4px | icon ↔ label |
+| `sys.space.compact` | `sm` 8px | control vertical padding, sibling gaps in a row |
+| `sys.space.default` | `lg` 12px | control horizontal padding, list item padding |
+| `sys.space.comfortable` | `2xl` 16px | card / bar padding |
+| `sys.space.loose` | `3xl` 20px | bar item gap |
+| `sys.space.section` | `4xl` 24px | between sections, alert side padding |
+| `sys.space.gutter` | `9xl` 56px | page side gutter (desktop) |
 
-The clash: `spacing/3xs` is 8px while `Spacing/Sizes/3xs` is 2px, and `spacing/xs` (12) equals `Spacing/Sizes/lg` (12). After migration, one name means one value.
+## The two-scale problem, resolved
+
+Figma still carries two variable sets with **the same names for different values**:
+
+| Name | `spacing/*` (older) | `Spacing/Sizes/*` (04-Token) |
+|---|---|---|
+| `3xs` | 8px | 2px |
+| `2xs` | 10px | 4px |
+| `xs` | 12px | 6px |
+| `2xl` | 24px | 16px |
+
+`Button`, `Alertbox`, `Page Title` and `Header` use the older set; `_TextInput`, `checkBox`, `Status`, `Side menu`, `More Menu`, `Table/*` use `Spacing/Sizes`. The value is always the same physical pixel; only the name differs. **Decision: `Spacing/Sizes` is the scale**, because it is the newer collection, it is complete (`none … 9xl`), and most component frames already use it. Re-point the older `spacing/*` variables per the alias column above, then delete them.
+
+Two values are off the 4px grid and worth a design decision: `xl` = 14px (used as the mobile gutter) and `5xl` = 26px (Table/Footer). Recommend 16px and 24px.
 
 ## Rules
 
-- Padding inside atoms and molecules comes from `comp.*` tokens that alias `sys.space.*`.
-- Gaps between siblings use `sys.space.*` directly.
-- Odd values (6, 10, 14) are not allowed; 2px exists only for hairlines.
-- Page gutters: `md` on compact, `xl` on expanded and up (see [layout.md](../01-foundations/layout.md)).
+- Padding inside atoms and molecules comes from `comp.*` tokens that alias `ref.space.*`.
+- Gaps between siblings use the semantic aliases.
+- No values outside the scale; legacy hard-coded `gap-[5px]`, `p-[10px]` seen on a few frames are migration targets.

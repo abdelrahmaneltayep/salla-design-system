@@ -4,7 +4,7 @@ Every component classified by **atomic level** (how it composes) and **Material 
 
 | Total | Existing in Figma / Storybook | Proposed (gap) | Page references |
 |---|---|---|---|
-| 92 | 78 | 11 | 3 |
+| 92 | 79 | 10 | 3 |
 
 ## By atomic level
 
@@ -108,7 +108,7 @@ Organisms are complex sections built from molecules and atoms: the data table, t
 | [BottomSheet](organisms/bottom-sheet.md) | Containment | 4 | existing | Mobile modal surface sliding from the bottom. |
 | [Dialog](organisms/dialog.md) | Containment | 4 | proposed | Centered modal (Storybook: Modal). |
 | [Panel](organisms/panel.md) | Containment | 4 | proposed | Card container with PanelHeader, body and footer slots (Storybook: Panel). |
-| [Tooltip](organisms/tooltip.md) | Communication | 5 | proposed | Hover / focus hint. |
+| [Tooltip](organisms/tooltip.md) | Communication | 5 | existing | Hover / focus hint on a primary-container surface with a caret. |
 | [Toast](organisms/toast.md) | Communication | 1 | proposed | Transient bottom notification (Material: snackbar). |
 | [EmptyState](organisms/empty-state.md) | Communication | 4 | existing | Illustration + title + description + action for empty lists and no-results. |
 | [Pagination](organisms/pagination.md) | Navigation | 1 | existing | Table footer: page size, range label, previous / next and page numbers. |
@@ -166,7 +166,7 @@ Pages are templates filled with real merchant data. They are documented as refer
 | [Alert](organisms/alert.md) | organism | 1 | existing |
 | [AlertBanner](organisms/alert-banner.md) | organism | 2 | existing |
 | [UpgradeCard](organisms/alert-upgrade.md) | organism | 2 | existing |
-| [Tooltip](organisms/tooltip.md) | organism | 5 | proposed |
+| [Tooltip](organisms/tooltip.md) | organism | 5 | existing |
 | [Toast](organisms/toast.md) | organism | 1 | proposed |
 | [EmptyState](organisms/empty-state.md) | organism | 4 | existing |
 

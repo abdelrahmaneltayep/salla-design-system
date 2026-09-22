@@ -4,7 +4,9 @@ The merchant dashboard design system for Salla, restructured on **Atomic Design*
 
 It takes what Salla has today, the `Merchant - Storybook DS` Figma library (17 sections, 117 component frames, ~10,000 variants) and the public Twilight Storybook at `dashboard-ui-components.pages.dev`, and reorganises it into a layered system: tokens, foundations, styles, and components sorted by atomic level and Material category.
 
-> Status: **v0.1 - structure and documentation**. Component code is not in this repo yet; every component page carries a build plan (structure type, props, tokens) so implementation can start from it.
+> Status: **v0.2 - structure, tokens and documentation**. Token values are read from the Figma library (`catalog/figma-tokens-harvest.json`). Component code is not in this repo yet; every component page carries a build plan (structure type, props, tokens) so implementation can start from it.
+
+**Browse the docs:** run `python3 scripts/build-site.py` and open `site/index.html`, a single-file site with foundations, styles, every component page and live token-rendered examples.
 
 ## How the system is layered
 
@@ -64,10 +66,14 @@ salla-design-system/
 ├── catalog/
 │   ├── components.json                 The source of truth: every component, its level, category,
 │   │                                   structure type, props, states, Figma frame and Storybook story
-│   └── figma-inventory.json            Raw extract of the Figma library (sections → frames → variant props)
+│   ├── figma-inventory.json            Raw extract of the Figma library (sections → frames → variant props)
+│   └── figma-tokens-harvest.json       Variable name → value pairs read from 20 Figma frames (token evidence)
 ├── assets/icons/icon-inventory.json    4,049 icon names + styles from Icons DS_V.1.fig
-├── scripts/build-catalog.py            Regenerates docs/03-components from the catalog
-└── preview/index.html                  Static preview of tokens and core atoms (open in a browser)
+├── scripts/
+│   ├── build-catalog.py                Regenerates docs/03-components from the catalog
+│   └── build-site.py                   Bundles docs + catalog + examples into site/index.html
+├── site/index.html                     The documentation site (generated, single file)
+└── preview/index.html                  Live examples of 20 components built only from tokens.css
 ```
 
 ## Quick start

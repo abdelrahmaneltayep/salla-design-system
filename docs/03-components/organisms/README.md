@@ -23,7 +23,7 @@ Organisms are complex sections built from molecules and atoms: the data table, t
 | [BottomSheet](bottom-sheet.md) | Containment | 4 | existing |
 | [Dialog](dialog.md) | Containment | 4 | proposed |
 | [Panel](panel.md) | Containment | 4 | proposed |
-| [Tooltip](tooltip.md) | Communication | 5 | proposed |
+| [Tooltip](tooltip.md) | Communication | 5 | existing |
 | [Toast](toast.md) | Communication | 1 | proposed |
 | [EmptyState](empty-state.md) | Communication | 4 | existing |
 | [Pagination](pagination.md) | Navigation | 1 | existing |

@@ -5,179 +5,192 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Salla Design System preview</title>
 <link rel="stylesheet" href="../tokens/css/tokens.css">
+<style id="sds-examples-css">
+  /* ===== Live examples, built only from --sys-* / --comp-* tokens (tokens/css/tokens.css) ===== */
+  .sds { font: var(--sys-type-body-md); color: var(--sys-color-text-primary); }
+  .sds .row { display: flex; flex-wrap: wrap; gap: var(--sys-space-default); align-items: center; }
+  .sds .stack { display: flex; flex-direction: column; gap: var(--sys-space-default); align-items: stretch; }
+  .sds .icon { width: var(--comp-button-icon-size); height: var(--comp-button-icon-size); fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+  /* Atom: Button - structure 1 */
+  .sds .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--comp-button-gap); min-height: var(--comp-button-height-md); padding: var(--comp-button-padding-y-md) var(--comp-button-padding-x-md); border-radius: var(--comp-button-shape); border: var(--comp-button-border-width-filled) solid transparent; font: var(--sys-type-label-md); cursor: pointer; background: transparent; color: inherit; transition: background-color var(--ref-duration-short) var(--ref-easing-standard), border-color var(--ref-duration-short) var(--ref-easing-standard), filter var(--ref-duration-short) var(--ref-easing-standard); }
+  .sds .btn:hover { filter: brightness(.96); }
+  .sds .btn:active { filter: brightness(.92); }
+  .sds .btn:focus-visible { outline: none; box-shadow: var(--sys-focus-ring); }
+  .sds .btn[disabled] { opacity: .38; cursor: not-allowed; filter: none; }
+  .sds .btn--sm { min-height: var(--comp-button-height-sm); padding: var(--comp-button-padding-y-sm) var(--comp-button-padding-x-sm); font: var(--sys-type-label-sm); }
+  .sds .btn--lg { min-height: var(--comp-button-height-lg); }
+  .sds .btn--primary { background: var(--sys-color-primary-container); border-color: var(--sys-color-primary-container); color: var(--sys-color-on-primary-container); }
+  .sds .btn--secondary { background: var(--sys-color-surface); border: var(--comp-button-border-width-outlined) solid var(--sys-color-outline); color: var(--sys-color-text-primary); }
+  .sds .btn--danger { background: var(--sys-color-danger-primary); border-color: var(--sys-color-danger-primary); color: var(--sys-color-text-inverse); }
+  .sds .btn--success { background: var(--sys-color-success-primary); border-color: var(--sys-color-success-primary); color: var(--sys-color-text-inverse); }
+  .sds .btn--warning { background: var(--sys-color-warning-primary); border-color: var(--sys-color-warning-primary); color: var(--sys-color-text-inverse); }
+  .sds .btn--info { background: var(--sys-color-info-primary); border-color: var(--sys-color-info-primary); color: var(--sys-color-text-inverse); }
+  .sds .btn--feature { background: linear-gradient(90deg, var(--sys-color-feature-gradient-start), var(--sys-color-feature-gradient-end)); border: 0; color: var(--sys-color-on-feature); }
+  .sds .btn--upgrade { background: var(--sys-color-upgrade-dark); border-color: var(--sys-color-upgrade-dark); color: var(--sys-color-upgrade-darker); }
+  .sds .btn--outlined.btn--primary { background: var(--sys-color-surface); border: var(--comp-button-border-width-outlined) solid var(--sys-color-outline-primary); color: var(--sys-color-text-brand); }
+  .sds .btn--outlined.btn--danger { background: var(--sys-color-surface); border: var(--comp-button-border-width-outlined) solid var(--sys-color-danger-primary); color: var(--sys-color-danger-primary); }
+  .sds .btn--link { background: transparent; border-color: transparent; color: var(--sys-color-text-brand); padding-inline: var(--sys-space-tight); }
+  .sds .btn--circular { border-radius: var(--sys-shape-full); width: var(--comp-button-height-md); padding: 0; }
+
+  /* Molecule: TextField - structure 3 (BaseField) */
+  .sds .field { display: flex; flex-direction: column; gap: var(--comp-text-field-label-gap); width: 100%; max-width: 375px; }
+  .sds .field__label { font: var(--sys-type-label-md); display: flex; gap: var(--sys-space-tight); }
+  .sds .field__label .req { color: var(--sys-color-danger-primary); font: var(--sys-type-body-sm); }
+  .sds .field__box { position: relative; display: flex; align-items: center; gap: var(--comp-text-field-gap); min-height: var(--comp-text-field-min-height); padding: var(--comp-text-field-padding-y) var(--comp-text-field-padding-x); background: var(--sys-color-surface-input); border: 1px solid var(--sys-color-outline); border-radius: var(--comp-text-field-shape); overflow: hidden; transition: border-color var(--ref-duration-short) var(--ref-easing-standard); }
+  .sds .field__box:hover { border-color: var(--sys-color-outline-hover); }
+  .sds .field__box:focus-within { box-shadow: var(--sys-focus-underline); }
+  .sds .field--error .field__box { border-color: var(--sys-color-danger-primary); }
+  .sds .field--error .field__box:focus-within { box-shadow: inset 0 -2px 0 0 var(--sys-color-danger-primary); }
+  .sds .field--disabled .field__box { background: var(--sys-color-surface-disabled); }
+  .sds .field__box input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font: var(--sys-type-body-md); color: var(--sys-color-text-primary); }
+  .sds .field__box input::placeholder { color: var(--sys-color-text-secondary); }
+  .sds .field__sub { font: var(--sys-type-body-sm); color: var(--sys-color-text-secondary); }
+  .sds .field__lang { display: inline-flex; align-items: center; gap: var(--sys-space-hairline); padding: var(--sys-space-tight) var(--sys-space-compact); border: 1px solid var(--sys-color-outline); border-radius: var(--sys-shape-small); font: var(--sys-type-body-sm); color: var(--sys-color-text-secondary); }
+  .sds .field__help { font: var(--sys-type-body-sm); color: var(--sys-color-text-secondary); }
+  .sds .field--error .field__help { color: var(--sys-color-danger-primary); }
+
+  /* Atoms: Checkbox, Switch, Radio - structure 3 bases */
+  .sds .checkbox { appearance: none; width: var(--comp-checkbox-size-md); height: var(--comp-checkbox-size-md); border: 1px solid var(--sys-color-outline-primary-strong); border-radius: var(--comp-checkbox-shape); background: var(--sys-color-surface); display: inline-grid; place-content: center; cursor: pointer; margin: 0; }
+  .sds .checkbox:checked { background: var(--sys-color-primary); border-color: var(--sys-color-primary); }
+  .sds .checkbox:checked::after { content: ""; width: 5px; height: 9px; border: solid var(--sys-color-on-primary); border-width: 0 2px 2px 0; transform: translateY(-1px) rotate(45deg); }
+  .sds .checkbox:disabled { background: var(--sys-color-surface-disabled); border-color: var(--sys-color-outline-hover); cursor: not-allowed; }
+  .sds .checkbox:focus-visible { outline: none; box-shadow: var(--sys-focus-ring); }
+  .sds .radio { appearance: none; width: 20px; height: 20px; border: 1px solid var(--sys-color-outline-primary-strong); border-radius: 50%; background: var(--sys-color-surface); display: inline-grid; place-content: center; cursor: pointer; margin: 0; }
+  .sds .radio:checked::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--sys-color-primary); }
+  .sds .radio:focus-visible { outline: none; box-shadow: var(--sys-focus-ring); }
+  .sds .switch { appearance: none; width: var(--comp-toggle-track-width-default); height: var(--comp-toggle-size-default); border-radius: var(--sys-shape-full); background: var(--sys-color-outline-hover); position: relative; cursor: pointer; margin: 0; transition: background-color var(--ref-duration-short) var(--ref-easing-standard); }
+  .sds .switch::after { content: ""; position: absolute; inset-block-start: 3px; inset-inline-start: 3px; width: 18px; height: 18px; border-radius: 50%; background: var(--sys-color-surface); transition: transform var(--ref-duration-short) var(--ref-easing-standard); }
+  .sds .switch:checked { background: var(--sys-color-primary); }
+  .sds .switch:checked::after { transform: translateX(15px); }
+  [dir="rtl"] .sds .switch:checked::after { transform: translateX(-15px); }
+  .sds .switch:focus-visible { outline: none; box-shadow: var(--sys-focus-ring); }
+  .sds .fieldrow { display: inline-flex; align-items: center; gap: var(--sys-space-compact); font: var(--sys-type-body-md); }
+  .sds .fieldrow .title { font: var(--sys-type-label-md); }
+  .sds .fieldrow .desc { font: var(--sys-type-body-sm); color: var(--sys-color-text-tertiary); }
+  .sds .fieldrow--disabled { color: var(--sys-color-text-disabled); }
+
+  /* Molecule: Status - structure 3 (StatusIndicator base) */
+  .sds .status { display: inline-flex; align-items: center; gap: var(--comp-status-gap); height: var(--comp-status-height); border-radius: var(--comp-status-shape); font: var(--sys-type-label-sm); color: var(--text); }
+  .sds .status::before { content: ""; width: var(--comp-status-dot-size); height: var(--comp-status-dot-size); border-radius: 50%; background: var(--dot); }
+  .sds .status--strong { padding-inline: var(--comp-status-padding-x); background: var(--bg); }
+  .sds .status--bordered { border: 1px solid var(--line); font: var(--sys-type-body-sm); padding-inline: var(--comp-status-padding-x); background: var(--bg); }
+  .sds .status--success { --dot: var(--sys-color-success-dark); --text: var(--sys-color-success-darker); --bg: var(--sys-color-success-lighter); --line: var(--sys-color-success-light); }
+  .sds .status--danger { --dot: var(--sys-color-danger-dark); --text: var(--sys-color-danger-darker); --bg: var(--sys-color-danger-lighter); --line: var(--sys-color-danger-light); }
+  .sds .status--info { --dot: var(--sys-color-info-dark); --text: var(--sys-color-info-darker); --bg: var(--sys-color-info-lighter); --line: var(--sys-color-info-light); }
+  .sds .status--warning { --dot: var(--sys-color-warning-dark); --text: var(--sys-color-warning-darker); --bg: var(--sys-color-warning-lighter); --line: var(--sys-color-warning-light); }
+  .sds .status--neutral { --dot: var(--sys-color-neutral-primary); --text: var(--sys-color-neutral-darker); --bg: var(--sys-color-neutral-lighter); --line: var(--sys-color-neutral-light); }
+
+  /* Organism: Alert - structure 1 */
+  .sds .alert { display: flex; gap: var(--comp-alert-gap); align-items: flex-start; padding: var(--comp-alert-padding-y) var(--comp-alert-padding-x); border-radius: var(--comp-alert-shape); border-inline-start: var(--comp-alert-accent-width) solid var(--accent); background: var(--bg); color: var(--text); max-width: 520px; }
+  .sds .alert .icon { width: var(--comp-alert-icon-size); height: var(--comp-alert-icon-size); margin-block-start: var(--sys-space-hairline); }
+  .sds .alert__body { flex: 1; display: flex; flex-direction: column; gap: var(--sys-space-tight); }
+  .sds .alert__title { font: var(--sys-type-title-md); }
+  .sds .alert__text { font: var(--sys-type-body-md); }
+  .sds .alert--info { --bg: var(--sys-color-info-lighter); --accent: var(--sys-color-info-light); --text: var(--sys-color-info-darker); }
+  .sds .alert--danger { --bg: var(--sys-color-danger-lighter); --accent: var(--sys-color-danger-light); --text: var(--sys-color-danger-darker); }
+  .sds .alert--success { --bg: var(--sys-color-success-lighter); --accent: var(--sys-color-success-light); --text: var(--sys-color-success-darker); }
+  .sds .alert--warning { --bg: var(--sys-color-warning-lighter); --accent: var(--sys-color-warning-light); --text: var(--sys-color-warning-darker); }
+  .sds .alert--upgrade { --bg: var(--sys-color-upgrade-lighter); --accent: var(--sys-color-upgrade-dark); --text: var(--sys-color-upgrade-darker); }
+  .sds .alert__close { background: none; border: 0; cursor: pointer; color: inherit; padding: 0; margin-block-start: var(--sys-space-hairline); }
+
+  /* Molecule: Tab · Organism: Tabs */
+  .sds .tabs { display: flex; gap: var(--sys-space-comfortable); border-block-end: 1px solid var(--sys-color-outline); }
+  .sds .tab { padding: var(--comp-tab-padding-y) var(--sys-space-hairline); font: var(--sys-type-label-lg); color: var(--sys-color-text-tertiary); border: 0; border-block-end: var(--comp-tab-indicator-width) solid transparent; background: none; cursor: pointer; margin-block-end: -1px; }
+  .sds .tab:hover { color: var(--sys-color-text-primary); border-color: var(--sys-color-outline-hover); }
+  .sds .tab[aria-selected="true"] { font: var(--sys-type-title-md); color: var(--sys-color-text-brand); border-color: var(--sys-color-outline-primary-strong); }
+  .sds .tab:focus-visible { outline: none; box-shadow: var(--sys-focus-ring); border-radius: var(--sys-shape-extra-small); }
+
+  /* Organism: TopAppBar */
+  .sds .appbar { display: flex; align-items: center; gap: var(--comp-top-app-bar-gap); padding: var(--comp-top-app-bar-padding-y) var(--sys-space-section); background: var(--sys-color-primary); color: var(--sys-color-on-primary); border-radius: var(--sys-shape-small); flex-wrap: wrap; }
+  .sds .appbar__logo { font: var(--sys-type-title-md); letter-spacing: 0; }
+  .sds .appbar__tabs { display: flex; gap: var(--sys-space-md, 10px); flex: 1; flex-wrap: wrap; }
+  .sds .ptab { display: inline-flex; align-items: center; gap: var(--sys-space-tight); padding: var(--comp-tab-padding-y) var(--comp-tab-padding-x-primary); border-radius: var(--comp-tab-shape-primary); font: var(--sys-type-label-lg); color: var(--sys-color-on-primary); background: none; border: 0; cursor: pointer; }
+  .sds .ptab[aria-selected="true"] { background: var(--sys-color-primary-container); color: var(--sys-color-on-primary-container); font: var(--sys-type-title-md); }
+  .sds .appbar__icons { display: flex; gap: var(--sys-space-comfortable); align-items: center; }
+  .sds .appbar__icons .icon { width: var(--ref-size-icon-xl); height: var(--ref-size-icon-xl); }
+  .sds .avatar { width: var(--comp-top-app-bar-avatar-size); height: var(--comp-top-app-bar-avatar-size); border-radius: var(--sys-shape-full); background: var(--sys-color-primary-container); color: var(--sys-color-on-primary-container); display: grid; place-content: center; font: var(--sys-type-label-md); }
+  .sds .avatar--sm { width: 32px; height: 32px; font: var(--sys-type-label-sm); }
+  .sds .avatar--rect { border-radius: var(--sys-shape-small); }
+
+  /* Organism: NavigationDrawer */
+  .sds .drawer { width: var(--comp-navigation-drawer-width); max-width: 100%; background: var(--sys-color-surface); border: 1px solid var(--sys-color-outline); border-radius: var(--sys-shape-small); overflow: hidden; }
+  .sds .navitem { display: flex; justify-content: space-between; align-items: center; height: var(--comp-navigation-drawer-item-height); padding: var(--comp-navigation-drawer-item-padding); border-block-end: 1px solid var(--sys-color-outline); font: var(--sys-type-body-lg); color: var(--sys-color-text-tertiary); cursor: pointer; }
+  .sds .navitem:hover { background: var(--sys-color-surface-neutral); }
+  .sds .navitem[aria-current="page"] { background: var(--sys-color-primary-container-subtle); color: var(--sys-color-text-brand); font: var(--sys-type-label-lg); }
+  .sds .navitem .count { font: inherit; }
+
+  /* Organism: MoreMenu · Molecule: MenuItem */
+  .sds .menu { width: var(--comp-menu-width); max-width: 100%; background: var(--sys-color-surface); border-radius: var(--sys-shape-small); box-shadow: var(--comp-menu-elevation); overflow: hidden; padding-block: var(--sys-space-tight); }
+  .sds .menuitem { display: flex; align-items: center; gap: var(--sys-space-compact); padding: var(--comp-menu-item-padding); font: var(--sys-type-body-md); color: var(--sys-color-text-primary); cursor: pointer; }
+  .sds .menuitem .icon { width: var(--comp-menu-icon-size); height: var(--comp-menu-icon-size); }
+  .sds .menuitem:hover { background: var(--sys-color-surface-neutral); }
+  .sds .menuitem--danger { color: var(--sys-color-danger-primary); }
+  .sds .divider { height: 1px; background: var(--sys-color-outline); margin-block: var(--sys-space-tight); }
+
+  /* Organism: Tooltip */
+  .sds .tooltip { position: relative; display: inline-block; max-width: 213px; padding: var(--comp-tooltip-padding); background: var(--sys-color-primary-container); color: var(--sys-color-on-primary-container); border-radius: var(--comp-tooltip-shape); box-shadow: var(--comp-tooltip-elevation); font: var(--sys-type-body-sm); margin-block-start: 8px; }
+  .sds .tooltip::before { content: ""; position: absolute; inset-block-start: -8px; inset-inline-start: 24px; border: 8px solid transparent; border-block-end-color: var(--sys-color-primary-container); border-block-start: 0; }
+  .sds .tooltip a { color: inherit; }
+
+  /* Organism: Pagination */
+  .sds .pagination { display: flex; align-items: center; gap: var(--sys-space-compact); flex-wrap: wrap; }
+  .sds .pagination .btn { min-height: var(--comp-button-height-sm); padding: var(--comp-button-padding-y-sm) var(--comp-button-padding-x-sm); }
+  .sds .pagination .label { font: var(--sys-type-body-md); color: var(--sys-color-text-secondary); }
+  .sds .pagination .label b { font: var(--sys-type-title-sm); }
+
+  /* Molecule: Breadcrumb */
+  .sds .breadcrumb { display: flex; align-items: center; gap: var(--sys-space-compact); font: var(--sys-type-body-md); }
+  .sds .breadcrumb a { color: var(--sys-color-text-tertiary); text-decoration: none; padding: var(--sys-space-tight); }
+  .sds .breadcrumb [aria-current] { color: var(--sys-color-text-brand); }
+  .sds .breadcrumb .icon { width: var(--ref-size-icon-xl); height: var(--ref-size-icon-xl); color: var(--sys-color-text-tertiary); }
+  [dir="rtl"] .sds .breadcrumb .icon { transform: scaleX(-1); }
+
+  /* Atom: Chip */
+  .sds .chip { display: inline-flex; align-items: center; gap: var(--sys-space-tight); height: 24px; padding-inline: var(--sys-space-compact); border: 1px solid var(--sys-color-outline); border-radius: var(--sys-shape-full); font: var(--sys-type-label-sm); background: var(--sys-color-surface); }
+  .sds .chip--selected { background: var(--sys-color-primary-container); border-color: var(--sys-color-primary-container); color: var(--sys-color-on-primary-container); }
+
+  /* Atom: LoadingIndicator */
+  .sds .spinner { width: 24px; height: 24px; border-radius: 50%; border: 3px solid var(--sys-color-primary-container); border-block-start-color: var(--sys-color-primary); animation: sds-spin 1s linear infinite; }
+  .sds .spinner--sm { width: 16px; height: 16px; border-width: 2px; }
+  .sds .spinner--lg { width: 48px; height: 48px; border-width: 4px; }
+  @keyframes sds-spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .sds .spinner { animation: none; } }
+
+  /* Organism: Panel */
+  .sds .panel { background: var(--sys-color-surface); border: 1px solid var(--sys-color-outline); border-radius: var(--sys-shape-small); overflow: hidden; }
+  .sds .panel__header { display: flex; justify-content: space-between; align-items: center; padding: var(--sys-space-comfortable); border-block-end: 1px solid var(--sys-color-outline); font: var(--sys-type-title-lg); }
+  .sds .panel__body { padding: var(--sys-space-comfortable); }
+
+  /* Organism: DataTable (compact demo) */
+  .sds table.table { width: 100%; border-collapse: collapse; font: var(--sys-type-body-md); }
+  .sds table.table th { text-align: start; font: var(--sys-type-title-sm); color: var(--sys-color-text-secondary); padding: var(--sys-space-default); border-block-end: 1px solid var(--sys-color-outline); background: var(--sys-color-surface-neutral); }
+  .sds table.table td { padding: var(--sys-space-default); border-block-end: 1px solid var(--sys-color-outline); vertical-align: middle; }
+  .sds table.table tr:hover td { background: var(--sys-color-surface-neutral); }
+  .sds .amount { font-variant-numeric: tabular-nums; }
+</style>
 <style>
-  * { box-sizing: border-box; }
-  body { margin: 0; font: var(--sys-type-body-sm); color: var(--sys-color-text-primary); background: #f6f8f8; }
-  header.bar { background: var(--sys-color-primary); color: var(--sys-color-text-inverse); padding: var(--sys-space-md) var(--sys-space-xl); display: flex; align-items: center; gap: var(--sys-space-xl); }
+  body { margin: 0; background: #f6f8f8; color: var(--sys-color-text-primary); font: var(--sys-type-body-md); }
+  header.bar { background: var(--sys-color-primary); color: var(--sys-color-text-inverse); padding: var(--sys-space-comfortable) var(--sys-space-section); display: flex; align-items: center; gap: var(--sys-space-section); }
   header.bar h1 { font: var(--sys-type-title-md); margin: 0; }
-  header.bar nav a { color: var(--sys-color-text-inverse); text-decoration: none; opacity: .8; margin-inline-end: var(--sys-space-md); font: var(--sys-type-label-md); }
-  header.bar nav a.active { opacity: 1; border-block-end: 2px solid var(--sys-color-primary-container); padding-block-end: 2px; }
   header.bar .spacer { flex: 1; }
-  header.bar button.dir { background: transparent; color: inherit; border: 1px solid rgb(255 255 255 / .4); border-radius: var(--sys-shape-small); padding: var(--sys-space-2xs) var(--sys-space-xs); font: var(--sys-type-label-sm); cursor: pointer; }
-  main { max-width: 1100px; margin: 0 auto; padding: var(--sys-space-xl) var(--sys-space-md); }
-  h2 { font: var(--sys-type-headline-md); margin: var(--sys-space-2xl) 0 var(--sys-space-sm); }
-  h3 { font: var(--sys-type-title-sm); margin: var(--sys-space-lg) 0 var(--sys-space-xs); color: var(--sys-color-text-secondary); text-transform: uppercase; letter-spacing: 0; }
-  .panel { background: var(--sys-color-surface); border: 1px solid var(--sys-color-outline); border-radius: var(--sys-shape-medium); padding: var(--sys-space-xl); margin-block-end: var(--sys-space-md); }
-  .row { display: flex; flex-wrap: wrap; gap: var(--sys-space-sm); align-items: center; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--sys-space-sm); }
-  .swatch { border: 1px solid var(--sys-color-outline); border-radius: var(--sys-shape-small); overflow: hidden; }
-  .swatch div { height: 56px; }
-  .swatch code { display: block; padding: var(--sys-space-xs); font-size: 11px; color: var(--sys-color-text-secondary); }
-  .swatch strong { display: block; padding: var(--sys-space-xs) var(--sys-space-xs) 0; font: var(--sys-type-label-sm); }
-  code { font-family: ui-monospace, monospace; }
-
-  /* ---- Atom: Button (structure 1, configurable) ---- */
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--comp-button-gap); min-height: var(--comp-button-height-md); padding: var(--comp-button-padding-y) var(--comp-button-padding-x); border-radius: var(--comp-button-shape); border: var(--comp-button-border-width) solid transparent; font: var(--sys-type-label-md); cursor: pointer; transition: background-color var(--ref-duration-short) var(--ref-easing-standard), border-color var(--ref-duration-short) var(--ref-easing-standard); }
-  .btn:focus-visible { outline: none; box-shadow: var(--sys-focus-ring); }
-  .btn[disabled] { opacity: .38; cursor: not-allowed; }
-  .btn--sm { min-height: var(--comp-button-height-sm); padding-block: var(--sys-space-2xs); font: var(--sys-type-label-sm); }
-  .btn--lg { min-height: var(--comp-button-height-lg); }
-  .btn--primary { background: var(--sys-color-primary-container); border-color: var(--sys-color-primary-container); color: var(--sys-color-on-primary-container); }
-  .btn--primary:hover { filter: brightness(.96); }
-  .btn--secondary { background: var(--sys-color-surface); border: 1px solid var(--sys-color-outline); color: var(--sys-color-text-primary); }
-  .btn--danger { background: var(--sys-color-danger-primary); border-color: var(--sys-color-danger-primary); color: var(--sys-color-text-inverse); }
-  .btn--success { background: var(--sys-color-success-primary); border-color: var(--sys-color-success-primary); color: var(--sys-color-text-inverse); }
-  .btn--warning { background: var(--sys-color-warning-primary); border-color: var(--sys-color-warning-primary); color: var(--sys-color-text-inverse); }
-  .btn--info { background: var(--sys-color-info-primary); border-color: var(--sys-color-info-primary); color: var(--sys-color-text-inverse); }
-  .btn--feature { background: linear-gradient(90deg, var(--sys-color-feature-gradient-start), var(--sys-color-feature-gradient-end)); color: var(--sys-color-on-feature); }
-  .btn--outlined.btn--primary { background: var(--sys-color-surface); border: 1px solid var(--sys-color-outline-primary); color: var(--sys-color-text-brand); }
-  .btn--outlined.btn--danger { background: var(--sys-color-surface); border: 1px solid var(--sys-color-danger-primary); color: var(--sys-color-danger-primary); }
-  .btn--link { background: transparent; border-color: transparent; color: var(--sys-color-text-brand); padding-inline: var(--sys-space-2xs); }
-  .btn--circular { border-radius: var(--sys-shape-full); width: var(--comp-button-height-md); padding: 0; }
-  .icon { width: var(--comp-button-icon-size); height: var(--comp-button-icon-size); fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex: none; }
-
-  /* ---- Molecule: TextField (structure 3, BaseField) ---- */
-  .field { display: flex; flex-direction: column; gap: var(--sys-space-sm); max-width: 375px; }
-  .field__label { font: var(--sys-type-label-md); }
-  .field__label .req { color: var(--sys-color-danger-primary); }
-  .field__box { display: flex; align-items: center; gap: var(--comp-text-field-gap); min-height: var(--comp-text-field-min-height); padding: var(--comp-text-field-padding-y) var(--comp-text-field-padding-x); background: var(--sys-color-surface-input); border: 1px solid var(--sys-color-outline); border-radius: var(--comp-text-field-shape); transition: border-color var(--ref-duration-short) var(--ref-easing-standard), box-shadow var(--ref-duration-short) var(--ref-easing-standard); }
-  .field__box:hover { border-color: #ddd; }
-  .field__box:focus-within { border-color: var(--sys-color-primary); box-shadow: var(--sys-focus-ring); }
-  .field--error .field__box { border-color: var(--sys-color-danger-primary); }
-  .field__box input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font: var(--sys-type-body-sm); color: var(--sys-color-text-primary); }
-  .field__box input::placeholder { color: var(--sys-color-text-secondary); }
-  .field__sub { font: var(--sys-type-body-xs); color: var(--sys-color-text-secondary); }
-  .field__lang { display: inline-flex; align-items: center; gap: var(--sys-space-3xs); padding: var(--sys-space-2xs) var(--sys-space-xs); border: 1px solid var(--sys-color-outline); border-radius: var(--sys-shape-small); font: var(--sys-type-body-xs); color: var(--sys-color-text-secondary); }
-  .field__help { font: var(--sys-type-body-xs); color: var(--sys-color-text-secondary); }
-  .field--error .field__help { color: var(--sys-color-danger-primary); }
-
-  /* ---- Atom: Checkbox / Switch ---- */
-  .checkbox { appearance: none; width: var(--comp-checkbox-size-md); height: var(--comp-checkbox-size-md); border: 1px solid #ccc; border-radius: var(--comp-checkbox-shape); background: var(--sys-color-surface); display: inline-grid; place-content: center; cursor: pointer; margin: 0; }
-  .checkbox:checked { background: var(--sys-color-primary); border-color: var(--sys-color-primary); }
-  .checkbox:checked::after { content: ""; width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0; transform: translateY(-1px) rotate(45deg); }
-  .checkbox:focus-visible { outline: none; box-shadow: var(--sys-focus-ring); }
-  .switch { appearance: none; width: var(--comp-toggle-track-width-default); height: var(--comp-toggle-size-default); border-radius: var(--sys-shape-full); background: #ccd3d4; position: relative; cursor: pointer; margin: 0; transition: background-color var(--ref-duration-short) var(--ref-easing-standard); }
-  .switch::after { content: ""; position: absolute; inset-block-start: 3px; inset-inline-start: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; transition: transform var(--ref-duration-short) var(--ref-easing-standard); }
-  .switch:checked { background: var(--sys-color-primary); }
-  .switch:checked::after { transform: translateX(15px); }
-  [dir="rtl"] .switch:checked::after { transform: translateX(-15px); }
-  .switch:focus-visible { outline: none; box-shadow: var(--sys-focus-ring); }
-  .fieldrow { display: inline-flex; align-items: center; gap: var(--sys-space-xs); font: var(--sys-type-body-sm); }
-
-  /* ---- Molecule: Status (structure 3, StatusIndicator base) ---- */
-  .status { display: inline-flex; align-items: center; gap: var(--sys-space-2xs); height: var(--comp-status-height); border-radius: var(--comp-status-shape); font: var(--sys-type-label-sm); }
-  .status::before { content: ""; width: var(--comp-status-dot-size); height: var(--comp-status-dot-size); border-radius: 50%; background: var(--dot); }
-  .status { color: var(--text); }
-  .status--strong { padding-inline: var(--comp-status-padding-x); background: var(--bg); }
-  .status--success { --dot: var(--sys-color-success-dark); --text: var(--sys-color-success-darker); --bg: #e6f7ef; }
-  .status--danger { --dot: var(--sys-color-danger-dark); --text: var(--sys-color-danger-darker); --bg: var(--sys-color-danger-lighter); }
-  .status--info { --dot: var(--sys-color-info-primary); --text: var(--sys-color-info-darker); --bg: var(--sys-color-info-lighter); }
-  .status--warning { --dot: var(--sys-color-warning-primary); --text: #7a4a00; --bg: #fff4e5; }
-  .status--neutral { --dot: #999; --text: var(--sys-color-text-primary); --bg: #f2f2f2; }
-
-  /* ---- Organism: Alert (structure 1) ---- */
-  .alert { display: flex; gap: var(--sys-space-xs); align-items: flex-start; padding: var(--comp-alert-padding-y) var(--comp-alert-padding-x); border-radius: var(--comp-alert-shape); border-inline-start: var(--comp-alert-accent-width) solid var(--accent); background: var(--bg); color: var(--text); max-width: 480px; }
-  .alert .icon { width: var(--comp-alert-icon-size); height: var(--comp-alert-icon-size); margin-block-start: 2px; }
-  .alert__body { flex: 1; display: flex; flex-direction: column; gap: var(--sys-space-2xs); }
-  .alert__title { font: var(--sys-type-title-md); }
-  .alert__text { font: var(--sys-type-body-sm); }
-  .alert--info { --bg: var(--sys-color-info-lighter); --accent: var(--sys-color-info-light); --text: var(--sys-color-info-darker); }
-  .alert--danger { --bg: var(--sys-color-danger-lighter); --accent: #f9c1c3; --text: var(--sys-color-danger-darker); }
-  .alert--success { --bg: #e6f7ef; --accent: #b7e9d2; --text: var(--sys-color-success-darker); }
-  .alert--warning { --bg: #fff4e5; --accent: #ffdcaa; --text: #7a4a00; }
-  .alert__close { background: none; border: 0; cursor: pointer; color: inherit; padding: 0; margin-block-start: 2px; }
-
-  table.tokens { border-collapse: collapse; width: 100%; font: var(--sys-type-body-xs); }
-  table.tokens td { padding: var(--sys-space-2xs) var(--sys-space-xs); border-block-end: 1px solid var(--sys-color-outline); }
-  .sp { background: var(--sys-color-primary-container); height: 12px; display: inline-block; vertical-align: middle; }
-  .type-sample { display: grid; grid-template-columns: 160px 1fr; gap: var(--sys-space-xs) var(--sys-space-md); align-items: baseline; }
-  .type-sample code { font-size: 11px; color: var(--sys-color-text-secondary); }
-  .shape-sample { width: 64px; height: 48px; background: var(--sys-color-primary-container); border: 1px solid var(--sys-color-primary); display: grid; place-content: center; font: var(--sys-type-label-sm); color: var(--sys-color-text-brand); }
-  .elev { width: 120px; height: 72px; background: var(--sys-color-surface); border-radius: var(--sys-shape-small); display: grid; place-content: center; font: var(--sys-type-label-sm); }
+  header.bar button { background: transparent; color: inherit; border: 1px solid rgb(255 255 255 / .4); border-radius: var(--sys-shape-small); padding: var(--sys-space-tight) var(--sys-space-compact); font: var(--sys-type-label-sm); cursor: pointer; }
+  main { max-width: 1100px; margin: 0 auto; padding: var(--sys-space-section) var(--sys-space-comfortable); }
+  h2 { font: var(--sys-type-headline-md); margin: var(--sys-space-section) 0 var(--sys-space-default); }
+  section.ex { background: var(--sys-color-surface); border: 1px solid var(--sys-color-outline); border-radius: var(--sys-shape-small); padding: var(--sys-space-section); margin-block-end: var(--sys-space-comfortable); }
+  section.ex > h3 { font: var(--sys-type-label-sm); color: var(--sys-color-text-secondary); text-transform: uppercase; margin: 0 0 var(--sys-space-default); }
 </style>
 </head>
 <body>
 <header class="bar">
-  <h1>Salla DS</h1>
-  <nav><a class="active" href="#styles">Styles</a><a href="#atoms">Atoms</a><a href="#molecules">Molecules</a><a href="#organisms">Organisms</a></nav>
+  <h1>Salla DS · live examples</h1>
   <span class="spacer"></span>
-  <button class="dir" onclick="const h=document.documentElement;h.dir=h.dir==='rtl'?'ltr':'rtl';h.lang=h.dir==='rtl'?'ar':'en';">Toggle RTL</button>
+  <button onclick="const h=document.documentElement;h.dir=h.dir==='rtl'?'ltr':'rtl';h.lang=h.dir==='rtl'?'ar':'en';">Toggle RTL</button>
 </header>
-<main>
-  <p>Static preview of <code>tokens/css/tokens.css</code> and the core atoms built on it. Every value here comes from a <code>--sys-*</code> or <code>--comp-*</code> variable; nothing is hard-coded except placeholder shades noted in <code>docs/02-styles/color.md</code>. Use <em>Toggle RTL</em> to confirm logical properties mirror correctly.</p>
+<main class="sds">
 
-  <h2 id="styles">Styles</h2>
-  <div class="panel">
-    <h3>Color roles</h3>
-    <div class="grid">
-      <div class="swatch"><div style="background:var(--sys-color-primary)"></div><strong>primary</strong><code>#004956</code></div>
-      <div class="swatch"><div style="background:var(--sys-color-primary-container)"></div><strong>primary-container</strong><code>#a4ffe5</code></div>
-      <div class="swatch"><div style="background:var(--sys-color-surface)"></div><strong>surface</strong><code>#ffffff</code></div>
-      <div class="swatch"><div style="background:var(--sys-color-outline)"></div><strong>outline</strong><code>#eeeeee</code></div>
-      <div class="swatch"><div style="background:var(--sys-color-text-primary)"></div><strong>text.primary</strong><code>#333333</code></div>
-      <div class="swatch"><div style="background:var(--sys-color-text-secondary)"></div><strong>text.secondary</strong><code>#666666</code></div>
-      <div class="swatch"><div style="background:var(--sys-color-success-primary)"></div><strong>success.primary</strong><code>#00af6c</code></div>
-      <div class="swatch"><div style="background:var(--sys-color-success-dark)"></div><strong>success.dark</strong><code>#008c56</code></div>
-      <div class="swatch"><div style="background:var(--sys-color-danger-primary)"></div><strong>danger.primary</strong><code>#f55157</code></div>
-      <div class="swatch"><div style="background:var(--sys-color-danger-lighter)"></div><strong>danger.lighter</strong><code>#feecec</code></div>
-      <div class="swatch"><div style="background:var(--sys-color-warning-primary)"></div><strong>warning.primary</strong><code>#ffaf44</code></div>
-      <div class="swatch"><div style="background:var(--sys-color-info-primary)"></div><strong>info.primary</strong><code>#5196f3</code></div>
-      <div class="swatch"><div style="background:var(--sys-color-info-lighter)"></div><strong>info.lighter</strong><code>#ecf3fe</code></div>
-      <div class="swatch"><div style="background:var(--sys-color-info-darker)"></div><strong>info.darker</strong><code>#204374</code></div>
-      <div class="swatch"><div style="background:linear-gradient(90deg,var(--sys-color-feature-gradient-start),var(--sys-color-feature-gradient-end))"></div><strong>feature gradient</strong><code>#ffd8c2 → #ffaf83</code></div>
-    </div>
-
-    <h3>Typography roles</h3>
-    <div class="type-sample">
-      <code>headline-lg</code><span style="font:var(--sys-type-headline-lg)">إدارة الطلبات · Orders management</span>
-      <code>headline-md</code><span style="font:var(--sys-type-headline-md)">تفاصيل الطلب · Order details</span>
-      <code>title-md</code><span style="font:var(--sys-type-title-md)">عنوان التنبيه · Alert title</span>
-      <code>body-sm (default)</code><span style="font:var(--sys-type-body-sm)">لديك 3 طلبات جديدة · You have 3 new orders</span>
-      <code>body-xs</code><span style="font:var(--sys-type-body-xs)">نص مساعد · Helper text</span>
-      <code>label-md</code><span style="font:var(--sys-type-label-md)">حفظ · Save</span>
-      <code>label-sm</code><span style="font:var(--sys-type-label-sm)">تم الشحن · Shipped</span>
-    </div>
-
-    <h3>Spacing</h3>
-    <table class="tokens">
-      <tr><td><code>sys.space.3xs</code></td><td><span class="sp" style="width:var(--sys-space-3xs)"></span> 2</td><td><code>sys.space.md</code></td><td><span class="sp" style="width:var(--sys-space-md)"></span> 16</td></tr>
-      <tr><td><code>sys.space.2xs</code></td><td><span class="sp" style="width:var(--sys-space-2xs)"></span> 4</td><td><code>sys.space.lg</code></td><td><span class="sp" style="width:var(--sys-space-lg)"></span> 20</td></tr>
-      <tr><td><code>sys.space.xs</code></td><td><span class="sp" style="width:var(--sys-space-xs)"></span> 8</td><td><code>sys.space.xl</code></td><td><span class="sp" style="width:var(--sys-space-xl)"></span> 24</td></tr>
-      <tr><td><code>sys.space.sm</code></td><td><span class="sp" style="width:var(--sys-space-sm)"></span> 12</td><td><code>sys.space.2xl</code></td><td><span class="sp" style="width:var(--sys-space-2xl)"></span> 32</td></tr>
-    </table>
-
-    <h3>Shape</h3>
-    <div class="row">
-      <div class="shape-sample" style="border-radius:var(--sys-shape-none)">none</div>
-      <div class="shape-sample" style="border-radius:var(--sys-shape-extra-small)">xs 4</div>
-      <div class="shape-sample" style="border-radius:var(--sys-shape-small)">sm 8</div>
-      <div class="shape-sample" style="border-radius:var(--sys-shape-medium)">md 12</div>
-      <div class="shape-sample" style="border-radius:var(--sys-shape-large)">lg 16</div>
-      <div class="shape-sample" style="border-radius:var(--sys-shape-full)">full</div>
-    </div>
-
-    <h3>Elevation (proposed)</h3>
-    <div class="row">
-      <div class="elev" style="box-shadow:var(--sys-elevation-0);border:1px solid var(--sys-color-outline)">0 outline</div>
-      <div class="elev" style="box-shadow:var(--sys-elevation-1)">1</div>
-      <div class="elev" style="box-shadow:var(--sys-elevation-2)">2</div>
-      <div class="elev" style="box-shadow:var(--sys-elevation-3)">3</div>
-    </div>
-  </div>
-
-  <h2 id="atoms">Atoms</h2>
-  <div class="panel">
-    <h3>Button · Actions · structure 1 (configurable)</h3>
+<section class="ex" data-example="button"><h3>Button · Atoms / Actions</h3>
+  <div class="stack">
     <div class="row">
       <button class="btn btn--primary"><svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>إضافة منتج</button>
       <button class="btn btn--secondary">Secondary</button>
@@ -187,7 +200,7 @@
       <button class="btn btn--info">Info</button>
       <button class="btn btn--feature"><svg class="icon" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>Upgrade</button>
     </div>
-    <div class="row" style="margin-top:var(--sys-space-sm)">
+    <div class="row">
       <button class="btn btn--primary btn--outlined">Outlined</button>
       <button class="btn btn--danger btn--outlined">Outlined danger</button>
       <button class="btn btn--link">Link</button>
@@ -196,69 +209,205 @@
       <button class="btn btn--primary btn--lg">Large 48</button>
       <button class="btn btn--primary btn--circular" aria-label="Add"><svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
       <button class="btn btn--primary" disabled>Disabled</button>
-    </div>
-
-    <h3>Checkbox · Switch · Selection · structure 3 (base for the *Field molecules)</h3>
-    <div class="row">
-      <label class="fieldrow"><input type="checkbox" class="checkbox" checked> Checked</label>
-      <label class="fieldrow"><input type="checkbox" class="checkbox"> Unchecked</label>
-      <label class="fieldrow"><input type="checkbox" class="switch" checked> تفعيل · On</label>
-      <label class="fieldrow"><input type="checkbox" class="switch"> Off</label>
+      <button class="btn btn--primary" aria-busy="true"><span class="spinner spinner--sm"></span>Loading</button>
     </div>
   </div>
+</section>
 
-  <h2 id="molecules">Molecules</h2>
-  <div class="panel">
-    <h3>TextField · Text inputs · structure 3 (BaseField → TextField)</h3>
-    <div class="row" style="align-items:flex-start; gap:var(--sys-space-xl)">
-      <div class="field">
-        <label class="field__label" for="f1">اسم المنتج <span class="req">*</span></label>
-        <div class="field__box">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>
-          <input id="f1" placeholder="placeholder">
-          <span class="field__sub">subtext</span>
-          <span class="field__lang">EN <svg class="icon" viewBox="0 0 24 24" style="width:12px;height:12px"><path d="m6 9 6 6 6-6"/></svg></span>
-        </div>
-        <div class="field__help">Helper text · نص مساعد</div>
+<section class="ex" data-example="checkbox"><h3>Checkbox · CheckboxField</h3>
+  <div class="row">
+    <label class="fieldrow"><input type="checkbox" class="checkbox" checked> <span class="title">Checked</span></label>
+    <label class="fieldrow"><input type="checkbox" class="checkbox"> <span class="title">Unchecked</span></label>
+    <label class="fieldrow fieldrow--disabled"><input type="checkbox" class="checkbox" disabled> <span>Disabled</span></label>
+    <label class="fieldrow"><input type="checkbox" class="checkbox" checked> <span><span class="title">تفعيل الإشعارات</span><br><span class="desc">وصف مساعد للحقل</span></span></label>
+  </div>
+</section>
+
+<section class="ex" data-example="radio"><h3>Radio · RadioField</h3>
+  <div class="row" role="radiogroup">
+    <label class="fieldrow"><input type="radio" name="r1" class="radio" checked> <span class="title">Standard shipping</span></label>
+    <label class="fieldrow"><input type="radio" name="r1" class="radio"> <span class="title">Express</span></label>
+    <label class="fieldrow"><input type="radio" name="r1" class="radio"> <span class="title">Pickup</span></label>
+  </div>
+</section>
+
+<section class="ex" data-example="toggle"><h3>Switch · SwitchField</h3>
+  <div class="row">
+    <label class="fieldrow"><input type="checkbox" class="switch" checked> تفعيل · On</label>
+    <label class="fieldrow"><input type="checkbox" class="switch"> Off</label>
+  </div>
+</section>
+
+<section class="ex" data-example="text-field"><h3>TextField · BaseField</h3>
+  <div class="row" style="align-items:flex-start; gap:var(--sys-space-section)">
+    <div class="field">
+      <label class="field__label" for="f1">اسم المنتج <span class="req">*</span></label>
+      <div class="field__box">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>
+        <input id="f1" placeholder="placeholder">
+        <span class="field__sub">subtext</span>
+        <span class="field__lang">EN <svg class="icon" viewBox="0 0 24 24" style="width:12px;height:12px"><path d="m6 9 6 6 6-6"/></svg></span>
       </div>
-      <div class="field field--error">
-        <label class="field__label" for="f2">Email</label>
-        <div class="field__box"><input id="f2" value="merchant@salla"></div>
-        <div class="field__help">Enter a valid email address</div>
-      </div>
+      <div class="field__help">Helper text · نص مساعد</div>
     </div>
+    <div class="field field--error">
+      <label class="field__label" for="f2">Email</label>
+      <div class="field__box"><input id="f2" value="merchant@salla"></div>
+      <div class="field__help">Enter a valid email address</div>
+    </div>
+    <div class="field field--disabled">
+      <label class="field__label" for="f3">Store ID</label>
+      <div class="field__box"><input id="f3" value="1049233" disabled></div>
+    </div>
+  </div>
+</section>
 
-    <h3>Status · Communication · structure 3 (StatusIndicator → Status)</h3>
+<section class="ex" data-example="status"><h3>Status · StatusIndicator</h3>
+  <div class="stack">
     <div class="row">
       <span class="status status--success">Delivered</span>
       <span class="status status--danger">Cancelled</span>
-      <span class="status status--warning">Waiting payment</span>
-      <span class="status status--info">Shipped</span>
-      <span class="status status--neutral">Draft</span>
+      <span class="status status--warning">In progress</span>
+      <span class="status status--info">Waiting payment</span>
+      <span class="status status--neutral">Shipped</span>
     </div>
-    <div class="row" style="margin-top:var(--sys-space-xs)">
+    <div class="row">
       <span class="status status--strong status--success">تم التوصيل</span>
       <span class="status status--strong status--danger">ملغي</span>
-      <span class="status status--strong status--warning">بانتظار الدفع</span>
-      <span class="status status--strong status--info">تم الشحن</span>
-      <span class="status status--strong status--neutral">مسودة</span>
+      <span class="status status--strong status--warning">قيد التنفيذ</span>
+      <span class="status status--strong status--info">بانتظار الدفع</span>
+      <span class="status status--strong status--neutral">تم الشحن</span>
+    </div>
+    <div class="row">
+      <span class="status status--bordered status--success">تم التوصيل</span>
+      <span class="status status--bordered status--danger">محذوف</span>
+      <span class="status status--bordered status--warning">جاري التوصيل</span>
+      <span class="status status--bordered status--info">بإنتظار المراجعة</span>
+      <span class="status status--bordered status--neutral">مسترجع</span>
     </div>
   </div>
+</section>
 
-  <h2 id="organisms">Organisms</h2>
-  <div class="panel">
-    <h3>Alert · Communication · structure 1</h3>
-    <div class="row" style="flex-direction:column; align-items:stretch">
-      <div class="alert alert--info" role="status">
-        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
-        <div class="alert__body"><div class="alert__title">Alert title</div><div class="alert__text">You have 3 new orders</div></div>
-        <button class="alert__close" aria-label="Close"><svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-      </div>
-      <div class="alert alert--success" role="status"><svg class="icon" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></svg><div class="alert__body"><div class="alert__text">تم حفظ التغييرات بنجاح</div></div></div>
-      <div class="alert alert--warning" role="alert"><svg class="icon" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><div class="alert__body"><div class="alert__text">Stock is running low on 4 products</div></div></div>
-      <div class="alert alert--danger" role="alert"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg><div class="alert__body"><div class="alert__title">لم يتم حفظ التغييرات</div><div class="alert__text">حاول مرة أخرى</div></div></div>
+<section class="ex" data-example="chip"><h3>Chip</h3>
+  <div class="row"><span class="chip">Riyadh</span><span class="chip chip--selected">Jeddah</span><span class="chip">Dammam <svg class="icon" viewBox="0 0 24 24" style="width:12px;height:12px"><path d="M18 6 6 18M6 6l12 12"/></svg></span></div>
+</section>
+
+<section class="ex" data-example="loading-indicator"><h3>LoadingIndicator</h3>
+  <div class="row"><span class="spinner spinner--sm"></span><span class="spinner"></span><span class="spinner spinner--lg"></span></div>
+</section>
+
+<section class="ex" data-example="avatar"><h3>Avatar</h3>
+  <div class="row"><span class="avatar avatar--sm">ع</span><span class="avatar">AB</span><span class="avatar avatar--rect">SA</span></div>
+</section>
+
+<section class="ex" data-example="alert"><h3>Alert</h3>
+  <div class="stack">
+    <div class="alert alert--info" role="status">
+      <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
+      <div class="alert__body"><div class="alert__title">Alert title</div><div class="alert__text">You have 3 new orders</div></div>
+      <button class="alert__close" aria-label="Close"><svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="alert alert--success" role="status"><svg class="icon" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></svg><div class="alert__body"><div class="alert__text">تم حفظ التغييرات بنجاح</div></div></div>
+    <div class="alert alert--warning" role="alert"><svg class="icon" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><div class="alert__body"><div class="alert__text">Stock is running low on 4 products</div></div></div>
+    <div class="alert alert--danger" role="alert"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg><div class="alert__body"><div class="alert__title">لم يتم حفظ التغييرات</div><div class="alert__text">حاول مرة أخرى</div></div></div>
+  </div>
+</section>
+
+<section class="ex" data-example="alert-upgrade"><h3>UpgradeCard</h3>
+  <div class="alert alert--upgrade">
+    <svg class="icon" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+    <div class="alert__body"><div class="alert__title">ميزة انشاء منتج رقمي في وضع الاستكشاف</div><div class="alert__text">فعّل باقة برو لتجربة ميزة انشاء منتج رقمي واستخدامها بالكامل</div>
+      <div class="row" style="margin-block-start:var(--sys-space-compact)"><button class="btn btn--upgrade btn--sm">ترقية لباقة برو</button><button class="btn btn--sm" style="border:1px solid var(--sys-color-upgrade-dark);color:var(--sys-color-upgrade-darker)">معرفة المزيد</button></div>
     </div>
   </div>
+</section>
+
+<section class="ex" data-example="tabs"><h3>Tabs · Tab</h3>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true">ملخص المتجر</button>
+    <button class="tab" role="tab" aria-selected="false">Orders</button>
+    <button class="tab" role="tab" aria-selected="false">Products</button>
+    <button class="tab" role="tab" aria-selected="false">Customers</button>
+  </div>
+</section>
+
+<section class="ex" data-example="header"><h3>TopAppBar</h3>
+  <div class="appbar">
+    <span class="appbar__logo">salla</span>
+    <div class="appbar__tabs" role="tablist">
+      <button class="ptab" role="tab" aria-selected="true">الرئيسية</button>
+      <button class="ptab" role="tab" aria-selected="false">الطلبات</button>
+      <button class="ptab" role="tab" aria-selected="false">المنتجات</button>
+      <button class="ptab" role="tab" aria-selected="false">التسويق</button>
+      <button class="ptab" role="tab" aria-selected="false">التقارير</button>
+    </div>
+    <div class="appbar__icons">
+      <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <svg class="icon" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-8 8H5l-2 2V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8z"/></svg>
+      <svg class="icon" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg>
+      <span class="avatar">ع</span>
+    </div>
+  </div>
+</section>
+
+<section class="ex" data-example="breadcrumb"><h3>Breadcrumb</h3>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="#">الرئيسية</a><svg class="icon" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>
+    <a href="#">الطلبات</a><svg class="icon" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>
+    <a href="#" aria-current="page">#10492</a>
+  </nav>
+</section>
+
+<section class="ex" data-example="side-menu"><h3>NavigationDrawer · NavigationItem</h3>
+  <div class="drawer">
+    <div class="navitem"><span>الكل</span><span class="count">128</span></div>
+    <div class="navitem" aria-current="page"><span>بانتظار الدفع</span><span class="count">15</span></div>
+    <div class="navitem"><span>قيد التنفيذ</span><span class="count">32</span></div>
+    <div class="navitem"><span>تم الشحن</span><span class="count">41</span></div>
+    <div style="padding:var(--sys-space-comfortable)"><button class="btn btn--primary btn--outlined" style="width:100%">تخصيص الحالات</button></div>
+  </div>
+</section>
+
+<section class="ex" data-example="more-menu"><h3>MoreMenu · MenuItem</h3>
+  <div class="menu" role="menu">
+    <div class="menuitem" role="menuitem"><svg class="icon" viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6z"/></svg>طباعة بوليصة الشحن</div>
+    <div class="menuitem" role="menuitem"><svg class="icon" viewBox="0 0 24 24"><path d="M12 22s7-7 7-12a7 7 0 0 0-14 0c0 5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>تتبع حالة الشحنة</div>
+    <div class="divider" role="separator"></div>
+    <div class="menuitem menuitem--danger" role="menuitem"><svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 14h10l1-14M9 7V4h6v3"/></svg>الغاء بوليصة الشحن</div>
+  </div>
+</section>
+
+<section class="ex" data-example="tooltip"><h3>Tooltip</h3>
+  <div class="tooltip" role="tooltip">You chose X, you can’t do Y<br><a href="#">Change your choice</a></div>
+</section>
+
+<section class="ex" data-example="pagination"><h3>Pagination</h3>
+  <div class="pagination">
+    <button class="btn btn--secondary" aria-label="First"><svg class="icon" viewBox="0 0 24 24"><path d="m11 17-5-5 5-5M18 17l-5-5 5-5"/></svg></button>
+    <button class="btn btn--secondary" aria-label="Previous"><svg class="icon" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
+    <span class="label">صفحة <b>1</b> من <b>6</b></span>
+    <button class="btn btn--secondary" aria-label="Next"><svg class="icon" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
+    <button class="btn btn--secondary" aria-label="Last"><svg class="icon" viewBox="0 0 24 24"><path d="m13 17 5-5-5-5M6 17l5-5-5-5"/></svg></button>
+  </div>
+</section>
+
+<section class="ex" data-example="panel"><h3>Panel · PanelHeader</h3>
+  <div class="panel"><div class="panel__header"><span>بيانات العميل</span><button class="btn btn--secondary btn--sm">تعديل</button></div><div class="panel__body">Body slot: any content, for example a form section or a summary list.</div></div>
+</section>
+
+<section class="ex" data-example="table"><h3>DataTable (compact demo)</h3>
+  <div style="overflow-x:auto">
+  <table class="table">
+    <thead><tr><th><input type="checkbox" class="checkbox" aria-label="Select all"></th><th>Order</th><th>Customer</th><th>Amount</th><th>Status</th><th></th></tr></thead>
+    <tbody>
+      <tr><td><input type="checkbox" class="checkbox" aria-label="Select"></td><td>#10492</td><td><span class="row" style="gap:var(--sys-space-compact)"><span class="avatar avatar--sm">ع</span>عبدالله محمد</span></td><td class="amount">1,250.00 SAR</td><td><span class="status status--strong status--info">بانتظار الدفع</span></td><td><button class="btn btn--secondary btn--sm" aria-label="More">…</button></td></tr>
+      <tr><td><input type="checkbox" class="checkbox" aria-label="Select" checked></td><td>#10491</td><td><span class="row" style="gap:var(--sys-space-compact)"><span class="avatar avatar--sm">س</span>سارة أحمد</span></td><td class="amount">390.00 SAR</td><td><span class="status status--strong status--success">تم التوصيل</span></td><td><button class="btn btn--secondary btn--sm" aria-label="More">…</button></td></tr>
+      <tr><td><input type="checkbox" class="checkbox" aria-label="Select"></td><td>#10490</td><td><span class="row" style="gap:var(--sys-space-compact)"><span class="avatar avatar--sm">م</span>محمد علي</span></td><td class="amount">2,080.00 SAR</td><td><span class="status status--strong status--danger">ملغي</span></td><td><button class="btn btn--secondary btn--sm" aria-label="More">…</button></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
 </main>
 </body>
 </html>

@@ -19,8 +19,8 @@
 
 - sys.color.surface
 - sys.color.outline
-- sys.shape.medium
-- sys.elevation.1
+- sys.shape.small (8px, as NavigationDrawer and LearnMore use)
+- sys.elevation.0
 
 ## How to build it
 
