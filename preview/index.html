@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salla Design System preview</title>
+<link rel="stylesheet" href="../tokens/css/tokens.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font: var(--sys-type-body-sm); color: var(--sys-color-text-primary); background: #f6f8f8; }
+  header.bar { background: var(--sys-color-primary); color: var(--sys-color-text-inverse); padding: var(--sys-space-md) var(--sys-space-xl); display: flex; align-items: center; gap: var(--sys-space-xl); }
+  header.bar h1 { font: var(--sys-type-title-md); margin: 0; }
+  header.bar nav a { color: var(--sys-color-text-inverse); text-decoration: none; opacity: .8; margin-inline-end: var(--sys-space-md); font: var(--sys-type-label-md); }
+  header.bar nav a.active { opacity: 1; border-block-end: 2px solid var(--sys-color-primary-container); padding-block-end: 2px; }
+  header.bar .spacer { flex: 1; }
+  header.bar button.dir { background: transparent; color: inherit; border: 1px solid rgb(255 255 255 / .4); border-radius: var(--sys-shape-small); padding: var(--sys-space-2xs) var(--sys-space-xs); font: var(--sys-type-label-sm); cursor: pointer; }
+  main { max-width: 1100px; margin: 0 auto; padding: var(--sys-space-xl) var(--sys-space-md); }
+  h2 { font: var(--sys-type-headline-md); margin: var(--sys-space-2xl) 0 var(--sys-space-sm); }
+  h3 { font: var(--sys-type-title-sm); margin: var(--sys-space-lg) 0 var(--sys-space-xs); color: var(--sys-color-text-secondary); text-transform: uppercase; letter-spacing: 0; }
+  .panel { background: var(--sys-color-surface); border: 1px solid var(--sys-color-outline); border-radius: var(--sys-shape-medium); padding: var(--sys-space-xl); margin-block-end: var(--sys-space-md); }
+  .row { display: flex; flex-wrap: wrap; gap: var(--sys-space-sm); align-items: center; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--sys-space-sm); }
+  .swatch { border: 1px solid var(--sys-color-outline); border-radius: var(--sys-shape-small); overflow: hidden; }
+  .swatch div { height: 56px; }
+  .swatch code { display: block; padding: var(--sys-space-xs); font-size: 11px; color: var(--sys-color-text-secondary); }
+  .swatch strong { display: block; padding: var(--sys-space-xs) var(--sys-space-xs) 0; font: var(--sys-type-label-sm); }
+  code { font-family: ui-monospace, monospace; }
+
+  /* ---- Atom: Button (structure 1, configurable) ---- */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--comp-button-gap); min-height: var(--comp-button-height-md); padding: var(--comp-button-padding-y) var(--comp-button-padding-x); border-radius: var(--comp-button-shape); border: var(--comp-button-border-width) solid transparent; font: var(--sys-type-label-md); cursor: pointer; transition: background-color var(--ref-duration-short) var(--ref-easing-standard), border-color var(--ref-duration-short) var(--ref-easing-standard); }
+  .btn:focus-visible { outline: none; box-shadow: var(--sys-focus-ring); }
+  .btn[disabled] { opacity: .38; cursor: not-allowed; }
+  .btn--sm { min-height: var(--comp-button-height-sm); padding-block: var(--sys-space-2xs); font: var(--sys-type-label-sm); }
+  .btn--lg { min-height: var(--comp-button-height-lg); }
+  .btn--primary { background: var(--sys-color-primary-container); border-color: var(--sys-color-primary-container); color: var(--sys-color-on-primary-container); }
+  .btn--primary:hover { filter: brightness(.96); }
+  .btn--secondary { background: var(--sys-color-surface); border: 1px solid var(--sys-color-outline); color: var(--sys-color-text-primary); }
+  .btn--danger { background: var(--sys-color-danger-primary); border-color: var(--sys-color-danger-primary); color: var(--sys-color-text-inverse); }
+  .btn--success { background: var(--sys-color-success-primary); border-color: var(--sys-color-success-primary); color: var(--sys-color-text-inverse); }
+  .btn--warning { background: var(--sys-color-warning-primary); border-color: var(--sys-color-warning-primary); color: var(--sys-color-text-inverse); }
+  .btn--info { background: var(--sys-color-info-primary); border-color: var(--sys-color-info-primary); color: var(--sys-color-text-inverse); }
+  .btn--feature { background: linear-gradient(90deg, var(--sys-color-feature-gradient-start), var(--sys-color-feature-gradient-end)); color: var(--sys-color-on-feature); }
+  .btn--outlined.btn--primary { background: var(--sys-color-surface); border: 1px solid var(--sys-color-outline-primary); color: var(--sys-color-text-brand); }
+  .btn--outlined.btn--danger { background: var(--sys-color-surface); border: 1px solid var(--sys-color-danger-primary); color: var(--sys-color-danger-primary); }
+  .btn--link { background: transparent; border-color: transparent; color: var(--sys-color-text-brand); padding-inline: var(--sys-space-2xs); }
+  .btn--circular { border-radius: var(--sys-shape-full); width: var(--comp-button-height-md); padding: 0; }
+  .icon { width: var(--comp-button-icon-size); height: var(--comp-button-icon-size); fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+  /* ---- Molecule: TextField (structure 3, BaseField) ---- */
+  .field { display: flex; flex-direction: column; gap: var(--sys-space-sm); max-width: 375px; }
+  .field__label { font: var(--sys-type-label-md); }
+  .field__label .req { color: var(--sys-color-danger-primary); }
+  .field__box { display: flex; align-items: center; gap: var(--comp-text-field-gap); min-height: var(--comp-text-field-min-height); padding: var(--comp-text-field-padding-y) var(--comp-text-field-padding-x); background: var(--sys-color-surface-input); border: 1px solid var(--sys-color-outline); border-radius: var(--comp-text-field-shape); transition: border-color var(--ref-duration-short) var(--ref-easing-standard), box-shadow var(--ref-duration-short) var(--ref-easing-standard); }
+  .field__box:hover { border-color: #ddd; }
+  .field__box:focus-within { border-color: var(--sys-color-primary); box-shadow: var(--sys-focus-ring); }
+  .field--error .field__box { border-color: var(--sys-color-danger-primary); }
+  .field__box input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font: var(--sys-type-body-sm); color: var(--sys-color-text-primary); }
+  .field__box input::placeholder { color: var(--sys-color-text-secondary); }
+  .field__sub { font: var(--sys-type-body-xs); color: var(--sys-color-text-secondary); }
+  .field__lang { display: inline-flex; align-items: center; gap: var(--sys-space-3xs); padding: var(--sys-space-2xs) var(--sys-space-xs); border: 1px solid var(--sys-color-outline); border-radius: var(--sys-shape-small); font: var(--sys-type-body-xs); color: var(--sys-color-text-secondary); }
+  .field__help { font: var(--sys-type-body-xs); color: var(--sys-color-text-secondary); }
+  .field--error .field__help { color: var(--sys-color-danger-primary); }
+
+  /* ---- Atom: Checkbox / Switch ---- */
+  .checkbox { appearance: none; width: var(--comp-checkbox-size-md); height: var(--comp-checkbox-size-md); border: 1px solid #ccc; border-radius: var(--comp-checkbox-shape); background: var(--sys-color-surface); display: inline-grid; place-content: center; cursor: pointer; margin: 0; }
+  .checkbox:checked { background: var(--sys-color-primary); border-color: var(--sys-color-primary); }
+  .checkbox:checked::after { content: ""; width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0; transform: translateY(-1px) rotate(45deg); }
+  .checkbox:focus-visible { outline: none; box-shadow: var(--sys-focus-ring); }
+  .switch { appearance: none; width: var(--comp-toggle-track-width-default); height: var(--comp-toggle-size-default); border-radius: var(--sys-shape-full); background: #ccd3d4; position: relative; cursor: pointer; margin: 0; transition: background-color var(--ref-duration-short) var(--ref-easing-standard); }
+  .switch::after { content: ""; position: absolute; inset-block-start: 3px; inset-inline-start: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; transition: transform var(--ref-duration-short) var(--ref-easing-standard); }
+  .switch:checked { background: var(--sys-color-primary); }
+  .switch:checked::after { transform: translateX(15px); }
+  [dir="rtl"] .switch:checked::after { transform: translateX(-15px); }
+  .switch:focus-visible { outline: none; box-shadow: var(--sys-focus-ring); }
+  .fieldrow { display: inline-flex; align-items: center; gap: var(--sys-space-xs); font: var(--sys-type-body-sm); }
+
+  /* ---- Molecule: Status (structure 3, StatusIndicator base) ---- */
+  .status { display: inline-flex; align-items: center; gap: var(--sys-space-2xs); height: var(--comp-status-height); border-radius: var(--comp-status-shape); font: var(--sys-type-label-sm); }
+  .status::before { content: ""; width: var(--comp-status-dot-size); height: var(--comp-status-dot-size); border-radius: 50%; background: var(--dot); }
+  .status { color: var(--text); }
+  .status--strong { padding-inline: var(--comp-status-padding-x); background: var(--bg); }
+  .status--success { --dot: var(--sys-color-success-dark); --text: var(--sys-color-success-darker); --bg: #e6f7ef; }
+  .status--danger { --dot: var(--sys-color-danger-dark); --text: var(--sys-color-danger-darker); --bg: var(--sys-color-danger-lighter); }
+  .status--info { --dot: var(--sys-color-info-primary); --text: var(--sys-color-info-darker); --bg: var(--sys-color-info-lighter); }
+  .status--warning { --dot: var(--sys-color-warning-primary); --text: #7a4a00; --bg: #fff4e5; }
+  .status--neutral { --dot: #999; --text: var(--sys-color-text-primary); --bg: #f2f2f2; }
+
+  /* ---- Organism: Alert (structure 1) ---- */
+  .alert { display: flex; gap: var(--sys-space-xs); align-items: flex-start; padding: var(--comp-alert-padding-y) var(--comp-alert-padding-x); border-radius: var(--comp-alert-shape); border-inline-start: var(--comp-alert-accent-width) solid var(--accent); background: var(--bg); color: var(--text); max-width: 480px; }
+  .alert .icon { width: var(--comp-alert-icon-size); height: var(--comp-alert-icon-size); margin-block-start: 2px; }
+  .alert__body { flex: 1; display: flex; flex-direction: column; gap: var(--sys-space-2xs); }
+  .alert__title { font: var(--sys-type-title-md); }
+  .alert__text { font: var(--sys-type-body-sm); }
+  .alert--info { --bg: var(--sys-color-info-lighter); --accent: var(--sys-color-info-light); --text: var(--sys-color-info-darker); }
+  .alert--danger { --bg: var(--sys-color-danger-lighter); --accent: #f9c1c3; --text: var(--sys-color-danger-darker); }
+  .alert--success { --bg: #e6f7ef; --accent: #b7e9d2; --text: var(--sys-color-success-darker); }
+  .alert--warning { --bg: #fff4e5; --accent: #ffdcaa; --text: #7a4a00; }
+  .alert__close { background: none; border: 0; cursor: pointer; color: inherit; padding: 0; margin-block-start: 2px; }
+
+  table.tokens { border-collapse: collapse; width: 100%; font: var(--sys-type-body-xs); }
+  table.tokens td { padding: var(--sys-space-2xs) var(--sys-space-xs); border-block-end: 1px solid var(--sys-color-outline); }
+  .sp { background: var(--sys-color-primary-container); height: 12px; display: inline-block; vertical-align: middle; }
+  .type-sample { display: grid; grid-template-columns: 160px 1fr; gap: var(--sys-space-xs) var(--sys-space-md); align-items: baseline; }
+  .type-sample code { font-size: 11px; color: var(--sys-color-text-secondary); }
+  .shape-sample { width: 64px; height: 48px; background: var(--sys-color-primary-container); border: 1px solid var(--sys-color-primary); display: grid; place-content: center; font: var(--sys-type-label-sm); color: var(--sys-color-text-brand); }
+  .elev { width: 120px; height: 72px; background: var(--sys-color-surface); border-radius: var(--sys-shape-small); display: grid; place-content: center; font: var(--sys-type-label-sm); }
+</style>
+</head>
+<body>
+<header class="bar">
+  <h1>Salla DS</h1>
+  <nav><a class="active" href="#styles">Styles</a><a href="#atoms">Atoms</a><a href="#molecules">Molecules</a><a href="#organisms">Organisms</a></nav>
+  <span class="spacer"></span>
+  <button class="dir" onclick="const h=document.documentElement;h.dir=h.dir==='rtl'?'ltr':'rtl';h.lang=h.dir==='rtl'?'ar':'en';">Toggle RTL</button>
+</header>
+<main>
+  <p>Static preview of <code>tokens/css/tokens.css</code> and the core atoms built on it. Every value here comes from a <code>--sys-*</code> or <code>--comp-*</code> variable; nothing is hard-coded except placeholder shades noted in <code>docs/02-styles/color.md</code>. Use <em>Toggle RTL</em> to confirm logical properties mirror correctly.</p>
+
+  <h2 id="styles">Styles</h2>
+  <div class="panel">
+    <h3>Color roles</h3>
+    <div class="grid">
+      <div class="swatch"><div style="background:var(--sys-color-primary)"></div><strong>primary</strong><code>#004956</code></div>
+      <div class="swatch"><div style="background:var(--sys-color-primary-container)"></div><strong>primary-container</strong><code>#a4ffe5</code></div>
+      <div class="swatch"><div style="background:var(--sys-color-surface)"></div><strong>surface</strong><code>#ffffff</code></div>
+      <div class="swatch"><div style="background:var(--sys-color-outline)"></div><strong>outline</strong><code>#eeeeee</code></div>
+      <div class="swatch"><div style="background:var(--sys-color-text-primary)"></div><strong>text.primary</strong><code>#333333</code></div>
+      <div class="swatch"><div style="background:var(--sys-color-text-secondary)"></div><strong>text.secondary</strong><code>#666666</code></div>
+      <div class="swatch"><div style="background:var(--sys-color-success-primary)"></div><strong>success.primary</strong><code>#00af6c</code></div>
+      <div class="swatch"><div style="background:var(--sys-color-success-dark)"></div><strong>success.dark</strong><code>#008c56</code></div>
+      <div class="swatch"><div style="background:var(--sys-color-danger-primary)"></div><strong>danger.primary</strong><code>#f55157</code></div>
+      <div class="swatch"><div style="background:var(--sys-color-danger-lighter)"></div><strong>danger.lighter</strong><code>#feecec</code></div>
+      <div class="swatch"><div style="background:var(--sys-color-warning-primary)"></div><strong>warning.primary</strong><code>#ffaf44</code></div>
+      <div class="swatch"><div style="background:var(--sys-color-info-primary)"></div><strong>info.primary</strong><code>#5196f3</code></div>
+      <div class="swatch"><div style="background:var(--sys-color-info-lighter)"></div><strong>info.lighter</strong><code>#ecf3fe</code></div>
+      <div class="swatch"><div style="background:var(--sys-color-info-darker)"></div><strong>info.darker</strong><code>#204374</code></div>
+      <div class="swatch"><div style="background:linear-gradient(90deg,var(--sys-color-feature-gradient-start),var(--sys-color-feature-gradient-end))"></div><strong>feature gradient</strong><code>#ffd8c2 → #ffaf83</code></div>
+    </div>
+
+    <h3>Typography roles</h3>
+    <div class="type-sample">
+      <code>headline-lg</code><span style="font:var(--sys-type-headline-lg)">إدارة الطلبات · Orders management</span>
+      <code>headline-md</code><span style="font:var(--sys-type-headline-md)">تفاصيل الطلب · Order details</span>
+      <code>title-md</code><span style="font:var(--sys-type-title-md)">عنوان التنبيه · Alert title</span>
+      <code>body-sm (default)</code><span style="font:var(--sys-type-body-sm)">لديك 3 طلبات جديدة · You have 3 new orders</span>
+      <code>body-xs</code><span style="font:var(--sys-type-body-xs)">نص مساعد · Helper text</span>
+      <code>label-md</code><span style="font:var(--sys-type-label-md)">حفظ · Save</span>
+      <code>label-sm</code><span style="font:var(--sys-type-label-sm)">تم الشحن · Shipped</span>
+    </div>
+
+    <h3>Spacing</h3>
+    <table class="tokens">
+      <tr><td><code>sys.space.3xs</code></td><td><span class="sp" style="width:var(--sys-space-3xs)"></span> 2</td><td><code>sys.space.md</code></td><td><span class="sp" style="width:var(--sys-space-md)"></span> 16</td></tr>
+      <tr><td><code>sys.space.2xs</code></td><td><span class="sp" style="width:var(--sys-space-2xs)"></span> 4</td><td><code>sys.space.lg</code></td><td><span class="sp" style="width:var(--sys-space-lg)"></span> 20</td></tr>
+      <tr><td><code>sys.space.xs</code></td><td><span class="sp" style="width:var(--sys-space-xs)"></span> 8</td><td><code>sys.space.xl</code></td><td><span class="sp" style="width:var(--sys-space-xl)"></span> 24</td></tr>
+      <tr><td><code>sys.space.sm</code></td><td><span class="sp" style="width:var(--sys-space-sm)"></span> 12</td><td><code>sys.space.2xl</code></td><td><span class="sp" style="width:var(--sys-space-2xl)"></span> 32</td></tr>
+    </table>
+
+    <h3>Shape</h3>
+    <div class="row">
+      <div class="shape-sample" style="border-radius:var(--sys-shape-none)">none</div>
+      <div class="shape-sample" style="border-radius:var(--sys-shape-extra-small)">xs 4</div>
+      <div class="shape-sample" style="border-radius:var(--sys-shape-small)">sm 8</div>
+      <div class="shape-sample" style="border-radius:var(--sys-shape-medium)">md 12</div>
+      <div class="shape-sample" style="border-radius:var(--sys-shape-large)">lg 16</div>
+      <div class="shape-sample" style="border-radius:var(--sys-shape-full)">full</div>
+    </div>
+
+    <h3>Elevation (proposed)</h3>
+    <div class="row">
+      <div class="elev" style="box-shadow:var(--sys-elevation-0);border:1px solid var(--sys-color-outline)">0 outline</div>
+      <div class="elev" style="box-shadow:var(--sys-elevation-1)">1</div>
+      <div class="elev" style="box-shadow:var(--sys-elevation-2)">2</div>
+      <div class="elev" style="box-shadow:var(--sys-elevation-3)">3</div>
+    </div>
+  </div>
+
+  <h2 id="atoms">Atoms</h2>
+  <div class="panel">
+    <h3>Button · Actions · structure 1 (configurable)</h3>
+    <div class="row">
+      <button class="btn btn--primary"><svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>إضافة منتج</button>
+      <button class="btn btn--secondary">Secondary</button>
+      <button class="btn btn--danger">Delete</button>
+      <button class="btn btn--success">Success</button>
+      <button class="btn btn--warning">Warning</button>
+      <button class="btn btn--info">Info</button>
+      <button class="btn btn--feature"><svg class="icon" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>Upgrade</button>
+    </div>
+    <div class="row" style="margin-top:var(--sys-space-sm)">
+      <button class="btn btn--primary btn--outlined">Outlined</button>
+      <button class="btn btn--danger btn--outlined">Outlined danger</button>
+      <button class="btn btn--link">Link</button>
+      <button class="btn btn--primary btn--sm">Small 32</button>
+      <button class="btn btn--primary">Medium 40</button>
+      <button class="btn btn--primary btn--lg">Large 48</button>
+      <button class="btn btn--primary btn--circular" aria-label="Add"><svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+      <button class="btn btn--primary" disabled>Disabled</button>
+    </div>
+
+    <h3>Checkbox · Switch · Selection · structure 3 (base for the *Field molecules)</h3>
+    <div class="row">
+      <label class="fieldrow"><input type="checkbox" class="checkbox" checked> Checked</label>
+      <label class="fieldrow"><input type="checkbox" class="checkbox"> Unchecked</label>
+      <label class="fieldrow"><input type="checkbox" class="switch" checked> تفعيل · On</label>
+      <label class="fieldrow"><input type="checkbox" class="switch"> Off</label>
+    </div>
+  </div>
+
+  <h2 id="molecules">Molecules</h2>
+  <div class="panel">
+    <h3>TextField · Text inputs · structure 3 (BaseField → TextField)</h3>
+    <div class="row" style="align-items:flex-start; gap:var(--sys-space-xl)">
+      <div class="field">
+        <label class="field__label" for="f1">اسم المنتج <span class="req">*</span></label>
+        <div class="field__box">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>
+          <input id="f1" placeholder="placeholder">
+          <span class="field__sub">subtext</span>
+          <span class="field__lang">EN <svg class="icon" viewBox="0 0 24 24" style="width:12px;height:12px"><path d="m6 9 6 6 6-6"/></svg></span>
+        </div>
+        <div class="field__help">Helper text · نص مساعد</div>
+      </div>
+      <div class="field field--error">
+        <label class="field__label" for="f2">Email</label>
+        <div class="field__box"><input id="f2" value="merchant@salla"></div>
+        <div class="field__help">Enter a valid email address</div>
+      </div>
+    </div>
+
+    <h3>Status · Communication · structure 3 (StatusIndicator → Status)</h3>
+    <div class="row">
+      <span class="status status--success">Delivered</span>
+      <span class="status status--danger">Cancelled</span>
+      <span class="status status--warning">Waiting payment</span>
+      <span class="status status--info">Shipped</span>
+      <span class="status status--neutral">Draft</span>
+    </div>
+    <div class="row" style="margin-top:var(--sys-space-xs)">
+      <span class="status status--strong status--success">تم التوصيل</span>
+      <span class="status status--strong status--danger">ملغي</span>
+      <span class="status status--strong status--warning">بانتظار الدفع</span>
+      <span class="status status--strong status--info">تم الشحن</span>
+      <span class="status status--strong status--neutral">مسودة</span>
+    </div>
+  </div>
+
+  <h2 id="organisms">Organisms</h2>
+  <div class="panel">
+    <h3>Alert · Communication · structure 1</h3>
+    <div class="row" style="flex-direction:column; align-items:stretch">
+      <div class="alert alert--info" role="status">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
+        <div class="alert__body"><div class="alert__title">Alert title</div><div class="alert__text">You have 3 new orders</div></div>
+        <button class="alert__close" aria-label="Close"><svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      </div>
+      <div class="alert alert--success" role="status"><svg class="icon" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></svg><div class="alert__body"><div class="alert__text">تم حفظ التغييرات بنجاح</div></div></div>
+      <div class="alert alert--warning" role="alert"><svg class="icon" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><div class="alert__body"><div class="alert__text">Stock is running low on 4 products</div></div></div>
+      <div class="alert alert--danger" role="alert"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg><div class="alert__body"><div class="alert__title">لم يتم حفظ التغييرات</div><div class="alert__text">حاول مرة أخرى</div></div></div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

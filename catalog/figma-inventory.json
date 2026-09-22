@@ -1,0 +1,1830 @@
+{
+ "sections": {
+  "Header": {
+   "header Avatar": {
+    "variants": 2,
+    "props": {
+     "state": [
+      "Default",
+      "hover"
+     ]
+    }
+   },
+   "Header": {
+    "variants": 2,
+    "props": {
+     "--device": [
+      "desktop",
+      "mobile"
+     ]
+    }
+   },
+   "Page Title": {
+    "variants": 2,
+    "props": {
+     "--device": [
+      "desktop",
+      "mobile"
+     ]
+    }
+   },
+   "Header Subcategory": {
+    "variants": 2,
+    "props": {
+     "--device": [
+      "desktop",
+      "mobile"
+     ]
+    }
+   },
+   "Header Secondary Tabs": {
+    "variants": 12,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "state": [
+      "--active",
+      "--default",
+      "--hover"
+     ],
+     "Contained": [
+      "Off",
+      "On"
+     ]
+    }
+   },
+   "Primary Tabs List - Dashboard only": {
+    "variants": 2,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ]
+    }
+   }
+  },
+  "Bread crumb": {
+   "_breadcrumbItem": {
+    "variants": 20,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "Status": [
+      "--active",
+      "--default",
+      "--disabled",
+      "--hover",
+      "--onclick"
+     ],
+     "Type": [
+      "Icon",
+      "More",
+      "Separator",
+      "Text"
+     ]
+    }
+   },
+   "Breadcrumb": {
+    "variants": 12,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "count": [
+      "2",
+      "3",
+      ">5"
+     ],
+     "device": [
+      "Desktop",
+      "Mobile"
+     ]
+    }
+   }
+  },
+  "check Box": {
+   "checkBox": {
+    "variants": 18,
+    "props": {
+     "--selected": [
+      "false",
+      "mix",
+      "true"
+     ],
+     "Status": [
+      "--default",
+      "--disabled",
+      "--focus"
+     ],
+     "size": [
+      "md-20px",
+      "sm-16px"
+     ]
+    }
+   },
+   "checkboxfield": {
+    "variants": 16,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "--disabled": [
+      "--default",
+      "--disabled",
+      "--disabled-info",
+      "--disabled-info-tooltip"
+     ],
+     "--selected": [
+      "False",
+      "True"
+     ]
+    }
+   }
+  },
+  "radio Buttton": {
+   "radio": {
+    "variants": 12,
+    "props": {
+     "Active": [
+      "Off",
+      "On"
+     ],
+     "Status": [
+      "Default",
+      "Disabled",
+      "Focus"
+     ],
+     "size": [
+      "--md",
+      "--sm"
+     ]
+    }
+   },
+   "radiofield": {
+    "variants": 8,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "--disabled": [
+      "false",
+      "true"
+     ],
+     "--selected": [
+      "false",
+      "true"
+     ]
+    }
+   },
+   "radioImage": {
+    "variants": 3,
+    "props": {
+     "state": [
+      "--defaullt",
+      "--hover",
+      "--selected"
+     ]
+    }
+   },
+   "radioColor": {
+    "variants": 3,
+    "props": {
+     "state": [
+      "--default",
+      "--hover",
+      "--selected"
+     ]
+    }
+   }
+  },
+  "Toggle": {
+   "Toggle": {
+    "variants": 20,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "--selected": [
+      "false",
+      "true"
+     ],
+     "--disabled": [
+      "false",
+      "true"
+     ],
+     "--loading": [
+      "false",
+      "true"
+     ],
+     "size": [
+      "default-24px",
+      "sm-16px"
+     ]
+    }
+   },
+   "toggleField": {
+    "variants": 20,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "togglePosition": [
+      "ending",
+      "starting"
+     ],
+     "--disabled": [
+      "false",
+      "true"
+     ],
+     "--selected": [
+      "false",
+      "true"
+     ],
+     "--loading": [
+      "false",
+      "true"
+     ]
+    }
+   }
+  },
+  "Loader": {
+   "_LoadingIndicator": {
+    "variants": 27,
+    "props": {
+     "Size": [
+      "lg- 56px",
+      "md- 48px",
+      "sm- 32px",
+      "xl- 64px",
+      "xs- 24px",
+      "xxl- 88px",
+      "xxs- 20px",
+      "xxxs- 16px",
+      "xxxxs-8px"
+     ],
+     "Type": [
+      "Dots",
+      "Line",
+      "Spinner"
+     ]
+    }
+   },
+   "Loading": {
+    "variants": 2,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ]
+    }
+   }
+  },
+  "Status": {
+   "_Base Status Indicator": {
+    "variants": 30,
+    "props": {
+     "Color": [
+      "--danger",
+      "--info",
+      "--neutral",
+      "--success",
+      "--warning"
+     ],
+     "Size": [
+      "2xl",
+      "lg",
+      "md",
+      "sm",
+      "xl",
+      "xs"
+     ]
+    }
+   },
+   "Status": {
+    "variants": 20,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "Type": [
+      "--danger",
+      "--info",
+      "--neutral",
+      "--success",
+      "--warning"
+     ],
+     "Appearance": [
+      "--strong",
+      "--subtle"
+     ]
+    }
+   }
+  },
+  "Avatar": {
+   "Avatar": {
+    "variants": 60,
+    "props": {
+     "Variant": [
+      "--avatar",
+      "--avatar-fallback",
+      "--icon",
+      "--image-fallback",
+      "--text"
+     ],
+     "Size": [
+      "2xl",
+      "lg",
+      "md",
+      "sm",
+      "xl",
+      "xs"
+     ],
+     "radius": [
+      "--circular",
+      "--rectangular"
+     ]
+    }
+   },
+   "_AvatarplaholderImages": {
+    "variants": 10,
+    "props": {
+     "Image": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "arabic-male"
+     ]
+    }
+   },
+   "_BanksPlaceholderImages": {
+    "variants": 1,
+    "props": {
+     "Image": [
+      "Alarjhi"
+     ]
+    }
+   },
+   "AvatarWithText": {
+    "variants": 2,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ]
+    }
+   },
+   "AvatarStack": {
+    "variants": 8,
+    "props": {
+     "--overlapping": [
+      "false",
+      "true"
+     ],
+     "size": [
+      "compact",
+      "default"
+     ],
+     "Language": [
+      "Arabic",
+      "English"
+     ]
+    }
+   }
+  },
+  "Alertbox": {
+   "Alertbox": {
+    "variants": 64,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "variant": [
+      "--danger",
+      "--info",
+      "--success",
+      "--warning"
+     ],
+     "Type": [
+      "Default",
+      "Inline",
+      "white"
+     ],
+     "Title": [
+      "Off",
+      "On"
+     ],
+     "Trasnparet": [
+      "Off",
+      "On"
+     ]
+    }
+   },
+   "Alertbox_Banner": {
+    "variants": 2,
+    "props": {
+     "Type": [
+      "Type1",
+      "Type2"
+     ]
+    }
+   },
+   "Alertbox_Upgrade": {
+    "variants": 2,
+    "props": {
+     "Device": [
+      "Desktop",
+      "Mobile"
+     ]
+    }
+   }
+  },
+  "Inputs": {
+   "_TextInput": {
+    "variants": 28,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "state": [
+      "--Active",
+      "--Active-Filled",
+      "--default",
+      "--disabled",
+      "--filled",
+      "--hover",
+      "--preActive",
+      "--read-only"
+     ],
+     "--error": [
+      "False",
+      "True"
+     ]
+    }
+   },
+   "_inputWithButton": {
+    "variants": 28,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "state": [
+      "--Active",
+      "--Active-Filled",
+      "--default",
+      "--disabled",
+      "--filled",
+      "--hover",
+      "--preActive",
+      "--read-only"
+     ],
+     "--error": [
+      "False",
+      "True"
+     ]
+    }
+   },
+   "_InputWithImage": {
+    "variants": 28,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "state": [
+      "--Active",
+      "--Active-Filled",
+      "--default",
+      "--disabled",
+      "--filled",
+      "--hover",
+      "--preActive",
+      "--read-only"
+     ],
+     "--error": [
+      "False",
+      "True"
+     ]
+    }
+   },
+   "_InputCounter": {
+    "variants": 28,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "state": [
+      "--Active",
+      "--Active-Filled",
+      "--default",
+      "--disabled",
+      "--filled",
+      "--hover",
+      "--preActive",
+      "--read-only"
+     ],
+     "--error": [
+      "False",
+      "True"
+     ]
+    }
+   },
+   "_TextArea": {
+    "variants": 56,
+    "props": {
+     "State": [
+      "--Active",
+      "--Active-Filled",
+      "--default",
+      "--disabled",
+      "--filled",
+      "--hover",
+      "--preActive",
+      "--read-only"
+     ],
+     "--error": [
+      "Fals",
+      "False",
+      "True"
+     ],
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "Rich text?": [
+      "No",
+      "Yes"
+     ]
+    }
+   },
+   "_amountInput": {
+    "variants": 28,
+    "props": {
+     "State": [
+      "--Active",
+      "--Active-Filled",
+      "--default",
+      "--disabled",
+      "--filled",
+      "--hover",
+      "--preActive",
+      "--read-only"
+     ],
+     "--error": [
+      "False",
+      "True"
+     ],
+     "Language": [
+      "Arabic",
+      "English"
+     ]
+    }
+   },
+   "_emailInput": {
+    "variants": 28,
+    "props": {
+     "State": [
+      "--Active",
+      "--Active-Filled",
+      "--default",
+      "--disabled",
+      "--filled",
+      "--hover",
+      "--preActive",
+      "--read-only"
+     ],
+     "--error": [
+      "False",
+      "True"
+     ],
+     "Language": [
+      "Arabic",
+      "English"
+     ]
+    }
+   },
+   "_SingleDigit": {
+    "variants": 14,
+    "props": {
+     "State": [
+      "--Active",
+      "--Active-Filled",
+      "--default",
+      "--disabled",
+      "--filled",
+      "--hover",
+      "--preActive",
+      "--read-only"
+     ],
+     "--error": [
+      "Fals",
+      "False",
+      "True"
+     ],
+     "Language": [
+      "Arabic"
+     ]
+    }
+   },
+   "Counter": {
+    "variants": 24,
+    "props": {
+     "State": [
+      "--Active",
+      "--Active-Filled",
+      "--Active-Filled-with-one",
+      "--default",
+      "--disabled",
+      "--filled",
+      "--filled-hover",
+      "--filled-with-one",
+      "--hover",
+      "--preActive",
+      "--read-only",
+      "--read-only-with-one"
+     ],
+     "--error": [
+      "Fals",
+      "False"
+     ],
+     "--size": [
+      "compact",
+      "default"
+     ]
+    }
+   },
+   "_passwordInput": {
+    "variants": 112,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "State": [
+      "--Active",
+      "--Active-Filled",
+      "--default",
+      "--disabled",
+      "--filled",
+      "--hover",
+      "--preActive",
+      "--read-only"
+     ],
+     "--error": [
+      "False",
+      "True"
+     ],
+     "--hidden": [
+      "False",
+      "True"
+     ],
+     "--requirements": [
+      "False",
+      "True"
+     ]
+    }
+   },
+   "_dropdown-single": {
+    "variants": 29,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "state": [
+      "--Active",
+      "--Active-Filled",
+      "--default",
+      "--disabled",
+      "--filled",
+      "--hover",
+      "--preActive",
+      "--read-only"
+     ],
+     "--error": [
+      "False",
+      "True"
+     ],
+     "Add new value": [
+      "Off",
+      "On"
+     ]
+    }
+   },
+   "searchInput": {
+    "variants": 16,
+    "props": {
+     "State": [
+      "--Active",
+      "--Active-Filled",
+      "--Active-Filled-noResult",
+      "--Active-recommendation",
+      "--default",
+      "--filled",
+      "--hover",
+      "--preActive"
+     ],
+     "--error": [
+      "False"
+     ],
+     "Language": [
+      "Arabic",
+      "English"
+     ]
+    }
+   },
+   "_dropdown-multiple": {
+    "variants": 29,
+    "props": {
+     "State": [
+      "--Active",
+      "--Active-Filled",
+      "--default",
+      "--disabled",
+      "--filled",
+      "--hover",
+      "--preActive",
+      "--read-only"
+     ],
+     "--error": [
+      "False",
+      "True"
+     ],
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "Add new value": [
+      "Off",
+      "On"
+     ]
+    }
+   },
+   "basic-dropdown-single": {
+    "variants": 29,
+    "props": {
+     "State": [
+      "--Active",
+      "--Active-Filled",
+      "--default",
+      "--disabled",
+      "--filled",
+      "--filled-hover",
+      "--hover",
+      "--preActive",
+      "--read-only"
+     ],
+     "--error": [
+      "False",
+      "True"
+     ],
+     "Language": [
+      "Arabic",
+      "English"
+     ]
+    }
+   },
+   "basic-dropdown-multiple": {
+    "variants": 28,
+    "props": {
+     "State": [
+      "--Active",
+      "--Active-Filled",
+      "--default",
+      "--disabled",
+      "--filled",
+      "--hover",
+      "--preActive",
+      "--read-only"
+     ],
+     "--error": [
+      "False",
+      "True"
+     ],
+     "Language": [
+      "Arabic",
+      "English"
+     ]
+    }
+   },
+   "_PhoneInputV1": {
+    "variants": 28,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "state": [
+      "--active",
+      "--active-filled",
+      "--default",
+      "--disabled",
+      "--filled",
+      "--hover",
+      "--preActive",
+      "--read-only"
+     ],
+     "--error": [
+      "False",
+      "True"
+     ]
+    }
+   },
+   "InputWrapper": {
+    "variants": 24,
+    "props": {
+     "Variant": [
+      "--Search",
+      "--amount",
+      "--color picker",
+      "--dropdown-multiple",
+      "--dropdown-single",
+      "--dropdown-single-basic",
+      "--email",
+      "--password",
+      "--phone",
+      "--texArea",
+      "--text",
+      "--upload"
+     ],
+     "Langauge": [
+      "Arabic",
+      "English"
+     ]
+    }
+   },
+   "_inputLabel": {
+    "variants": 2,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ]
+    }
+   },
+   "_Text-cursor": {
+    "variants": 2,
+    "props": {
+     "State": [
+      "Not visible",
+      "Visible"
+     ]
+    }
+   },
+   "_inputTip": {
+    "variants": 10,
+    "props": {
+     "Type": [
+      "Danger",
+      "Default",
+      "Delete File",
+      "Variables",
+      "character count"
+     ],
+     "Langauge": [
+      "Arabic",
+      "English"
+     ]
+    }
+   },
+   "_passwordHints": {
+    "variants": 6,
+    "props": {
+     "Variant": [
+      "Pending",
+      "danger",
+      "success"
+     ],
+     "Langauge": [
+      "Arabic",
+      "English"
+     ]
+    }
+   },
+   "_passwordValidation": {
+    "variants": 2,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ]
+    }
+   },
+   "_Rich-Text-Panel": {
+    "variants": 2,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ]
+    }
+   },
+   "_counter-buttons": {
+    "variants": 6,
+    "props": {
+     "variant": [
+      "left",
+      "left-delete",
+      "right"
+     ],
+     "disabled?": [
+      "False",
+      "True"
+     ]
+    }
+   },
+   "_Translation": {
+    "variants": 2,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ]
+    }
+   },
+   "_quantity-hotreload": {
+    "variants": 10,
+    "props": {
+     "State": [
+      "--Active-Filled",
+      "--default",
+      "--filled",
+      "--hover",
+      "--preActive"
+     ],
+     "--error": [
+      "False"
+     ],
+     "Language": [
+      "Arabic",
+      "English"
+     ]
+    }
+   },
+   "upload input": {
+    "variants": 17,
+    "props": {
+     "Langugae": [
+      "Arabic",
+      "English"
+     ],
+     "variant": [
+      "--inline",
+      "--multiple",
+      "--multiple vertical",
+      "--single-image",
+      "--single-video"
+     ],
+     "state": [
+      "--default",
+      "--filled"
+     ],
+     "--error": [
+      "false",
+      "true"
+     ]
+    }
+   }
+  },
+  "Maps": {
+   "Maps": {
+    "variants": 2,
+    "props": {
+     "Language": [
+      "Default",
+      "English"
+     ]
+    }
+   }
+  },
+  "Side menu": {
+   "Side menu": {
+    "variants": 2,
+    "props": {
+     "Status": [
+      "default",
+      "disabled"
+     ]
+    }
+   },
+   "sidemenu tab": {
+    "variants": 9,
+    "props": {
+     "status": [
+      "--active",
+      "--default",
+      "--hover"
+     ],
+     "variant": [
+      "first",
+      "last",
+      "middle"
+     ]
+    }
+   }
+  },
+  "More Menu": {
+   "_moreItems": {
+    "variants": 4,
+    "props": {
+     "Type": [
+      "Icon",
+      "Image",
+      "Sperator"
+     ],
+     "--danger": [
+      "Off",
+      "On"
+     ]
+    }
+   },
+   "More Menu": {
+    "variants": 4,
+    "props": {
+     "Type": [
+      "Type1",
+      "Type2",
+      "Type3"
+     ],
+     "Dir": [
+      "Left",
+      "Off",
+      "Right"
+     ]
+    }
+   }
+  },
+  "Drop Down List": {
+   "Drop Down List": {
+    "variants": 34,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "Variant": [
+      "Accordion",
+      "No Results",
+      "No Results with add",
+      "One Layer",
+      "One Layer - Flag",
+      "One Layer - Image",
+      "Three layers",
+      "Two Layers"
+     ],
+     "Checkbox": [
+      "False",
+      "True"
+     ],
+     "Icon": [
+      "False",
+      "True"
+     ],
+     "Description": [
+      "False",
+      "True"
+     ]
+    }
+   },
+   "_listItem": {
+    "variants": 50,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "Variant": [
+      "--item",
+      "--item-description",
+      "--item-flag",
+      "--item-image"
+     ],
+     "--danger": [
+      "False",
+      "True"
+     ],
+     "--selected": [
+      "False",
+      "True"
+     ],
+     "--disabled": [
+      "false",
+      "true"
+     ],
+     "--feature": [
+      "false",
+      "true"
+     ]
+    }
+   },
+   "_listTitle": {
+    "variants": 8,
+    "props": {
+     "Language": [
+      "Arabic",
+      "English"
+     ],
+     "Variant": [
+      "Category",
+      "Search Active",
+      "Search Default",
+      "Subcategory"
+     ]
+    }
+   },
+   "_Date": {
+    "variants": 4,
+    "props": {
+     "Type": [
+      "Current",
+      "Default",
+      "Disabled",
+      "Selected"
+     ]
+    }
+   },
+   "_bigCalenderItems": {
+    "variants": 5,
+    "props": {
+     "Status": [
+      "Default",
+      "Disable",
+      "Select",
+      "Variant4"
+     ],
+     "Type": [
+      "Day",
+      "Numbers"
+     ]
+    }
+   },
+   "_Time": {
+    "variants": 2,
+    "props": {
+     "Type": [
+      "Default",
+      "Selceted"
+     ]
+    }
+   },
+   "Time": {
+    "variants": 3,
+    "props": {
+     "Status": [
+      "Default",
+      "Edit",
+      "Hover"
+     ]
+    }
+   }
+  },
+  "Table": {
+   "Table/Cell/Flag_with_text": {
+    "variants": 3,
+    "props": {
+     "Type": [
+      "Text + Flag"
+     ],
+     "Status": [
+      "Default",
+      "Edit",
+      "Hover"
+     ]
+    }
+   },
+   "Table/Cell/Markets": {
+    "variants": 3,
+    "props": {
+     "Type": [
+      "Text + Flag"
+     ],
+     "Status": [
+      "Default",
+      "Edit",
+      "Hover"
+     ]
+    }
+   },
+   "Table/Cell/Actions": {
+    "variants": 12,
+    "props": {
+     "Type": [
+      "Actions Toggle",
+      "Actions one icon",
+      "Actions three icons",
+      "Actions two icons"
+     ],
+     "Status": [
+      "Default",
+      "Focus",
+      "Hover"
+     ]
+    }
+   },
+   "Table/Cell/Status": {
+    "variants": 3,
+    "props": {
+     "Status": [
+      "Default",
+      "Focus",
+      "Hover"
+     ]
+    }
+   },
+   "Table/Cell/Tags": {
+    "variants": 3,
+    "props": {
+     "Status": [
+      "Default",
+      "Focus",
+      "Hover"
+     ]
+    }
+   },
+   "Table/Cell/Products": {
+    "variants": 3,
+    "props": {
+     "Status": [
+      "Default",
+      "Focus",
+      "Hover"
+     ],
+     "Hover": [
+      "Off"
+     ]
+    }
+   },
+   "Table/Cell/Image": {
+    "variants": 6,
+    "props": {
+     "Status": [
+      "Default",
+      "Focus",
+      "Hover"
+     ],
+     "Hover": [
+      "Off"
+     ],
+     "Empty": [
+      "Off",
+      "On"
+     ]
+    }
+   },
+   "Table/Cell/Amount": {
+    "variants": 6,
+    "props": {
+     "Status": [
+      "Default",
+      "Focus",
+      "Hover"
+     ],
+     "Type": [
+      "Default",
+      "price with text"
+     ]
+    }
+   },
+   "Table/Cell/Name": {
+    "variants": 6,
+    "props": {
+     "Status": [
+      "Default",
+      "Focus",
+      "Hover"
+     ],
+     "Two Lines": [
+      "Off",
+      "On"
+     ]
+    }
+   },
+   "Table/Cell/Varient": {
+    "variants": 3,
+    "props": {
+     "Status": [
+      "Default",
+      "Focus",
+      "Hover"
+     ]
+    }
+   },
+   "Table/Cell/Percentage": {
+    "variants": 3,
+    "props": {
+     "Status": [
+      "Default",
+      "Focus",
+      "Hover"
+     ]
+    }
+   },
+   "Table/Cell/SubName": {
+    "variants": 6,
+    "props": {
+     "Status": [
+      "Default",
+      "Focus",
+      "Hover"
+     ],
+     "Two Lines": [
+      "Off",
+      "On"
+     ]
+    }
+   },
+   "Table/Cell/Data": {
+    "variants": 9,
+    "props": {
+     "Type": [
+      "Date & Time",
+      "Dropdown",
+      "Text"
+     ],
+     "Status": [
+      "Default",
+      "Edit",
+      "Hover"
+     ]
+    }
+   },
+   "Table/Cell/Sort": {
+    "variants": 3,
+    "props": {
+     "Type": [
+      "Text"
+     ],
+     "Status": [
+      "Default",
+      "Hover",
+      "press"
+     ]
+    }
+   },
+   "Table/Cell/Checkbox": {
+    "variants": 3,
+    "props": {
+     "Type": [
+      "Text"
+     ],
+     "Status": [
+      "Default",
+      "Hover",
+      "press"
+     ]
+    }
+   },
+   "Table/Cell/Disabled": {
+    "variants": 1,
+    "props": {
+     "Type": [
+      "Text"
+     ],
+     "Status": [
+      "Default"
+     ]
+    }
+   },
+   "Table/Cell/Chip": {
+    "variants": 6,
+    "props": {
+     "Count": [
+      "Multi",
+      "One"
+     ],
+     "Status": [
+      "Default",
+      "Hover",
+      "press"
+     ]
+    }
+   },
+   "Table/Cell/Header": {
+    "variants": 6,
+    "props": {
+     "Scroll": [
+      "Off"
+     ],
+     "Type": [
+      "Default",
+      "End",
+      "Start"
+     ],
+     "Status": [
+      "Default",
+      "Hover"
+     ]
+    }
+   },
+   "_Table/Tabs Item": {
+    "variants": 2,
+    "props": {
+     "Active": [
+      "Off",
+      "On"
+     ]
+    }
+   },
+   "_Table/Filter Results": {
+    "variants": 2,
+    "props": {
+     "Type": [
+      "Close",
+      "Default"
+     ]
+    }
+   },
+   "Table/Bulk Edit Sheet": {
+    "variants": 2,
+    "props": {
+     "Open": [
+      "Off",
+      "On"
+     ]
+    }
+   },
+   "Table/Header": {
+    "variants": 4,
+    "props": {
+     "Device": [
+      "Desktop",
+      "Mobile"
+     ],
+     "Selected": [
+      "Off",
+      "On"
+     ]
+    }
+   },
+   "Table/Status": {
+    "variants": 9,
+    "props": {
+     "Status": [
+      "cancelled",
+      "deleted",
+      "delevery",
+      "deliverd",
+      "in prograss",
+      "retrevied",
+      "shipped",
+      "wating payment",
+      "wating review"
+     ]
+    }
+   },
+   "_Table/Chips": {
+    "variants": 1,
+    "props": {
+     "Status": [
+      "Gray"
+     ]
+    }
+   },
+   "Table/Cells": {
+    "variants": 32,
+    "props": {
+     "Type": [
+      "Actions Toggle",
+      "Actions one icon",
+      "Actions three icons",
+      "Actions two icons",
+      "Bulk Edit",
+      "Checkbox",
+      "Chips",
+      "Date & Time",
+      "Drop Down",
+      "Image + Text one line",
+      "Image + Text two lines",
+      "Images",
+      "Markets",
+      "Percentage",
+      "Price",
+      "Price with text",
+      "Products",
+      "Sort",
+      "Status",
+      "Tags",
+      "Text",
+      "Text + Flag"
+     ],
+     "Scroll": [
+      "Off",
+      "On"
+     ],
+     "Selected": [
+      "Off",
+      "On"
+     ]
+    }
+   },
+   "Table": {
+    "variants": 18,
+    "props": {
+     "Status": [
+      "Actions Scroll",
+      "Default",
+      "Filter Results",
+      "More Menu",
+      "No Results",
+      "Scroll Down",
+      "Selected",
+      "Tabs",
+      "Title",
+      "Title Scroll"
+     ],
+     "Device": [
+      "Desktop",
+      "Mobile"
+     ]
+    }
+   },
+   "Table/Footer": {
+    "variants": 2,
+    "props": {
+     "Device": [
+      "Desktop",
+      "Mobile"
+     ]
+    }
+   },
+   "previewContainer": {
+    "variants": 2,
+    "props": {
+     "Type": [
+      "Blog",
+      "Default"
+     ]
+    }
+   },
+   "Table/mobile Order": {
+    "variants": 6,
+    "props": {
+     "Type": [
+      "Default",
+      "Focus",
+      "Hover"
+     ],
+     "Selected": [
+      "Off",
+      "On"
+     ],
+     "Deleted": [
+      "Off"
+     ]
+    }
+   },
+   "Table/mobile Default": {
+    "variants": 6,
+    "props": {
+     "Type": [
+      "Default",
+      "Focus",
+      "Hover"
+     ],
+     "Selected": [
+      "Off",
+      "On"
+     ],
+     "Deleted": [
+      "Off"
+     ]
+    }
+   },
+   "Table/mobile Product": {
+    "variants": 6,
+    "props": {
+     "Type": [
+      "Default",
+      "Focus",
+      "Hover"
+     ],
+     "Selected": [
+      "Off",
+      "On"
+     ],
+     "Deleted": [
+      "Off"
+     ]
+    }
+   },
+   "Table/mobile Customer": {
+    "variants": 6,
+    "props": {
+     "Type": [
+      "Default",
+      "Focus",
+      "Hover"
+     ],
+     "Selected": [
+      "Off",
+      "On"
+     ],
+     "Deleted": [
+      "Off"
+     ]
+    }
+   },
+   "Table/Alertbox": {
+    "variants": 4,
+    "props": {
+     "Hover": [
+      "Off",
+      "On"
+     ],
+     "Device": [
+      "Desktop",
+      "Mobile"
+     ]
+    }
+   },
+   "Table/Delete": {
+    "variants": 2,
+    "props": {
+     "Location": [
+      "Data",
+      "Header"
+     ],
+     "Scroll": [
+      "Off"
+     ],
+     "Selected": [
+      "Off"
+     ],
+     "Deleted": [
+      "Off"
+     ]
+    }
+   },
+   "_Table/Panel Header": {
+    "variants": 2,
+    "props": {
+     "Size": [
+      "Default",
+      "Small"
+     ]
+    }
+   },
+   "_Table/Product Image": {
+    "variants": 2,
+    "props": {
+     "Active": [
+      "Off",
+      "On"
+     ]
+    }
+   },
+   "_Table/Refresh Button": {
+    "variants": 2,
+    "props": {
+     "Active": [
+      "Off",
+      "On"
+     ]
+    }
+   },
+   "_Table/Pin": {
+    "variants": 2,
+    "props": {
+     "Pin": [
+      "Off",
+      "On"
+     ]
+    }
+   },
+   "Table/Edit Sheet": {
+    "variants": 2,
+    "props": {
+     "Type": [
+      "Default",
+      "Min Cells"
+     ]
+    }
+   },
+   "Image": {
+    "variants": 2,
+    "props": {
+     "Hover": [
+      "Off",
+      "On"
+     ]
+    }
+   },
+   "_Percentage": {
+    "variants": 4,
+    "props": {
+     "Type": [
+      "100%",
+      "25%",
+      "50%",
+      "75%"
+     ]
+    }
+   }
+  },
+  "Steps": {
+   "_Step base": {
+    "variants": 8,
+    "props": {
+     "Type": [
+      "Active",
+      "Default",
+      "Last",
+      "Success"
+     ],
+     "Language": [
+      "Arabic",
+      "English"
+     ]
+    }
+   },
+   "Steps": {
+    "variants": 16,
+    "props": {
+     "Count": [
+      "2",
+      "3",
+      "4",
+      "5"
+     ],
+     "Type": [
+      "Desktop",
+      "Mobile"
+     ],
+     "Language": [
+      "Arabic",
+      "English"
+     ]
+    }
+   }
+  }
+ },
+ "loose": [
+  [
+   "frame",
+   "Button"
+  ],
+  [
+   "frame",
+   "Illustrations Collection"
+  ],
+  [
+   "frame",
+   "Illustration"
+  ],
+  [
+   "frame",
+   "Icons/Filled"
+  ],
+  [
+   "frame",
+   "Icons/Outline"
+  ],
+  [
+   "frame",
+   "Social media icons"
+  ],
+  [
+   "frame",
+   "Flag"
+  ],
+  [
+   "frame",
+   "Action Buttons"
+  ],
+  [
+   "frame",
+   "searchbar"
+  ],
+  [
+   "frame",
+   "Learn More"
+  ],
+  [
+   "frame",
+   "Products Management"
+  ],
+  [
+   "frame",
+   "Header Primary Tabs"
+  ]
+ ]
+}

@@ -1,0 +1,915 @@
+{
+  "$description": "Source of truth for the Salla Design System component inventory. Each entry classifies one public component on three axes (atomic level, Material category, structure type) and links it back to the Figma frames it comes from (see figma-inventory.json) and the Twilight Storybook story. scripts/build-catalog.py renders docs/03-components from this file.",
+  "levels": ["atom", "molecule", "organism", "template", "page"],
+  "categories": ["Actions", "Communication", "Containment", "Navigation", "Selection", "Text inputs", "Data display"],
+  "structureTypes": {
+    "1": "Configurable (single component, variations via props)",
+    "2": "Standalone (separate, explicitly named components)",
+    "3": "Base + Global (internal base component, public pre-configured components)",
+    "4": "Slot / Composition (container with named slots)",
+    "5": "Headless (logic only, UI supplied separately)"
+  },
+  "components": [
+
+    { "id": "button", "name": "Button", "level": "atom", "category": "Actions", "structure": 1,
+      "status": "existing",
+      "summary": "The single action trigger. Seven colour variants x four appearances x three sizes x five states, plus a circular layout for icon-only use.",
+      "figma": { "frames": ["Button"], "node": "14526:107536" },
+      "storybook": "Button",
+      "anatomy": ["container", "icon-start (slot)", "label", "icon-end (slot)"],
+      "props": { "variant": ["primary", "secondary", "danger", "success", "warning", "info", "feature"], "appearance": ["filled", "outlined", "link", "link-auxiliary"], "size": ["sm (32px)", "md (40px)", "lg (48px)"], "layout": ["default", "circular"], "iconStart": "slot", "iconEnd": "slot", "loading": "boolean", "disabled": "boolean" },
+      "states": ["default", "hover", "pressed", "loading", "disabled", "focus-visible"],
+      "tokens": ["comp.button.*", "sys.color.primary-container (primary filled fill #a4ffe5)", "sys.color.text.brand (primary label #004956)", "sys.color.status.*.primary (danger #f55157, success #00af6c, warning #ffaf44, info #5196f3)", "sys.color.feature.* (gradient orange 200->300, label orange 800)", "sys.shape.small (8px)", "sys.typography.label-md"],
+      "rtl": "iconStart/iconEnd are logical (inline-start / inline-end) and swap automatically under dir=rtl; do not mirror non-directional glyphs.",
+      "notes": "Figma variant values carry a leading `--` (--primary); drop it in code. The 'link' appearance is a Button in Figma but reads as a Link to users; expose it as `Link` (see link.md) built on the same base. `feature` is a non-semantic upsell accent and must stay out of the semantic status palette."
+    },
+
+    { "id": "icon-button", "name": "IconButton", "level": "atom", "category": "Actions", "structure": 3,
+      "status": "proposed",
+      "summary": "Icon-only button. Today this is Button with Layout=--circular and no label; promote it to a named global component so the accessible name is a required prop.",
+      "figma": { "frames": ["Button"], "variantFilter": "Layout=--circular" },
+      "storybook": null,
+      "anatomy": ["container (circular)", "icon"],
+      "props": { "variant": "same as Button", "appearance": ["filled", "outlined", "ghost"], "size": ["sm", "md", "lg"], "ariaLabel": "string (required)" },
+      "states": ["default", "hover", "pressed", "loading", "disabled", "focus-visible"],
+      "tokens": ["comp.button.*", "sys.shape.full"],
+      "base": "BaseButton",
+      "notes": "Replaces the ad-hoc icon buttons inside Table (_Table/Refresh Button, _Table/Pin, Table/Cell/Actions icons)."
+    },
+
+    { "id": "link", "name": "Link", "level": "atom", "category": "Actions", "structure": 3,
+      "status": "proposed",
+      "summary": "Inline text action. Built on BaseButton with the `link` and `link-auxiliary` appearances so it shares focus, disabled and loading logic with Button.",
+      "figma": { "frames": ["Button"], "variantFilter": "Appearance=--link | --link-auxiliary" },
+      "storybook": null,
+      "anatomy": ["label", "optional icon"],
+      "props": { "variant": ["primary", "secondary", "danger", "success", "warning", "info"], "auxiliary": "boolean", "href": "string", "external": "boolean" },
+      "states": ["default", "hover", "pressed", "disabled", "focus-visible", "visited"],
+      "tokens": ["sys.color.text.brand", "sys.typography.label-md"],
+      "base": "BaseButton"
+    },
+
+    { "id": "icon", "name": "Icon", "level": "atom", "category": "Communication", "structure": 2,
+      "status": "existing",
+      "summary": "A single glyph from the Salla icon set. 4,049 names in Stroke (outline) and Solid (filled) styles; Rounded is the default type.",
+      "figma": { "frames": ["Icons/Outline", "Icons/Filled"], "library": "Icons DS_V.1" },
+      "storybook": "Icons (sicon-* font classes)",
+      "anatomy": ["svg 1em box"],
+      "props": { "name": "string (e.g. add-01)", "style": ["outline", "filled"], "size": ["sm 16", "md 18", "lg 20", "xl 24"], "mirrorInRtl": "boolean" },
+      "states": [],
+      "tokens": ["ref.size.icon.*", "currentColor"],
+      "rtl": "Only directional glyphs (arrows, chevrons, undo/redo) set mirrorInRtl. Search, trash, settings never mirror.",
+      "notes": "Naming today is `{name}-{outline|filled}` in the Merchant DS while the icon library uses Style/Type variants and the Storybook uses `sicon-*` font classes. Unify on `{name}` + `style` prop; see docs/02-styles/icons.md."
+    },
+
+    { "id": "checkbox", "name": "Checkbox", "level": "atom", "category": "Selection", "structure": 3,
+      "status": "existing",
+      "summary": "Bare selection control with true / false / mixed states in two sizes. The labelled version is CheckboxField.",
+      "figma": { "frames": ["checkBox"], "node": "12411:21809" },
+      "storybook": "Checkbox",
+      "anatomy": ["box", "check / dash glyph"],
+      "props": { "checked": ["true", "false", "mixed"], "size": ["sm (16px)", "md (20px)"], "disabled": "boolean" },
+      "states": ["default", "hover", "focus", "disabled"],
+      "tokens": ["comp.checkbox.*", "sys.color.primary (checked fill #004956)", "sys.shape.extra-small (4px)", "sys.color.outline"],
+      "base": "self (used by CheckboxField)"
+    },
+
+    { "id": "radio", "name": "Radio", "level": "atom", "category": "Selection", "structure": 3,
+      "status": "existing",
+      "summary": "Bare single-choice control in two sizes. RadioField, RadioImage and RadioColor build on it.",
+      "figma": { "frames": ["radio"] },
+      "storybook": "Radio",
+      "anatomy": ["ring", "dot"],
+      "props": { "checked": "boolean", "size": ["sm", "md"], "disabled": "boolean" },
+      "states": ["default", "focus", "disabled"],
+      "tokens": ["sys.color.primary", "sys.shape.full", "sys.color.outline"]
+    },
+
+    { "id": "toggle", "name": "Switch", "level": "atom", "category": "Selection", "structure": 3,
+      "status": "existing",
+      "summary": "On/off control (Material: Switch). Has a loading state, which is unusual and worth keeping because Salla toggles often trigger a server call.",
+      "figma": { "frames": ["Toggle"], "node": "12411:21835" },
+      "storybook": "Toggle",
+      "anatomy": ["track", "thumb", "loading spinner (in thumb)"],
+      "props": { "checked": "boolean", "size": ["sm (16px)", "default (24px, track 39px)"], "loading": "boolean", "disabled": "boolean" },
+      "states": ["off", "on", "loading", "disabled", "focus-visible"],
+      "tokens": ["comp.toggle.*", "sys.color.primary", "sys.shape.full"],
+      "rtl": "Thumb travels inline-start -> inline-end; on/off direction mirrors in RTL.",
+      "notes": "Figma exports the whole toggle as one SVG per variant; rebuild it from primitives so the track and thumb take tokens. Keep the name Toggle in Storybook for continuity, alias Switch in docs."
+    },
+
+    { "id": "loading-indicator", "name": "LoadingIndicator", "level": "atom", "category": "Communication", "structure": 1,
+      "status": "existing",
+      "summary": "Spinner, dots or line progress in nine sizes from 8px to 88px.",
+      "figma": { "frames": ["_LoadingIndicator"] },
+      "storybook": "Loader",
+      "anatomy": ["animated shape"],
+      "props": { "type": ["spinner", "dots", "line"], "size": ["xxxxs 8", "xxxs 16", "xxs 20", "xs 24", "sm 32", "md 48", "lg 56", "xl 64", "xxl 88"] },
+      "states": [],
+      "tokens": ["comp.loader.*", "sys.color.primary"],
+      "notes": "Nine sizes is more than the rest of the system uses (three to six). Recommend collapsing to xs/sm/md/lg/xl and mapping the rest as aliases."
+    },
+
+    { "id": "status-indicator", "name": "StatusIndicator", "level": "atom", "category": "Communication", "structure": 1,
+      "status": "existing",
+      "summary": "The 10px coloured dot. Base of Status.",
+      "figma": { "frames": ["_Base Status Indicator"] },
+      "storybook": null,
+      "anatomy": ["dot"],
+      "props": { "color": ["success", "danger", "warning", "info", "neutral"], "size": ["xs", "sm", "md", "lg", "xl", "2xl"] },
+      "states": [],
+      "tokens": ["sys.color.status.*.dark (success #008c56, danger #ca4146)", "sys.shape.full"]
+    },
+
+    { "id": "avatar", "name": "Avatar", "level": "atom", "category": "Data display", "structure": 1,
+      "status": "existing",
+      "summary": "Image, text initials, icon or fallback in six sizes, circular or rectangular.",
+      "figma": { "frames": ["Avatar", "_AvatarplaholderImages", "_BanksPlaceholderImages"] },
+      "storybook": "Avatar",
+      "anatomy": ["container", "image | initials | icon"],
+      "props": { "variant": ["image", "text", "icon", "avatar-fallback", "image-fallback"], "size": ["xs", "sm", "md", "lg", "xl", "2xl"], "shape": ["circular", "rectangular"] },
+      "states": [],
+      "tokens": ["sys.shape.full | sys.shape.small", "sys.color.primary-container"],
+      "notes": "Placeholder image sets (_AvatarplaholderImages, _BanksPlaceholderImages) are assets, not components; move them to assets/."
+    },
+
+    { "id": "chip", "name": "Chip", "level": "atom", "category": "Selection", "structure": 1,
+      "status": "existing",
+      "summary": "Compact tag used in table cells and multi-select fields. Material: assist / filter / input chip.",
+      "figma": { "frames": ["_Table/Chips", "Table/Cell/Chip"] },
+      "storybook": "Tags Input (chips inside)",
+      "anatomy": ["container", "label", "optional remove icon"],
+      "props": { "kind": ["assist", "filter", "input"], "selected": "boolean", "removable": "boolean", "color": ["neutral", "primary"] },
+      "states": ["default", "hover", "pressed", "selected", "disabled"],
+      "tokens": ["sys.shape.full", "sys.color.outline", "sys.typography.label-sm"]
+    },
+
+    { "id": "flag", "name": "Flag", "level": "atom", "category": "Data display", "structure": 2,
+      "status": "existing",
+      "summary": "Country flag glyphs, one per ISO 3166 code (265 in Figma).",
+      "figma": { "frames": ["Flag"] },
+      "storybook": null,
+      "props": { "code": "ISO 3166-1 alpha-2", "size": ["sm", "md"] },
+      "states": [],
+      "tokens": ["ref.size.icon.*"],
+      "notes": "Ship as a sprite or lazy-loaded SVGs; do not bundle 265 inline SVGs in the base package."
+    },
+
+    { "id": "social-icon", "name": "SocialIcon", "level": "atom", "category": "Data display", "structure": 2,
+      "status": "existing",
+      "summary": "Brand logos (Facebook, Google, Google Ads, Meta, Snapchat, TikTok, YouTube, Instagram, X).",
+      "figma": { "frames": ["Social media icons"] },
+      "storybook": null,
+      "props": { "brand": ["facebook", "google", "google-ads", "meta", "snapchat", "tiktok", "youtube", "instagram", "x"] },
+      "states": [],
+      "tokens": ["ref.size.icon.*"],
+      "notes": "Brand colours are fixed by the brands and are exempt from the token palette."
+    },
+
+    { "id": "illustration", "name": "Illustration", "level": "atom", "category": "Communication", "structure": 2,
+      "status": "existing",
+      "summary": "Spot illustrations for empty states and onboarding, with web and mobile variants.",
+      "figma": { "frames": ["Illustration", "Illustrations Collection"] },
+      "storybook": null,
+      "props": { "name": "one of the 20 collection names (add products, no codes, order filters empty ...)", "device": ["web", "mobile"] },
+      "states": [],
+      "tokens": [],
+      "notes": "See docs/02-styles/illustrations.md for the full list and usage rules."
+    },
+
+    { "id": "label", "name": "FieldLabel", "level": "atom", "category": "Text inputs", "structure": 1,
+      "status": "existing",
+      "summary": "Label line above a field: text, optional required mark, optional info icon.",
+      "figma": { "frames": ["_inputLabel"] },
+      "storybook": null,
+      "props": { "text": "string", "required": "boolean", "info": "string (tooltip)", "htmlFor": "string" },
+      "states": [],
+      "tokens": ["sys.typography.label-md", "sys.color.text.primary"]
+    },
+
+    { "id": "helper-text", "name": "HelperText", "level": "atom", "category": "Text inputs", "structure": 1,
+      "status": "existing",
+      "summary": "Line under a field: hint, error, character count, variables hint or file delete action.",
+      "figma": { "frames": ["_inputTip"] },
+      "storybook": null,
+      "props": { "type": ["default", "danger", "character-count", "variables", "delete-file"], "text": "string" },
+      "states": [],
+      "tokens": ["sys.typography.body-xs", "sys.color.text.secondary", "sys.color.status.danger.primary"]
+    },
+
+    { "id": "password-hint", "name": "PasswordHint", "level": "atom", "category": "Communication", "structure": 1,
+      "status": "existing",
+      "summary": "One requirement line (pending / success / danger) used by PasswordField.",
+      "figma": { "frames": ["_passwordHints", "_passwordValidation"] },
+      "storybook": null,
+      "props": { "state": ["pending", "success", "danger"], "text": "string" },
+      "states": [],
+      "tokens": ["sys.typography.body-xs", "sys.color.status.*"]
+    },
+
+    { "id": "stepper-button", "name": "StepperButton", "level": "atom", "category": "Actions", "structure": 1,
+      "status": "existing",
+      "summary": "The +/- buttons flanking QuantityField, including the delete-at-one variant.",
+      "figma": { "frames": ["_counter-buttons"] },
+      "storybook": null,
+      "props": { "action": ["increment", "decrement", "delete"], "disabled": "boolean" },
+      "states": ["default", "hover", "disabled"],
+      "tokens": ["sys.color.outline", "sys.shape.small"]
+    },
+
+    { "id": "translation-toggle", "name": "TranslationToggle", "level": "atom", "category": "Text inputs", "structure": 1,
+      "status": "existing",
+      "summary": "The small EN/AR language switch inside bilingual fields (Storybook: LingualField).",
+      "figma": { "frames": ["_Translation"] },
+      "storybook": "LingualField (inner toggle)",
+      "props": { "language": ["ar", "en"] },
+      "states": ["default", "hover", "open"],
+      "tokens": ["sys.color.outline", "sys.shape.small", "sys.typography.body-xs"]
+    },
+
+    { "id": "progress-circle", "name": "ProgressCircle", "level": "atom", "category": "Communication", "structure": 1,
+      "status": "existing",
+      "summary": "Circular determinate progress (25/50/75/100 in Figma, should accept any value).",
+      "figma": { "frames": ["_Percentage"] },
+      "storybook": null,
+      "props": { "value": "0-100", "size": ["sm", "md"] },
+      "states": [],
+      "tokens": ["sys.color.primary", "sys.color.outline"]
+    },
+
+    { "id": "step-indicator", "name": "StepIndicator", "level": "atom", "category": "Navigation", "structure": 1,
+      "status": "existing",
+      "summary": "One node of the Stepper: number or check in a circle with a connector.",
+      "figma": { "frames": ["_Step base"] },
+      "storybook": null,
+      "props": { "state": ["default", "active", "success"], "last": "boolean", "index": "number" },
+      "states": [],
+      "tokens": ["sys.color.primary", "sys.color.success-primary", "sys.shape.full"]
+    },
+
+    { "id": "divider", "name": "Divider", "level": "atom", "category": "Containment", "structure": 1,
+      "status": "proposed",
+      "summary": "Horizontal or vertical rule. Exists implicitly as the Separator variants inside Breadcrumb and MoreMenu.",
+      "figma": { "frames": ["_breadcrumbItem", "_moreItems"], "variantFilter": "Type=Separator | Sperator" },
+      "storybook": null,
+      "props": { "orientation": ["horizontal", "vertical"], "inset": "boolean" },
+      "states": [],
+      "tokens": ["sys.color.outline"]
+    },
+
+    { "id": "text", "name": "Text", "level": "atom", "category": "Communication", "structure": 1,
+      "status": "proposed",
+      "summary": "Typography primitive exposing the Material type roles (display, headline, title, body, label) that map onto the Figma Bold/Medium/Regular $text-* styles.",
+      "figma": { "frames": [], "styles": "Bold/$text-*, Medium/$text-*, Regular/$text-*" },
+      "storybook": null,
+      "props": { "role": ["display-lg", "headline-lg", "headline-md", "title-lg", "title-md", "title-sm", "body-md", "body-sm", "body-xs", "label-md", "label-sm"], "color": "sys.color.text.*", "as": "html tag" },
+      "states": [],
+      "tokens": ["sys.typography.*"]
+    },
+
+    { "id": "base-field", "name": "BaseField (internal)", "level": "molecule", "category": "Text inputs", "structure": 3,
+      "status": "existing",
+      "summary": "The internal base for every field: label + container (icon-start, control, subtext/unit, translation toggle, info) + helper text. Not exported. Today this role is played by InputWrapper, a 24-variant god component; splitting it into a base and named globals is the main structural change in Text inputs.",
+      "figma": { "frames": ["InputWrapper", "_TextInput", "_inputLabel", "_inputTip", "_Text-cursor"], "node": "InputWrapper 4d4e5f6d" },
+      "storybook": "Input (base)",
+      "anatomy": ["FieldLabel", "container", "icon-start (slot)", "control (slot)", "subtext / unit", "TranslationToggle", "info icon", "HelperText"],
+      "props": { "state": ["default", "hover", "pre-active", "active", "filled", "active-filled", "read-only", "disabled"], "error": "boolean", "language": ["ar", "en"] },
+      "states": ["default", "hover", "pre-active", "active", "filled", "active-filled", "read-only", "disabled", "error"],
+      "tokens": ["comp.text-field.*", "sys.color.surface-input", "sys.color.outline (#eee)", "sys.color.text.secondary (placeholder #666)", "sys.shape.small"],
+      "notes": "Eight interaction states is more than a screen reader or CSS needs. Collapse to: enabled, hover, focus, filled, read-only, disabled, plus an orthogonal error flag."
+    },
+
+    { "id": "text-field", "name": "TextField", "level": "molecule", "category": "Text inputs", "structure": 3,
+      "status": "existing",
+      "summary": "Single-line text entry. Absorbs the four internal Figma frames (plain, with button, with image, with character counter) as slots and props.",
+      "figma": { "frames": ["_TextInput", "_inputWithButton", "_InputWithImage", "_InputCounter"] },
+      "storybook": "Input / LingualField",
+      "props": { "label": "string", "placeholder": "string", "helperText": "string", "maxLength": "number (shows counter)", "iconStart": "slot", "trailing": "slot (button | image | unit)", "bilingual": "boolean", "error": "string", "readOnly": "boolean", "disabled": "boolean" },
+      "states": "inherits BaseField",
+      "tokens": "inherits BaseField",
+      "base": "BaseField",
+      "rtl": "Text direction follows the field language, not the page; the translation toggle sits inline-end in both directions."
+    },
+
+    { "id": "textarea-field", "name": "TextareaField", "level": "molecule", "category": "Text inputs", "structure": 3,
+      "status": "existing",
+      "summary": "Multi-line text entry with optional rich-text toolbar.",
+      "figma": { "frames": ["_TextArea", "_Rich-Text-Panel"] },
+      "storybook": "Textarea",
+      "props": { "rows": "number", "richText": "boolean", "maxLength": "number", "autoResize": "boolean" },
+      "states": "inherits BaseField",
+      "tokens": "inherits BaseField",
+      "base": "BaseField"
+    },
+
+    { "id": "password-field", "name": "PasswordField", "level": "molecule", "category": "Text inputs", "structure": 3,
+      "status": "existing",
+      "summary": "Masked entry with show/hide toggle and an optional requirements checklist (112 Figma variants collapse to four props).",
+      "figma": { "frames": ["_passwordInput", "_passwordHints", "_passwordValidation"] },
+      "storybook": "Password",
+      "props": { "hidden": "boolean", "requirements": "array of {label, met}", "showRequirements": "boolean" },
+      "states": "inherits BaseField",
+      "tokens": "inherits BaseField",
+      "base": "BaseField"
+    },
+
+    { "id": "email-field", "name": "EmailField", "level": "molecule", "category": "Text inputs", "structure": 3,
+      "status": "existing",
+      "summary": "TextField pre-configured with type=email, mail icon and email validation.",
+      "figma": { "frames": ["_emailInput"] },
+      "storybook": null,
+      "props": { "validate": "boolean" },
+      "base": "BaseField"
+    },
+
+    { "id": "amount-field", "name": "AmountField", "level": "molecule", "category": "Text inputs", "structure": 3,
+      "status": "existing",
+      "summary": "Numeric / currency entry with the Saudi Riyal symbol as trailing unit.",
+      "figma": { "frames": ["_amountInput"] },
+      "storybook": "Number / Price",
+      "props": { "currency": "string (default SAR)", "min": "number", "max": "number", "step": "number", "decimals": "number" },
+      "base": "BaseField",
+      "rtl": "Digits stay Latin (0-9) per live dashboard convention; the currency glyph sits inline-end."
+    },
+
+    { "id": "phone-field", "name": "PhoneField", "level": "molecule", "category": "Text inputs", "structure": 3,
+      "status": "existing",
+      "summary": "Phone entry with country-code picker (Flag + code) as leading control.",
+      "figma": { "frames": ["_PhoneInputV1"] },
+      "storybook": "Phone",
+      "props": { "defaultCountry": "ISO code", "countries": "array" },
+      "base": "BaseField",
+      "notes": "Figma frame is suffixed V1; the new name drops versions from component names (version lives in the changelog)."
+    },
+
+    { "id": "search-field", "name": "SearchField", "level": "molecule", "category": "Text inputs", "structure": 3,
+      "status": "existing",
+      "summary": "Search entry with magnifier, clear button, recommendations and no-results states.",
+      "figma": { "frames": ["searchInput"] },
+      "storybook": "Search",
+      "props": { "suggestions": "array", "loading": "boolean", "onClear": "fn" },
+      "states": ["default", "hover", "active", "filled", "active-filled", "recommendation", "no-result"],
+      "base": "BaseField"
+    },
+
+    { "id": "otp-field", "name": "OtpField", "level": "molecule", "category": "Text inputs", "structure": 3,
+      "status": "existing",
+      "summary": "Single-digit boxes for verification codes.",
+      "figma": { "frames": ["_SingleDigit"] },
+      "storybook": null,
+      "props": { "length": "number (default 4-6)", "autoSubmit": "boolean" },
+      "base": "BaseField",
+      "rtl": "Code boxes always read left-to-right, even on RTL pages."
+    },
+
+    { "id": "quantity-field", "name": "QuantityField", "level": "molecule", "category": "Text inputs", "structure": 3,
+      "status": "existing",
+      "summary": "Number entry with StepperButtons, compact and default sizes, and the hot-reload (inline save) variant used in tables.",
+      "figma": { "frames": ["Counter", "_quantity-hotreload", "_counter-buttons"] },
+      "storybook": "Qty",
+      "props": { "value": "number", "min": "number", "max": "number", "size": ["compact", "default"], "deleteAtMin": "boolean", "inlineSave": "boolean" },
+      "base": "BaseField"
+    },
+
+    { "id": "select-field", "name": "SelectField", "level": "molecule", "category": "Text inputs", "structure": 3,
+      "status": "existing",
+      "summary": "Single-choice dropdown field. The 'basic' Figma variant (no search) is a prop, not a separate component.",
+      "figma": { "frames": ["_dropdown-single", "basic-dropdown-single"] },
+      "storybook": "Select",
+      "props": { "options": "array", "searchable": "boolean", "allowCreate": "boolean (Add new value)", "placeholder": "string" },
+      "base": "BaseField",
+      "composes": ["dropdown-list"]
+    },
+
+    { "id": "multi-select-field", "name": "MultiSelectField", "level": "molecule", "category": "Text inputs", "structure": 3,
+      "status": "existing",
+      "summary": "Multi-choice dropdown field rendering selections as Chips (Storybook: Tags Input).",
+      "figma": { "frames": ["_dropdown-multiple", "basic-dropdown-multiple"] },
+      "storybook": "Tags Input / Multi Select",
+      "props": { "options": "array", "searchable": "boolean", "allowCreate": "boolean", "maxVisibleChips": "number" },
+      "base": "BaseField",
+      "composes": ["dropdown-list", "chip"]
+    },
+
+    { "id": "upload-field", "name": "UploadField", "level": "molecule", "category": "Text inputs", "structure": 3,
+      "status": "existing",
+      "summary": "File picker with drag and drop: inline, single image, single video, multiple (row or column).",
+      "figma": { "frames": ["upload input"] },
+      "storybook": "File Upload",
+      "props": { "variant": ["inline", "single-image", "single-video", "multiple", "multiple-vertical"], "accept": "string", "maxSize": "number", "maxFiles": "number" },
+      "states": ["default", "filled", "dragging", "uploading", "error"],
+      "base": "BaseField"
+    },
+
+    { "id": "color-picker-field", "name": "ColorPickerField", "level": "molecule", "category": "Text inputs", "structure": 3,
+      "status": "existing",
+      "summary": "Colour swatch + hex entry with a picker popover.",
+      "figma": { "frames": [], "componentSet": "colorPicker 1d931b4a" },
+      "storybook": "Color Picker",
+      "props": { "value": "hex", "presets": "array" },
+      "base": "BaseField"
+    },
+
+    { "id": "checkbox-field", "name": "CheckboxField", "level": "molecule", "category": "Selection", "structure": 3,
+      "status": "existing",
+      "summary": "Checkbox + label + optional description / info tooltip.",
+      "figma": { "frames": ["checkboxfield"] },
+      "storybook": "Checkbox",
+      "props": { "label": "string", "description": "string", "info": "string (tooltip)", "checked": "boolean | mixed", "disabled": "boolean" },
+      "base": "Checkbox",
+      "composes": ["checkbox", "tooltip"]
+    },
+
+    { "id": "radio-field", "name": "RadioField", "level": "molecule", "category": "Selection", "structure": 3,
+      "status": "existing",
+      "summary": "Radio + label, used inside a RadioGroup.",
+      "figma": { "frames": ["radiofield"] },
+      "storybook": "Radio",
+      "props": { "label": "string", "value": "string", "disabled": "boolean" },
+      "base": "Radio"
+    },
+
+    { "id": "radio-image", "name": "RadioImage", "level": "molecule", "category": "Selection", "structure": 2,
+      "status": "existing",
+      "summary": "Selectable image card (visual radio) for templates, themes, layouts.",
+      "figma": { "frames": ["radioImage"] },
+      "storybook": null,
+      "props": { "image": "src", "label": "string", "selected": "boolean" },
+      "states": ["default", "hover", "selected"],
+      "composes": ["radio"]
+    },
+
+    { "id": "radio-color", "name": "RadioColor", "level": "molecule", "category": "Selection", "structure": 2,
+      "status": "existing",
+      "summary": "Selectable colour swatch (visual radio) for product colour variants.",
+      "figma": { "frames": ["radioColor"] },
+      "storybook": null,
+      "props": { "color": "hex", "label": "string", "selected": "boolean" },
+      "states": ["default", "hover", "selected"],
+      "composes": ["radio"]
+    },
+
+    { "id": "toggle-field", "name": "SwitchField", "level": "molecule", "category": "Selection", "structure": 3,
+      "status": "existing",
+      "summary": "Switch + label with the switch at inline-start or inline-end.",
+      "figma": { "frames": ["toggleField"] },
+      "storybook": "Toggle",
+      "props": { "label": "string", "description": "string", "position": ["start", "end"], "checked": "boolean", "loading": "boolean", "disabled": "boolean" },
+      "base": "Switch"
+    },
+
+    { "id": "status", "name": "Status", "level": "molecule", "category": "Communication", "structure": 3,
+      "status": "existing",
+      "summary": "StatusIndicator + label in subtle (dot + text) or strong (pill) appearance. Material: badge / chip.",
+      "figma": { "frames": ["Status"], "node": "15342:59936" },
+      "storybook": "Badge / Status",
+      "props": { "type": ["success", "danger", "warning", "info", "neutral"], "appearance": ["subtle", "strong"], "label": "string" },
+      "states": [],
+      "tokens": ["comp.status.*", "sys.color.status.*.dark (dot)", "sys.color.status.*.darker (label)", "sys.color.status.*.lighter (strong background)", "sys.typography.label-sm"],
+      "base": "StatusIndicator",
+      "notes": "Table/Status carries nine order-status presets (waiting payment, in progress, shipped, delivered ...). Model those as a data mapping (order status -> Status type), not as extra variants."
+    },
+
+    { "id": "loading", "name": "Loading", "level": "molecule", "category": "Communication", "structure": 3,
+      "status": "existing",
+      "summary": "LoadingIndicator + localised label for block-level loading.",
+      "figma": { "frames": ["Loading"] },
+      "storybook": "Loader",
+      "props": { "label": "string", "size": "LoadingIndicator size" },
+      "base": "LoadingIndicator"
+    },
+
+    { "id": "avatar-with-text", "name": "AvatarWithText", "level": "molecule", "category": "Data display", "structure": 4,
+      "status": "existing",
+      "summary": "Avatar + primary and secondary text lines (customer, product, staff rows).",
+      "figma": { "frames": ["AvatarWithText", "header Avatar"] },
+      "storybook": null,
+      "props": { "avatar": "Avatar props", "title": "slot", "subtitle": "slot", "trailing": "slot" },
+      "composes": ["avatar", "text"]
+    },
+
+    { "id": "avatar-stack", "name": "AvatarStack", "level": "molecule", "category": "Data display", "structure": 1,
+      "status": "existing",
+      "summary": "Overlapping or spaced row of Avatars with +N overflow.",
+      "figma": { "frames": ["AvatarStack"] },
+      "storybook": null,
+      "props": { "items": "array", "max": "number", "overlapping": "boolean", "size": ["compact", "default"] },
+      "composes": ["avatar"]
+    },
+
+    { "id": "breadcrumb", "name": "Breadcrumb", "level": "molecule", "category": "Navigation", "structure": 4,
+      "status": "existing",
+      "summary": "Path navigation with icon, text, more (…) and separator items; collapses past 5 items and on mobile.",
+      "figma": { "frames": ["Breadcrumb", "_breadcrumbItem"] },
+      "storybook": "Breadcrumb",
+      "props": { "items": "array of {label, href, icon}", "maxItems": "number", "device": ["desktop", "mobile"] },
+      "states": ["item: default, hover, active, disabled, pressed"],
+      "rtl": "Separator chevron mirrors in RTL.",
+      "composes": ["breadcrumb-item", "divider"]
+    },
+
+    { "id": "breadcrumb-item", "name": "BreadcrumbItem", "level": "molecule", "category": "Navigation", "structure": 1,
+      "status": "existing",
+      "summary": "One breadcrumb node: icon, text or overflow menu trigger.",
+      "figma": { "frames": ["_breadcrumbItem"] },
+      "storybook": null,
+      "props": { "type": ["icon", "text", "more"], "current": "boolean", "disabled": "boolean" }
+    },
+
+    { "id": "tab", "name": "Tab", "level": "molecule", "category": "Navigation", "structure": 1,
+      "status": "existing",
+      "summary": "One tab, primary (dashboard top nav) or secondary (page sub-nav), contained or plain, with active/hover states.",
+      "figma": { "frames": ["Header Secondary Tabs", "Header Primary Tabs", "Primary Tabs List - Dashboard only", "_Table/Tabs Item"] },
+      "storybook": "Tabs (item)",
+      "props": { "kind": ["primary", "secondary"], "contained": "boolean", "active": "boolean", "icon": "slot", "count": "number" },
+      "states": ["default", "hover", "active", "focus-visible"]
+    },
+
+    { "id": "side-menu-item", "name": "NavigationItem", "level": "molecule", "category": "Navigation", "structure": 1,
+      "status": "existing",
+      "summary": "One entry of the side navigation (first / middle / last for grouping radius).",
+      "figma": { "frames": ["sidemenu tab"] },
+      "storybook": null,
+      "props": { "label": "string", "icon": "slot", "active": "boolean", "position": ["first", "middle", "last"], "badge": "number" },
+      "states": ["default", "hover", "active"]
+    },
+
+    { "id": "menu-item", "name": "MenuItem", "level": "molecule", "category": "Containment", "structure": 1,
+      "status": "existing",
+      "summary": "Row inside MoreMenu: icon or image + label, optional danger tone; separators become Divider.",
+      "figma": { "frames": ["_moreItems"] },
+      "storybook": null,
+      "props": { "leading": ["icon", "image", "none"], "label": "string", "danger": "boolean", "disabled": "boolean" },
+      "states": ["default", "hover", "pressed", "disabled"]
+    },
+
+    { "id": "list-item", "name": "ListItem", "level": "molecule", "category": "Containment", "structure": 4,
+      "status": "existing",
+      "summary": "Row inside DropdownList and pickers: plain, with description, with flag, with image; supports checkbox, selected, danger, disabled and 'feature' (upsell) states.",
+      "figma": { "frames": ["_listItem", "_listTitle"] },
+      "storybook": null,
+      "props": { "leading": "slot (Flag | Avatar | Checkbox)", "title": "string", "description": "string", "trailing": "slot", "selected": "boolean", "danger": "boolean", "disabled": "boolean", "feature": "boolean" },
+      "states": ["default", "hover", "selected", "disabled"],
+      "notes": "The PDF names this pattern listItemLayout: a slot-based layout with fixed slots. ListSubheader (_listTitle) is the category / search header variant."
+    },
+
+    { "id": "table-cell", "name": "TableCell", "level": "molecule", "category": "Data display", "structure": 2,
+      "status": "existing",
+      "summary": "Typed cells: name, sub-name, image, products, amount, percentage, status, tags, markets (flag + text), variant, data (text / date-time / dropdown), actions (1-3 icons or toggle), checkbox, chip, disabled, sort and header.",
+      "figma": { "frames": ["Table/Cell/Name", "Table/Cell/SubName", "Table/Cell/Image", "Table/Cell/Products", "Table/Cell/Amount", "Table/Cell/Percentage", "Table/Cell/Status", "Table/Cell/Tags", "Table/Cell/Markets", "Table/Cell/Flag_with_text", "Table/Cell/Varient", "Table/Cell/Data", "Table/Cell/Actions", "Table/Cell/Checkbox", "Table/Cell/Chip", "Table/Cell/Disabled", "Table/Cell/Sort", "Table/Cell/Header", "Table/Cells", "Image", "_Table/Product Image"] },
+      "storybook": "Table (cells)",
+      "props": { "type": "one cell component per type: TextCell, NameCell, ImageCell, AmountCell, PercentageCell, StatusCell, TagsCell, MarketCell, DateCell, ActionsCell, CheckboxCell, ChipCell, HeaderCell", "status": ["default", "hover", "focus", "edit"], "twoLines": "boolean", "empty": "boolean" },
+      "states": ["default", "hover", "focus", "edit"],
+      "notes": "Standalone per type (structure 2) so each cell has a tiny API; they share a CellLayout base for padding and alignment. Rename Varient -> VariantCell, Data -> DateCell / TextCell / SelectCell."
+    },
+
+    { "id": "date-time-cell", "name": "CalendarCell", "level": "molecule", "category": "Selection", "structure": 1,
+      "status": "existing",
+      "summary": "Day, number and time cells used by the date/time picker.",
+      "figma": { "frames": ["_Date", "_bigCalenderItems", "_Time", "Time"] },
+      "storybook": null,
+      "props": { "kind": ["day", "number", "time"], "state": ["default", "current", "selected", "disabled"] }
+    },
+
+    { "id": "header-avatar", "name": "AccountMenuTrigger", "level": "molecule", "category": "Navigation", "structure": 1,
+      "status": "existing",
+      "summary": "Avatar + store name + chevron in the top bar that opens the account menu.",
+      "figma": { "frames": ["header Avatar"] },
+      "storybook": null,
+      "props": { "storeName": "string", "avatar": "Avatar props" },
+      "states": ["default", "hover", "open"],
+      "composes": ["avatar-with-text", "icon"]
+    },
+
+    { "id": "page-title", "name": "PageTitle", "level": "molecule", "category": "Navigation", "structure": 4,
+      "status": "existing",
+      "summary": "Page heading row: back / breadcrumb, title, optional status and actions slot. Desktop and mobile layouts.",
+      "figma": { "frames": ["Page Title"] },
+      "storybook": null,
+      "props": { "title": "string", "leading": "slot (Breadcrumb | back)", "meta": "slot (Status)", "actions": "slot (Buttons)" }
+    },
+
+    { "id": "learn-more", "name": "LearnMore", "level": "molecule", "category": "Communication", "structure": 1,
+      "status": "existing",
+      "summary": "Help card linking to documentation, default and small sizes, desktop and mobile.",
+      "figma": { "frames": ["Learn More"] },
+      "storybook": null,
+      "props": { "title": "string", "href": "string", "size": ["default", "small"] }
+    },
+
+    { "id": "global-search", "name": "GlobalSearch", "level": "molecule", "category": "Text inputs", "structure": 1,
+      "status": "existing",
+      "summary": "Header search: collapsed button-only or full field.",
+      "figma": { "frames": ["searchbar"] },
+      "storybook": null,
+      "props": { "variant": ["btn-only", "full"] },
+      "composes": ["search-field", "icon-button"]
+    },
+
+    { "id": "filter-results", "name": "FilterResults", "level": "molecule", "category": "Communication", "structure": 1,
+      "status": "existing",
+      "summary": "Applied-filters summary bar above a table with a clear action.",
+      "figma": { "frames": ["_Table/Filter Results"] },
+      "storybook": null,
+      "props": { "filters": "array of Chip", "onClear": "fn" },
+      "composes": ["chip"]
+    },
+
+    { "id": "panel-header", "name": "PanelHeader", "level": "molecule", "category": "Containment", "structure": 4,
+      "status": "existing",
+      "summary": "Title + actions row for Panel / Table containers, default and small.",
+      "figma": { "frames": ["_Table/Panel Header"] },
+      "storybook": "Panel (header)",
+      "props": { "title": "string", "size": ["default", "small"], "actions": "slot" }
+    },
+
+    { "id": "inline-alert", "name": "InlineAlert", "level": "molecule", "category": "Communication", "structure": 3,
+      "status": "existing",
+      "summary": "Compact, non-dismissible alert placed under a field or inside a card (Alertbox Type=Inline).",
+      "figma": { "frames": ["Alertbox"], "variantFilter": "Type=Inline" },
+      "storybook": "AlertBox (inline)",
+      "props": { "variant": ["info", "success", "warning", "danger"], "text": "string" },
+      "base": "BaseAlert"
+    },
+
+    { "id": "alert", "name": "Alert", "level": "organism", "category": "Communication", "structure": 1,
+      "status": "existing",
+      "summary": "Contextual message with icon, optional title, body, optional button and close. Four semantic variants, default / white / transparent surfaces. Also the Table-embedded variant.",
+      "figma": { "frames": ["Alertbox", "Table/Alertbox"], "node": "18843:88067 (info, default, title on)" },
+      "storybook": "AlertBox",
+      "anatomy": ["icon-start", "title", "body", "action (Button size sm)", "close icon", "inline-start accent border 3px"],
+      "props": { "variant": ["info", "success", "warning", "danger"], "type": ["default", "white"], "transparent": "boolean", "title": "string", "closable": "boolean", "action": "slot" },
+      "states": ["visible", "dismissed"],
+      "tokens": ["comp.alert.*", "sys.color.info-lighter (#ecf3fe fill)", "sys.color.info-light (#cbe0fb accent)", "sys.color.info-darker (#204374 text)", "sys.shape.small", "sys.typography.title-md / body-sm"],
+      "rtl": "Accent border is border-inline-start; icon-start / close swap sides automatically.",
+      "notes": "Figma prop 'Trasnparet' -> transparent."
+    },
+
+    { "id": "alert-banner", "name": "AlertBanner", "level": "organism", "category": "Communication", "structure": 2,
+      "status": "existing",
+      "summary": "Full-width page-level announcement (two layouts). Distinct layout and purpose from Alert, so standalone.",
+      "figma": { "frames": ["Alertbox_Banner"] },
+      "storybook": null,
+      "props": { "layout": ["1", "2"], "title": "string", "action": "slot", "dismissible": "boolean" }
+    },
+
+    { "id": "alert-upgrade", "name": "UpgradeCard", "level": "organism", "category": "Communication", "structure": 2,
+      "status": "existing",
+      "summary": "Plan-upgrade promo card, desktop and mobile. Uses the feature accent.",
+      "figma": { "frames": ["Alertbox_Upgrade"] },
+      "storybook": null,
+      "props": { "device": ["desktop", "mobile"], "title": "string", "cta": "Button" },
+      "tokens": ["sys.color.feature.*"]
+    },
+
+    { "id": "dropdown-list", "name": "DropdownList", "level": "organism", "category": "Containment", "structure": 4,
+      "status": "existing",
+      "summary": "The floating list behind SelectField, MultiSelectField, pickers and menus: one to three layers, accordion, flags, images, checkboxes, descriptions, no-results and create-new states.",
+      "figma": { "frames": ["Drop Down List", "_listItem", "_listTitle"] },
+      "storybook": "Dropdown / Select (menu)",
+      "props": { "variant": ["one-layer", "accordion", "three-layers", "no-results", "no-results-with-add"], "items": "array", "checkbox": "boolean", "icon": "boolean", "description": "boolean", "searchable": "boolean" },
+      "states": ["open", "closed", "loading", "empty"],
+      "headless": "useListbox / useMenu (structure 5) supplies keyboard navigation, typeahead and selection; DropdownList is the UI.",
+      "composes": ["list-item", "search-field", "checkbox", "flag", "avatar"]
+    },
+
+    { "id": "date-time-picker", "name": "DateTimePicker", "level": "organism", "category": "Selection", "structure": 5,
+      "status": "existing",
+      "summary": "Calendar and time picker popover built from CalendarCell. Logic (ranges, locale, Hijri/Gregorian) lives in useCalendar.",
+      "figma": { "frames": ["_Date", "_bigCalenderItems", "_Time", "Time"] },
+      "storybook": "Date Picker",
+      "props": { "mode": ["date", "time", "datetime", "range"], "calendar": ["gregorian", "hijri"], "min": "date", "max": "date" },
+      "headless": "useCalendar",
+      "composes": ["date-time-cell", "icon-button", "select-field"]
+    },
+
+    { "id": "more-menu", "name": "MoreMenu", "level": "organism", "category": "Containment", "structure": 4,
+      "status": "existing",
+      "summary": "Overflow (kebab) menu anchored to a trigger, three layouts, left/right placement.",
+      "figma": { "frames": ["More Menu", "_moreItems"] },
+      "storybook": "Dropdown Menu",
+      "props": { "trigger": "slot (IconButton)", "items": "array of MenuItem | Divider", "placement": ["start", "end"] },
+      "headless": "useMenu",
+      "rtl": "Placement uses logical start/end; Figma's Dir=Left/Right becomes placement=end/start under RTL."
+    },
+
+    { "id": "side-menu", "name": "NavigationDrawer", "level": "organism", "category": "Navigation", "structure": 4,
+      "status": "existing",
+      "summary": "The dashboard side navigation (Material: navigation drawer) composed of NavigationItems and section headers.",
+      "figma": { "frames": ["Side menu", "sidemenu tab"] },
+      "storybook": "Sidebar",
+      "props": { "sections": "array", "collapsed": "boolean", "disabled": "boolean" },
+      "composes": ["side-menu-item", "divider", "icon"]
+    },
+
+    { "id": "header", "name": "TopAppBar", "level": "organism", "category": "Navigation", "structure": 4,
+      "status": "existing",
+      "summary": "Dark-teal top bar: logo, primary tabs, global search, notifications, account menu. Desktop and mobile.",
+      "figma": { "frames": ["Header", "Header Primary Tabs", "Primary Tabs List - Dashboard only"] },
+      "storybook": "Header",
+      "props": { "device": ["desktop", "mobile"], "start": "slot (logo, drawer toggle)", "center": "slot (Tabs)", "end": "slot (GlobalSearch, IconButtons, AccountMenuTrigger)" },
+      "tokens": ["sys.color.primary (bar fill #004956)", "sys.color.text.inverse"],
+      "composes": ["tab", "global-search", "icon-button", "header-avatar"]
+    },
+
+    { "id": "header-subcategory", "name": "SecondaryNavBar", "level": "organism", "category": "Navigation", "structure": 4,
+      "status": "existing",
+      "summary": "Second-level bar under the TopAppBar carrying secondary Tabs and a help / CTA area.",
+      "figma": { "frames": ["Header Subcategory", "Header Secondary Tabs"] },
+      "storybook": null,
+      "props": { "tabs": "array", "end": "slot" },
+      "composes": ["tab", "button"]
+    },
+
+    { "id": "tabs", "name": "Tabs", "level": "organism", "category": "Navigation", "structure": 5,
+      "status": "existing",
+      "summary": "Tab list + panels. Keyboard, roving focus and selection live in useTabs; Tab supplies the visuals.",
+      "figma": { "frames": ["Header Secondary Tabs", "Primary Tabs List - Dashboard only", "_Table/Tabs Item"] },
+      "storybook": "Tabs",
+      "props": { "kind": ["primary", "secondary", "contained"], "value": "string", "items": "array" },
+      "headless": "useTabs",
+      "composes": ["tab"]
+    },
+
+    { "id": "table", "name": "DataTable", "level": "organism", "category": "Data display", "structure": 4,
+      "status": "existing",
+      "summary": "The merchant list view: header (title, tabs, search, filters), column headers with sort / select-all, typed cells, sticky action column, row selection with bulk bar, delete, edit sheet, pagination footer, mobile card rows, empty and filter-result states.",
+      "figma": { "frames": ["Table", "Table/Header", "Table/Cells", "Table/Footer", "Table/Status", "Table/Delete", "Table/Alertbox", "_Table/Tabs Item", "_Table/Filter Results", "_Table/Panel Header", "_Table/Refresh Button", "_Table/Pin", "previewContainer"] },
+      "storybook": "Table",
+      "props": { "columns": "array of {key, cell: TableCell type, sortable, sticky}", "rows": "array", "selectable": "boolean", "status": ["default", "selected", "filter-results", "no-results", "scroll", "actions-scroll", "tabs", "title", "more-menu"], "device": ["desktop", "mobile"], "header": "slot (PanelHeader | Tabs | FilterResults)", "footer": "slot (Pagination)", "bulkActions": "slot" },
+      "states": ["loading", "empty", "filtered-empty", "selected", "scrolling"],
+      "headless": "useDataTable (sorting, selection, pagination state)",
+      "composes": ["table-cell", "checkbox", "chip", "status", "more-menu", "pagination", "panel-header", "tabs", "filter-results", "empty-state"],
+      "notes": "Rename Figma's Status=[delevery, deliverd, in prograss, retrevied, wating payment, wating review] presets (typos) to a data mapping in docs/03-components/molecules/status.md."
+    },
+
+    { "id": "table-row-mobile", "name": "MobileRow", "level": "organism", "category": "Data display", "structure": 2,
+      "status": "existing",
+      "summary": "Card-style row for phones: order, product, customer and default layouts.",
+      "figma": { "frames": ["Table/mobile Default", "Table/mobile Order", "Table/mobile Product", "Table/mobile Customer"] },
+      "storybook": null,
+      "props": { "kind": ["default", "order", "product", "customer"], "selected": "boolean" },
+      "states": ["default", "hover", "focus", "selected"]
+    },
+
+    { "id": "bulk-edit-sheet", "name": "BulkEditSheet", "level": "organism", "category": "Containment", "structure": 4,
+      "status": "existing",
+      "summary": "Side sheet opened from the DataTable bulk bar to edit selected rows.",
+      "figma": { "frames": ["Table/Bulk Edit Sheet"] },
+      "storybook": null,
+      "props": { "open": "boolean", "header": "slot", "body": "slot", "footer": "slot (ActionBar)" }
+    },
+
+    { "id": "edit-sheet", "name": "EditSheet", "level": "organism", "category": "Containment", "structure": 4,
+      "status": "existing",
+      "summary": "Inline edit side sheet for one row (default and minimum-cells layouts).",
+      "figma": { "frames": ["Table/Edit Sheet"] },
+      "storybook": null,
+      "props": { "open": "boolean", "layout": ["default", "min-cells"], "body": "slot", "footer": "slot" }
+    },
+
+    { "id": "stepper", "name": "Stepper", "level": "organism", "category": "Navigation", "structure": 5,
+      "status": "existing",
+      "summary": "Two to five step progress for wizards, desktop and mobile. Step state logic in useStepper, StepIndicator for visuals.",
+      "figma": { "frames": ["Steps", "_Step base"] },
+      "storybook": "Steps",
+      "props": { "steps": "array of {label}", "current": "number", "device": ["desktop", "mobile"] },
+      "headless": "useStepper",
+      "composes": ["step-indicator"]
+    },
+
+    { "id": "action-bar", "name": "ActionBar", "level": "organism", "category": "Actions", "structure": 4,
+      "status": "existing",
+      "summary": "Confirm / cancel button group, floating or flat, desktop and mobile. Material: bottom app bar / dialog actions.",
+      "figma": { "frames": ["Action Buttons"], "componentSet": "Action Bar/Confirm buttons 02e6c000, buttonsContainer 1eba2b9a" },
+      "storybook": "ButtonsGroup",
+      "props": { "type": ["float", "flat"], "primary": "slot (Button)", "secondary": "slot (Button)", "start": "slot (destructive)" },
+      "rtl": "Primary action sits inline-end in both directions."
+    },
+
+    { "id": "bottom-sheet", "name": "BottomSheet", "level": "organism", "category": "Containment", "structure": 4,
+      "status": "existing",
+      "summary": "Mobile modal surface sliding from the bottom.",
+      "figma": { "frames": [], "componentSet": "Bottom sheet e90621fb" },
+      "storybook": null,
+      "props": { "open": "boolean", "header": "slot", "body": "slot", "footer": "slot", "snapPoints": "array" }
+    },
+
+    { "id": "dialog", "name": "Dialog", "level": "organism", "category": "Containment", "structure": 4,
+      "status": "proposed",
+      "summary": "Centered modal (Storybook: Modal). Overlay, positioning, focus trap and close button; content via slots.",
+      "figma": { "frames": [] },
+      "storybook": "Modal",
+      "props": { "open": "boolean", "size": ["sm", "md", "lg"], "header": "slot", "body": "slot", "footer": "slot (ActionBar)", "dismissible": "boolean" },
+      "headless": "useDialog (focus trap, escape, scroll lock)",
+      "notes": "Present in Storybook, missing from the Figma library. Design it in Figma from this spec."
+    },
+
+    { "id": "panel", "name": "Panel", "level": "organism", "category": "Containment", "structure": 4,
+      "status": "proposed",
+      "summary": "Card container with PanelHeader, body and footer slots (Storybook: Panel). Material: card.",
+      "figma": { "frames": ["_Table/Panel Header", "previewContainer"] },
+      "storybook": "Panel",
+      "props": { "header": "slot (PanelHeader)", "body": "slot", "footer": "slot", "elevation": ["0", "1"] },
+      "tokens": ["sys.color.surface", "sys.color.outline", "sys.shape.medium", "sys.elevation.1"],
+      "notes": "Present in Storybook and production, missing as a top-level frame in Figma."
+    },
+
+    { "id": "tooltip", "name": "Tooltip", "level": "organism", "category": "Communication", "structure": 5,
+      "status": "proposed",
+      "summary": "Hover / focus hint. Implied by CheckboxField's disabled-info-tooltip variant but not a component yet.",
+      "figma": { "frames": ["checkboxfield"], "variantFilter": "--disabled=--disabled-info-tooltip" },
+      "storybook": "Tooltip",
+      "props": { "content": "string", "placement": ["top", "bottom", "start", "end"] },
+      "headless": "useTooltip"
+    },
+
+    { "id": "toast", "name": "Toast", "level": "organism", "category": "Communication", "structure": 1,
+      "status": "proposed",
+      "summary": "Transient bottom notification (Material: snackbar). Missing from both Figma and Storybook; production uses ad-hoc notifications.",
+      "figma": { "frames": [] },
+      "storybook": null,
+      "props": { "variant": ["info", "success", "warning", "danger"], "action": "slot", "duration": "ms" }
+    },
+
+    { "id": "empty-state", "name": "EmptyState", "level": "organism", "category": "Communication", "structure": 4,
+      "status": "existing",
+      "summary": "Illustration + title + description + action for empty lists and no-results.",
+      "figma": { "frames": ["Illustrations Collection"], "related": "Table Status=No Results, Drop Down List Variant=No Results" },
+      "storybook": null,
+      "props": { "illustration": "Illustration name", "title": "string", "description": "string", "action": "slot (Button)" },
+      "composes": ["illustration", "button"]
+    },
+
+    { "id": "pagination", "name": "Pagination", "level": "organism", "category": "Navigation", "structure": 1,
+      "status": "existing",
+      "summary": "Table footer: page size, range label, previous / next and page numbers. Desktop and mobile.",
+      "figma": { "frames": ["Table/Footer"] },
+      "storybook": "Pagination",
+      "props": { "page": "number", "pageSize": "number", "total": "number", "device": ["desktop", "mobile"] },
+      "rtl": "Previous / next chevrons mirror in RTL."
+    },
+
+    { "id": "map", "name": "Map", "level": "organism", "category": "Data display", "structure": 2,
+      "status": "existing",
+      "summary": "Embedded map for addresses and branches.",
+      "figma": { "frames": ["Maps"] },
+      "storybook": null,
+      "props": { "center": "latlng", "markers": "array", "language": ["ar", "en"] }
+    },
+
+    { "id": "list-page", "name": "ListPage", "level": "template", "category": "Containment", "structure": 4,
+      "status": "existing",
+      "summary": "TopAppBar + SecondaryNavBar + PageTitle + DataTable in a Panel. Figma's 'Products Management' frame is this template.",
+      "figma": { "frames": ["Products Management"] },
+      "storybook": null,
+      "props": { "header": "slot", "pageTitle": "slot", "content": "slot" },
+      "composes": ["header", "header-subcategory", "page-title", "table", "panel"]
+    },
+
+    { "id": "list-detail", "name": "ListDetailPage", "level": "template", "category": "Containment", "structure": 4,
+      "status": "proposed",
+      "summary": "Two-pane layout used by Orders: list on one side, detail on the other, collapsing to stacked on mobile.",
+      "figma": { "frames": [] },
+      "storybook": null,
+      "props": { "list": "slot", "detail": "slot", "breakpoint": "md" }
+    },
+
+    { "id": "form-page", "name": "FormPage", "level": "template", "category": "Containment", "structure": 4,
+      "status": "proposed",
+      "summary": "PageTitle + one or more Panels of fields + sticky ActionBar. Product add / edit, settings.",
+      "figma": { "frames": [] },
+      "storybook": null,
+      "props": { "sections": "slot (Panels)", "actions": "slot (ActionBar)" }
+    },
+
+    { "id": "wizard-page", "name": "WizardPage", "level": "template", "category": "Navigation", "structure": 4,
+      "status": "proposed",
+      "summary": "Stepper + step content + ActionBar for onboarding and multi-step flows.",
+      "figma": { "frames": [] },
+      "storybook": null,
+      "props": { "stepper": "slot", "content": "slot", "actions": "slot" }
+    },
+
+    { "id": "orders-list", "name": "Orders list", "level": "page", "category": "Data display", "structure": 4,
+      "status": "reference",
+      "summary": "s.salla.sa/orders. ListPage template with the order-status Status mapping and MobileRow kind=order.",
+      "figma": { "frames": [] },
+      "template": "list-page"
+    },
+
+    { "id": "products-list", "name": "Products list", "level": "page", "category": "Data display", "structure": 4,
+      "status": "reference",
+      "summary": "s.salla.sa/products. ListPage template with ImageCell, AmountCell, QuantityField inline-save and MobileRow kind=product.",
+      "figma": { "frames": ["Products Management"] },
+      "template": "list-page"
+    },
+
+    { "id": "order-details", "name": "Order details", "level": "page", "category": "Containment", "structure": 4,
+      "status": "reference",
+      "summary": "s.salla.sa/orders/{id}. ListDetailPage template with Panels, Stepper for fulfilment progress and AvatarWithText for the customer.",
+      "figma": { "frames": [] },
+      "template": "list-detail"
+    }
+  ]
+}
